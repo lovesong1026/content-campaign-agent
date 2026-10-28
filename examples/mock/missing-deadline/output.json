@@ -1,0 +1,53 @@
+{
+  "task_id": "demo-missing-deadline",
+  "run_id": "5ada8f3a6ebd426aa7c1c20489f249b8",
+  "mode": "mock",
+  "status": "needs_input",
+  "phase": "finished",
+  "reason": "INPUT_REQUIRED",
+  "summary": null,
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": null
+  },
+  "input_errors": {
+    "deadline": "需要有效 ISO 8601 截止时间，默认北京时间"
+  },
+  "decision_rounds": 0,
+  "tool_calls": 0,
+  "costs": {
+    "tool_cost": "0.00",
+    "plan_cost": null,
+    "total_cost": null,
+    "remaining_budget_after_tools": "20.00",
+    "budget_gap": null
+  },
+  "gaps": {},
+  "ledger": [],
+  "started_at": null,
+  "elapsed_seconds": 0,
+  "simulated_now": null,
+  "steps": [],
+  "pending_plan": [
+    {
+      "tool_name": "search_materials",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "generate_script",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "estimate_cost",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "save_plan",
+      "status": "skipped"
+    }
+  ],
+  "saved": null,
+  "task_directory": ".",
+  "trace_path": "trace.jsonl"
+}

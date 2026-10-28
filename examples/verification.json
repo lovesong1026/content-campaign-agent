@@ -1,0 +1,19 @@
+{
+  "verified_at": "2026-10-28T21:08:26.455296+08:00",
+  "coding_timer_reference": "2026-10-28T20:42:40+08:00",
+  "elapsed_wall_minutes": 25.77,
+  "tests_passed": 37,
+  "real_scenarios_passed": 9,
+  "mock_scenarios_passed": 9,
+  "checks": [
+    "uv sync --locked",
+    "pytest",
+    "ruff check",
+    "ruff format --check",
+    "uv build",
+    "wheel contains data",
+    "real traces and ledger consistency",
+    "mock batch CLI"
+  ],
+  "note": "计时起点为本轮环境核查后的时钟读数，不含此前需求讨论；不是个人手工工时。"
+}

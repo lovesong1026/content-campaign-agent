@@ -1,0 +1,1 @@
+{"event_id": "2ec25e86de04487784a4dea643dad189:1", "sequence": 1, "timestamp": "2026-10-28T12:55:04.266536+00:00", "round": 0, "kind": "task_created", "mode": "real", "input": {"theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。", "budget": "20.00", "deadline": null}, "input_errors": {"deadline": "需要有效 ISO 8601 截止时间，默认北京时间"}}

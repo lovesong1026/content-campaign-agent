@@ -1,0 +1,163 @@
+{
+  "task_id": "demo-missing-deadline",
+  "run_id": "2ec25e86de04487784a4dea643dad189",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": null
+  },
+  "input_fingerprint": "c70af5445e152e3c02b611aaeb648e7d563694baa6a77d28d364e504a56822ba",
+  "input_errors": {
+    "deadline": "需要有效 ISO 8601 截止时间，默认北京时间"
+  },
+  "mode": "real",
+  "status": "needs_input",
+  "phase": "finished",
+  "reason": "INPUT_REQUIRED",
+  "started_at": null,
+  "simulated_now": null,
+  "elapsed_seconds": 0,
+  "decision_rounds": 0,
+  "tool_calls": 0,
+  "tool_cost": "0.00",
+  "tool_ordinals": {},
+  "retrieved_materials": {},
+  "searched": false,
+  "plans": {},
+  "estimates": {},
+  "current_plan_ref": null,
+  "current_estimate_id": null,
+  "saved": null,
+  "steps": [],
+  "pending_plan": [
+    {
+      "tool_name": "search_materials",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "generate_script",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "estimate_cost",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "save_plan",
+      "status": "skipped"
+    }
+  ],
+  "ledger": [],
+  "events": [
+    {
+      "event_id": "2ec25e86de04487784a4dea643dad189:1",
+      "sequence": 1,
+      "timestamp": "2026-10-28T12:55:04.266536+00:00",
+      "round": 0,
+      "kind": "task_created",
+      "mode": "real",
+      "input": {
+        "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+        "budget": "20.00",
+        "deadline": null
+      },
+      "input_errors": {
+        "deadline": "需要有效 ISO 8601 截止时间，默认北京时间"
+      }
+    }
+  ],
+  "seen_call_ids": [],
+  "scenario": {
+    "name": "default",
+    "fixed_start": "2030-01-01T10:00:00+08:00",
+    "empty_materials": false,
+    "failures": {}
+  },
+  "config": {
+    "deepseek_base_url": "https://api.deepseek.com",
+    "deepseek_model": "deepseek-flash",
+    "model_timeout_seconds": 60.0,
+    "max_concurrent_tasks": 3,
+    "max_concurrent_model_requests": 3,
+    "output_dir": ".runs/evidence-real-20261028T125431Z",
+    "data_dir": "/Users/nono/Documents/ai‑agent‑notes/03_Agent开发/小影科技/data"
+  },
+  "data_snapshot": {
+    "materials": [
+      {
+        "asset_id": "basic-spring",
+        "title": "春季新品基础生活场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "生活",
+          "咖啡",
+          "运动"
+        ],
+        "type": "video",
+        "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+        "facts": [
+          "素材为合成测试数据",
+          "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      },
+      {
+        "asset_id": "premium-spring",
+        "title": "春季新品高级摄影场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "咖啡",
+          "运动",
+          "高级"
+        ],
+        "type": "video",
+        "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+        "facts": [
+          "素材为合成测试数据",
+          "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      }
+    ],
+    "pricing": {
+      "version": "pricing-v1",
+      "materials": {
+        "basic-spring": "0.00",
+        "premium-spring": "3.00"
+      },
+      "production": {
+        "economy": "1.00",
+        "standard": "2.00",
+        "premium": "5.00"
+      },
+      "publishing": "0.00"
+    },
+    "tools": {
+      "version": "tools-v1",
+      "search_materials": {
+        "fee": "1.00",
+        "duration_seconds": 120
+      },
+      "generate_script": {
+        "fee": "2.00",
+        "duration_seconds": 300
+      },
+      "estimate_cost": {
+        "fee": "1.00",
+        "duration_seconds": 60
+      },
+      "save_plan": {
+        "fee": "0.00",
+        "duration_seconds": 60
+      }
+    }
+  }
+}

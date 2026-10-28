@@ -1,0 +1,72 @@
+{
+  "task_id": "demo-no-materials",
+  "run_id": "95cc61eacc4b45a0b34afb15e44d2360",
+  "mode": "mock",
+  "status": "incomplete",
+  "phase": "finished",
+  "reason": "MATERIALS_INSUFFICIENT",
+  "summary": "无可用素材",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_errors": {},
+  "decision_rounds": 2,
+  "tool_calls": 1,
+  "costs": {
+    "tool_cost": "1.00",
+    "plan_cost": null,
+    "total_cost": null,
+    "remaining_budget_after_tools": "19.00",
+    "budget_gap": null
+  },
+  "gaps": {
+    "minimum_remaining_tool_cost": "4.00",
+    "tool_budget_lower_bound_gap": "0.00",
+    "minimum_time_gap_seconds": 0
+  },
+  "ledger": [
+    {
+      "call_id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    }
+  ],
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "elapsed_seconds": 120,
+  "simulated_now": "2030-01-01T10:02:00+08:00",
+  "steps": [
+    {
+      "call_id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+      "tool_name": "search_materials",
+      "arguments": {
+        "query": "春季新品",
+        "decision_note": "检索可用素材"
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": []
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": true
+      }
+    }
+  ],
+  "pending_plan": [],
+  "saved": null,
+  "task_directory": ".",
+  "trace_path": "trace.jsonl"
+}

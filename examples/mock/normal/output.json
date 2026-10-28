@@ -1,0 +1,295 @@
+{
+  "task_id": "demo-normal",
+  "run_id": "e098ee12ae6e46159883486aef8faf60",
+  "mode": "mock",
+  "status": "succeeded",
+  "phase": "finished",
+  "reason": "SAVED",
+  "summary": "方案已按约束保存",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_errors": {},
+  "decision_rounds": 4,
+  "tool_calls": 4,
+  "costs": {
+    "tool_cost": "4.00",
+    "plan_cost": "1.00",
+    "total_cost": "5.00",
+    "remaining_budget_after_tools": "16.00",
+    "budget_gap": "0.00"
+  },
+  "gaps": {
+    "minimum_remaining_tool_cost": "0.00",
+    "tool_budget_lower_bound_gap": "0.00",
+    "minimum_time_gap_seconds": 0
+  },
+  "ledger": [
+    {
+      "call_id": "mock-589f89a324a04fb0ba088d48e85ed1b7",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "mock-c609755a8a904bd1b7b9fb7dd7b6a033",
+      "tool_name": "generate_script",
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "mock-4a0c4fd2a5cc4ad788fd95374f4bf4db",
+      "tool_name": "estimate_cost",
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "mock-7ee02b4d082b4fb5a889fcd0080f20b8",
+      "tool_name": "save_plan",
+      "fee": "0.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    }
+  ],
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "elapsed_seconds": 540,
+  "simulated_now": "2030-01-01T10:09:00+08:00",
+  "steps": [
+    {
+      "call_id": "mock-589f89a324a04fb0ba088d48e85ed1b7",
+      "tool_name": "search_materials",
+      "arguments": {
+        "query": "春季新品",
+        "decision_note": "检索可用素材"
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "mock-589f89a324a04fb0ba088d48e85ed1b7",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": [
+            {
+              "asset_id": "basic-spring",
+              "title": "春季新品基础生活场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "生活",
+                "咖啡",
+                "运动"
+              ],
+              "type": "video",
+              "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+              "facts": [
+                "素材为合成测试数据",
+                "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "mock-589f89a324a04fb0ba088d48e85ed1b7"
+            },
+            {
+              "asset_id": "premium-spring",
+              "title": "春季新品高级摄影场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "咖啡",
+                "运动",
+                "高级"
+              ],
+              "type": "video",
+              "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+              "facts": [
+                "素材为合成测试数据",
+                "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "mock-589f89a324a04fb0ba088d48e85ed1b7"
+            }
+          ]
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "mock-c609755a8a904bd1b7b9fb7dd7b6a033",
+      "tool_name": "generate_script",
+      "arguments": {
+        "audience": "年轻消费者",
+        "channel": "短视频平台",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "展示春季新品的日常使用场景"
+          }
+        ],
+        "decision_note": "生成初稿"
+      },
+      "depends_on": [
+        "mock-589f89a324a04fb0ba088d48e85ed1b7"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "mock-c609755a8a904bd1b7b9fb7dd7b6a033",
+        "tool_name": "generate_script",
+        "status": "succeeded",
+        "data": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "audience": "年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "用一个日常场景开启春日新体验。",
+              "body": "以自然光展示新品外观，切换使用场景与产品细节。",
+              "cta": "查看新品介绍，了解适合自己的使用方式。",
+              "shots": [
+                "场景全景",
+                "产品外观特写",
+                "使用镜头"
+              ]
+            }
+          ],
+          "content_hash": "5658f8fa0a10515e55fc8e8f6d4cc1c9e8eec14bc8eacc2c50c10580c56857dc",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "mock-c609755a8a904bd1b7b9fb7dd7b6a033"
+        },
+        "error": null,
+        "fee": "2.00",
+        "duration_seconds": 300,
+        "cumulative_tool_cost": "3.00",
+        "simulated_now": "2030-01-01T10:07:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "mock-4a0c4fd2a5cc4ad788fd95374f4bf4db",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "plan_ref": "campaign-v1",
+        "decision_note": "取得真实估算"
+      },
+      "depends_on": [
+        "mock-c609755a8a904bd1b7b9fb7dd7b6a033"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "mock-4a0c4fd2a5cc4ad788fd95374f4bf4db",
+        "tool_name": "estimate_cost",
+        "status": "succeeded",
+        "data": {
+          "estimate_id": "estimate-3",
+          "plan_ref": "campaign-v1",
+          "content_hash": "5658f8fa0a10515e55fc8e8f6d4cc1c9e8eec14bc8eacc2c50c10580c56857dc",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "basic-spring",
+              "amount": "0.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "1.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "1.00",
+          "tool_cost_at_estimate": "4.00",
+          "total_at_estimate": "5.00",
+          "within_budget": true,
+          "budget_gap": "0.00",
+          "source_call_id": "mock-4a0c4fd2a5cc4ad788fd95374f4bf4db"
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "4.00",
+        "simulated_now": "2030-01-01T10:08:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "mock-7ee02b4d082b4fb5a889fcd0080f20b8",
+      "tool_name": "save_plan",
+      "arguments": {
+        "plan_ref": "campaign-v1",
+        "estimate_id": "estimate-3",
+        "decision_note": "估算合规，保存方案"
+      },
+      "depends_on": [
+        "mock-c609755a8a904bd1b7b9fb7dd7b6a033",
+        "mock-4a0c4fd2a5cc4ad788fd95374f4bf4db"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "mock-7ee02b4d082b4fb5a889fcd0080f20b8",
+        "tool_name": "save_plan",
+        "status": "succeeded",
+        "data": {
+          "saved_plan_id": "saved-e098ee12ae6e46159883486aef8faf60",
+          "path": "saved/saved-e098ee12ae6e46159883486aef8faf60.json",
+          "content_hash": "5658f8fa0a10515e55fc8e8f6d4cc1c9e8eec14bc8eacc2c50c10580c56857dc",
+          "plan_ref": "campaign-v1",
+          "estimate_id": "estimate-3",
+          "tool_cost": "4.00",
+          "plan_cost": "1.00",
+          "total_cost": "5.00",
+          "simulated_saved_at": "2030-01-01T10:09:00+08:00"
+        },
+        "error": null,
+        "fee": "0.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "4.00",
+        "simulated_now": "2030-01-01T10:09:00+08:00",
+        "requires_replan": false
+      }
+    }
+  ],
+  "pending_plan": [],
+  "saved": {
+    "saved_plan_id": "saved-e098ee12ae6e46159883486aef8faf60",
+    "path": "saved/saved-e098ee12ae6e46159883486aef8faf60.json",
+    "content_hash": "5658f8fa0a10515e55fc8e8f6d4cc1c9e8eec14bc8eacc2c50c10580c56857dc",
+    "plan_ref": "campaign-v1",
+    "estimate_id": "estimate-3",
+    "tool_cost": "4.00",
+    "plan_cost": "1.00",
+    "total_cost": "5.00",
+    "simulated_saved_at": "2030-01-01T10:09:00+08:00"
+  },
+  "task_directory": ".",
+  "trace_path": "trace.jsonl"
+}

@@ -1,0 +1,6 @@
+{
+  "version": "pricing-v1",
+  "materials": {"basic-spring": "0.00", "premium-spring": "3.00"},
+  "production": {"economy": "1.00", "standard": "2.00", "premium": "5.00"},
+  "publishing": "0.00"
+}

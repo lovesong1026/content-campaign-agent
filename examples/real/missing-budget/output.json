@@ -1,0 +1,53 @@
+{
+  "task_id": "demo-missing-budget",
+  "run_id": "f4d22a6ea0b349f69f3b6ee09b9d4ac4",
+  "mode": "real",
+  "status": "needs_input",
+  "phase": "finished",
+  "reason": "INPUT_REQUIRED",
+  "summary": null,
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": null,
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_errors": {
+    "budget": "需要非负预算，最多两位小数"
+  },
+  "decision_rounds": 0,
+  "tool_calls": 0,
+  "costs": {
+    "tool_cost": "0.00",
+    "plan_cost": null,
+    "total_cost": null,
+    "remaining_budget_after_tools": null,
+    "budget_gap": null
+  },
+  "gaps": {},
+  "ledger": [],
+  "started_at": null,
+  "elapsed_seconds": 0,
+  "simulated_now": null,
+  "steps": [],
+  "pending_plan": [
+    {
+      "tool_name": "search_materials",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "generate_script",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "estimate_cost",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "save_plan",
+      "status": "skipped"
+    }
+  ],
+  "saved": null,
+  "task_directory": ".",
+  "trace_path": "trace.jsonl"
+}

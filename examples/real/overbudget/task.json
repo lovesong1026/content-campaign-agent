@@ -1,0 +1,2734 @@
+{
+  "task_id": "demo-overbudget",
+  "run_id": "8db1c9ce8bf644b49859f4fda1d76a83",
+  "input": {
+    "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+    "budget": "10.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_fingerprint": "ca79a086cae54103a6484ad42578178b972d81c45ef9a83826b6112e6a887c45",
+  "input_errors": {},
+  "mode": "real",
+  "status": "succeeded",
+  "phase": "finished",
+  "reason": "SAVED",
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "simulated_now": "2030-01-01T10:16:00+08:00",
+  "elapsed_seconds": 960,
+  "decision_rounds": 7,
+  "tool_calls": 7,
+  "tool_cost": "8.00",
+  "tool_ordinals": {
+    "search_materials": 1,
+    "generate_script": 2,
+    "estimate_cost": 3,
+    "save_plan": 1
+  },
+  "retrieved_materials": {
+    "basic-spring": {
+      "asset_id": "basic-spring",
+      "title": "春季新品基础生活场景",
+      "tags": [
+        "春季",
+        "新品",
+        "推广",
+        "通用",
+        "生活",
+        "咖啡",
+        "运动"
+      ],
+      "type": "video",
+      "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+      "facts": [
+        "素材为合成测试数据",
+        "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+      ],
+      "license": "synthetic-demo-only",
+      "available": true,
+      "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+    },
+    "premium-spring": {
+      "asset_id": "premium-spring",
+      "title": "春季新品高级摄影场景",
+      "tags": [
+        "春季",
+        "新品",
+        "推广",
+        "通用",
+        "咖啡",
+        "运动",
+        "高级"
+      ],
+      "type": "video",
+      "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+      "facts": [
+        "素材为合成测试数据",
+        "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+      ],
+      "license": "synthetic-demo-only",
+      "available": true,
+      "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+    }
+  },
+  "searched": true,
+  "plans": {
+    "campaign-v1": {
+      "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+      "audience": "关注春季新品与品质生活的年轻消费者",
+      "channel": "短视频平台",
+      "items": [
+        {
+          "title": "春季新品光影特写",
+          "asset_ids": [
+            "premium-spring"
+          ],
+          "production_tier": "premium",
+          "hook": "棚拍光影亮起的瞬间，春季新品缓缓进入画面。",
+          "body": "多机位镜头围绕产品外观与细节展开，以柔和光线和特写节奏呈现春季新品的设计质感；素材为合成测试数据，仅作视觉展示，不涉及产品功效与优惠信息。",
+          "cta": "关注账号，第一时间看到春季新品的更多镜头。",
+          "shots": [
+            "顶部柔光灯下产品正面特写，缓慢推近",
+            "侧面45度机位展示轮廓与材质细节",
+            "俯拍道具与产品同框的静态构图",
+            "多机位切换的旋转展示镜头",
+            "光影渐暗收尾，品牌标识居中"
+          ]
+        }
+      ],
+      "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+      "plan_id": "campaign",
+      "version": 1,
+      "plan_ref": "campaign-v1",
+      "source_call_id": "call_00_8c1AVbRb6hjovsRjquhr3079"
+    },
+    "campaign-v2": {
+      "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+      "audience": "关注春季新品与品质生活的年轻消费者",
+      "channel": "短视频平台",
+      "items": [
+        {
+          "title": "把春天带进日常",
+          "asset_ids": [
+            "basic-spring"
+          ],
+          "production_tier": "economy",
+          "hook": "春天到了，日常也换种打开方式。",
+          "body": "自然光落在桌面，产品安静地融入生活。打开、使用、随手放回，都是这个春天最自然的画面。无需复杂布置，简洁的展示和真实的使用场景，就足够让新品贴近日常。",
+          "cta": "关注我们，一起看看春季新品的日常打开方式。",
+          "shots": [
+            "自然光下的桌面全景，产品摆放在画面中央",
+            "手部入镜，轻触产品完成日常操作",
+            "产品使用中的近景，背景保持简洁",
+            "生活场景收尾，产品自然融入桌面环境"
+          ]
+        }
+      ],
+      "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+      "plan_id": "campaign",
+      "version": 2,
+      "plan_ref": "campaign-v2",
+      "source_call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893"
+    }
+  },
+  "estimates": {
+    "estimate-3": {
+      "estimate_id": "estimate-3",
+      "plan_ref": "campaign-v1",
+      "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+      "pricing_version": "pricing-v1",
+      "breakdown": [
+        {
+          "kind": "material",
+          "id": "premium-spring",
+          "amount": "3.00"
+        },
+        {
+          "kind": "production",
+          "video": 1,
+          "amount": "5.00"
+        },
+        {
+          "kind": "publishing",
+          "amount": "0.00"
+        }
+      ],
+      "plan_cost": "8.00",
+      "tool_cost_at_estimate": "4.00",
+      "total_at_estimate": "12.00",
+      "within_budget": false,
+      "budget_gap": "2.00",
+      "source_call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370"
+    },
+    "estimate-5": {
+      "estimate_id": "estimate-5",
+      "plan_ref": "campaign-v2",
+      "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+      "pricing_version": "pricing-v1",
+      "breakdown": [
+        {
+          "kind": "material",
+          "id": "basic-spring",
+          "amount": "0.00"
+        },
+        {
+          "kind": "production",
+          "video": 1,
+          "amount": "1.00"
+        },
+        {
+          "kind": "publishing",
+          "amount": "0.00"
+        }
+      ],
+      "plan_cost": "1.00",
+      "tool_cost_at_estimate": "7.00",
+      "total_at_estimate": "8.00",
+      "within_budget": true,
+      "budget_gap": "0.00",
+      "source_call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054"
+    },
+    "estimate-6": {
+      "estimate_id": "estimate-6",
+      "plan_ref": "campaign-v2",
+      "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+      "pricing_version": "pricing-v1",
+      "breakdown": [
+        {
+          "kind": "material",
+          "id": "basic-spring",
+          "amount": "0.00"
+        },
+        {
+          "kind": "production",
+          "video": 1,
+          "amount": "1.00"
+        },
+        {
+          "kind": "publishing",
+          "amount": "0.00"
+        }
+      ],
+      "plan_cost": "1.00",
+      "tool_cost_at_estimate": "8.00",
+      "total_at_estimate": "9.00",
+      "within_budget": true,
+      "budget_gap": "0.00",
+      "source_call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963"
+    }
+  },
+  "current_plan_ref": "campaign-v2",
+  "current_estimate_id": "estimate-6",
+  "saved": {
+    "saved_plan_id": "saved-8db1c9ce8bf644b49859f4fda1d76a83",
+    "path": "saved/saved-8db1c9ce8bf644b49859f4fda1d76a83.json",
+    "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+    "plan_ref": "campaign-v2",
+    "estimate_id": "estimate-6",
+    "tool_cost": "8.00",
+    "plan_cost": "1.00",
+    "total_cost": "9.00",
+    "simulated_saved_at": "2030-01-01T10:16:00+08:00"
+  },
+  "steps": [
+    {
+      "call_id": "call_00_gdw2kdyNtXULmhauIb907399",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "需要先获取可用于春季新品推广的素材ID，才能生成脚本。",
+        "query": "春季新品 春季上新 高级质感 春季主题",
+        "remaining_steps": [
+          "search_materials",
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_gdw2kdyNtXULmhauIb907399",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": [
+            {
+              "asset_id": "basic-spring",
+              "title": "春季新品基础生活场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "生活",
+                "咖啡",
+                "运动"
+              ],
+              "type": "video",
+              "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+              "facts": [
+                "素材为合成测试数据",
+                "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+            },
+            {
+              "asset_id": "premium-spring",
+              "title": "春季新品高级摄影场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "咖啡",
+                "运动",
+                "高级"
+              ],
+              "type": "video",
+              "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+              "facts": [
+                "素材为合成测试数据",
+                "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+            }
+          ]
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_8c1AVbRb6hjovsRjquhr3079",
+      "tool_name": "generate_script",
+      "arguments": {
+        "decision_note": "已检索到可用素材 premium-spring，按要求先生成一条 premium 规格高级素材初稿。",
+        "audience": "关注春季新品与品质生活的年轻消费者",
+        "channel": "短视频平台",
+        "items": [
+          {
+            "asset_ids": [
+              "premium-spring"
+            ],
+            "production_tier": "premium",
+            "requirements": "春季新品推广短视频，突出棚拍光影与产品特写多机位镜头；不得描述未经提供的产品功效或优惠信息，素材为合成测试数据。"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_gdw2kdyNtXULmhauIb907399"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_8c1AVbRb6hjovsRjquhr3079",
+        "tool_name": "generate_script",
+        "status": "succeeded",
+        "data": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "audience": "关注春季新品与品质生活的年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "春季新品光影特写",
+              "asset_ids": [
+                "premium-spring"
+              ],
+              "production_tier": "premium",
+              "hook": "棚拍光影亮起的瞬间，春季新品缓缓进入画面。",
+              "body": "多机位镜头围绕产品外观与细节展开，以柔和光线和特写节奏呈现春季新品的设计质感；素材为合成测试数据，仅作视觉展示，不涉及产品功效与优惠信息。",
+              "cta": "关注账号，第一时间看到春季新品的更多镜头。",
+              "shots": [
+                "顶部柔光灯下产品正面特写，缓慢推近",
+                "侧面45度机位展示轮廓与材质细节",
+                "俯拍道具与产品同框的静态构图",
+                "多机位切换的旋转展示镜头",
+                "光影渐暗收尾，品牌标识居中"
+              ]
+            }
+          ],
+          "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "call_00_8c1AVbRb6hjovsRjquhr3079"
+        },
+        "error": null,
+        "fee": "2.00",
+        "duration_seconds": 300,
+        "cumulative_tool_cost": "3.00",
+        "simulated_now": "2030-01-01T10:07:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "按要求对 premium 规格初稿 campaign-v1 进行估价，判断是否超出 10.00 预算。",
+        "plan_ref": "campaign-v1",
+        "remaining_steps": [
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_8c1AVbRb6hjovsRjquhr3079"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370",
+        "tool_name": "estimate_cost",
+        "status": "succeeded",
+        "data": {
+          "estimate_id": "estimate-3",
+          "plan_ref": "campaign-v1",
+          "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "premium-spring",
+              "amount": "3.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "5.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "8.00",
+          "tool_cost_at_estimate": "4.00",
+          "total_at_estimate": "12.00",
+          "within_budget": false,
+          "budget_gap": "2.00",
+          "source_call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370"
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "4.00",
+        "simulated_now": "2030-01-01T10:08:00+08:00",
+        "requires_replan": true
+      }
+    },
+    {
+      "call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893",
+      "tool_name": "generate_script",
+      "arguments": {
+        "audience": "关注春季新品与品质生活的年轻消费者",
+        "base_plan_ref": "campaign-v1",
+        "channel": "短视频平台",
+        "decision_note": "premium 初稿估价 12.00 超预算 2.00，按用户指示改用基础素材 basic-spring 与 economy 规格重写。",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "春季新品推广短视频，使用自然光、桌面产品展示与日常使用镜头，节奏简洁；仅表现产品外观与使用场景，不得描述未经提供的功效或优惠信息，素材为合成测试数据。"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_gdw2kdyNtXULmhauIb907399"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893",
+        "tool_name": "generate_script",
+        "status": "succeeded",
+        "data": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "audience": "关注春季新品与品质生活的年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "把春天带进日常",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "春天到了，日常也换种打开方式。",
+              "body": "自然光落在桌面，产品安静地融入生活。打开、使用、随手放回，都是这个春天最自然的画面。无需复杂布置，简洁的展示和真实的使用场景，就足够让新品贴近日常。",
+              "cta": "关注我们，一起看看春季新品的日常打开方式。",
+              "shots": [
+                "自然光下的桌面全景，产品摆放在画面中央",
+                "手部入镜，轻触产品完成日常操作",
+                "产品使用中的近景，背景保持简洁",
+                "生活场景收尾，产品自然融入桌面环境"
+              ]
+            }
+          ],
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "plan_id": "campaign",
+          "version": 2,
+          "plan_ref": "campaign-v2",
+          "source_call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893"
+        },
+        "error": null,
+        "fee": "2.00",
+        "duration_seconds": 300,
+        "cumulative_tool_cost": "6.00",
+        "simulated_now": "2030-01-01T10:13:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "对基础素材 + economy 规格的重写方案 campaign-v2 估价，确认累计费用是否在 10.00 预算内。",
+        "plan_ref": "campaign-v2",
+        "remaining_steps": [
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_c4UnILK9rWAPiKWcJnQs1893"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054",
+        "tool_name": "estimate_cost",
+        "status": "succeeded",
+        "data": {
+          "estimate_id": "estimate-5",
+          "plan_ref": "campaign-v2",
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "basic-spring",
+              "amount": "0.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "1.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "1.00",
+          "tool_cost_at_estimate": "7.00",
+          "total_at_estimate": "8.00",
+          "within_budget": true,
+          "budget_gap": "0.00",
+          "source_call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054"
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "7.00",
+        "simulated_now": "2030-01-01T10:14:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "占位：不使用",
+        "plan_ref": "campaign-v2"
+      },
+      "depends_on": [
+        "call_00_c4UnILK9rWAPiKWcJnQs1893"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963",
+        "tool_name": "estimate_cost",
+        "status": "succeeded",
+        "data": {
+          "estimate_id": "estimate-6",
+          "plan_ref": "campaign-v2",
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "basic-spring",
+              "amount": "0.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "1.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "1.00",
+          "tool_cost_at_estimate": "8.00",
+          "total_at_estimate": "9.00",
+          "within_budget": true,
+          "budget_gap": "0.00",
+          "source_call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963"
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "8.00",
+        "simulated_now": "2030-01-01T10:15:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_2zvBIQHMPEeLpL2RCYJv0804",
+      "tool_name": "save_plan",
+      "arguments": {
+        "decision_note": "campaign-v2 估价总额 9.00 在 10.00 预算内，且距截止时间充足，按最新估算 estimate-6 保存。",
+        "estimate_id": "estimate-6",
+        "plan_ref": "campaign-v2",
+        "remaining_steps": []
+      },
+      "depends_on": [
+        "call_00_c4UnILK9rWAPiKWcJnQs1893",
+        "call_00_nsv3FqiQcF8yCrS6BiXp3963"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_2zvBIQHMPEeLpL2RCYJv0804",
+        "tool_name": "save_plan",
+        "status": "succeeded",
+        "data": {
+          "saved_plan_id": "saved-8db1c9ce8bf644b49859f4fda1d76a83",
+          "path": "saved/saved-8db1c9ce8bf644b49859f4fda1d76a83.json",
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "plan_ref": "campaign-v2",
+          "estimate_id": "estimate-6",
+          "tool_cost": "8.00",
+          "plan_cost": "1.00",
+          "total_cost": "9.00",
+          "simulated_saved_at": "2030-01-01T10:16:00+08:00"
+        },
+        "error": null,
+        "fee": "0.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "8.00",
+        "simulated_now": "2030-01-01T10:16:00+08:00",
+        "requires_replan": false
+      }
+    }
+  ],
+  "pending_plan": [],
+  "ledger": [
+    {
+      "call_id": "call_00_gdw2kdyNtXULmhauIb907399",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_8c1AVbRb6hjovsRjquhr3079",
+      "tool_name": "generate_script",
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370",
+      "tool_name": "estimate_cost",
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893",
+      "tool_name": "generate_script",
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054",
+      "tool_name": "estimate_cost",
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963",
+      "tool_name": "estimate_cost",
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_2zvBIQHMPEeLpL2RCYJv0804",
+      "tool_name": "save_plan",
+      "fee": "0.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:1",
+      "sequence": 1,
+      "timestamp": "2026-10-28T12:54:39.921140+00:00",
+      "round": 0,
+      "kind": "task_created",
+      "mode": "real",
+      "input": {
+        "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+        "budget": "10.00",
+        "deadline": "2030-01-01T10:30:00+08:00"
+      },
+      "input_errors": {}
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:2",
+      "sequence": 2,
+      "timestamp": "2026-10-28T12:54:39.922655+00:00",
+      "round": 1,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "budget": "10.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "0.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          }
+        },
+        "searched": false,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:00:00+08:00",
+        "remaining_seconds": 1800.0,
+        "minimum_remaining_seconds": 540,
+        "minimum_remaining_tool_cost": "4.00",
+        "minimum_total_cost": "5.00",
+        "remaining_decisions": 11,
+        "remaining_tool_calls": 12
+      }
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:3",
+      "sequence": 3,
+      "timestamp": "2026-10-28T12:54:39.923798+00:00",
+      "round": 1,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:4",
+      "sequence": 4,
+      "timestamp": "2026-10-28T12:54:41.239598+00:00",
+      "round": 1,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 131,
+        "prompt_tokens": 2136,
+        "total_tokens": 2267,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 1536,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 1536,
+        "prompt_cache_miss_tokens": 600
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:5",
+      "sequence": 5,
+      "timestamp": "2026-10-28T12:54:41.241583+00:00",
+      "round": 1,
+      "kind": "model_decision",
+      "content": "我会先检索春季素材，以便在生成初稿前拿到真实的 asset_id。",
+      "tool_calls": [
+        {
+          "id": "call_00_gdw2kdyNtXULmhauIb907399",
+          "type": "function",
+          "function": {
+            "name": "search_materials",
+            "arguments": "{\"decision_note\": \"需要先获取可用于春季新品推广的素材ID，才能生成脚本。\", \"query\": \"春季新品 春季上新 高级质感 春季主题\", \"remaining_steps\": [\"search_materials\", \"generate_script\", \"estimate_cost\", \"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:6",
+      "sequence": 6,
+      "timestamp": "2026-10-28T12:54:41.243209+00:00",
+      "round": 1,
+      "kind": "tool_started",
+      "call_id": "call_00_gdw2kdyNtXULmhauIb907399",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "需要先获取可用于春季新品推广的素材ID，才能生成脚本。",
+        "query": "春季新品 春季上新 高级质感 春季主题",
+        "remaining_steps": [
+          "search_materials",
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "fee": "1.00",
+      "duration_seconds": 120
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:7",
+      "sequence": 7,
+      "timestamp": "2026-10-28T12:54:41.244601+00:00",
+      "round": 1,
+      "kind": "tool_result",
+      "call_id": "call_00_gdw2kdyNtXULmhauIb907399",
+      "tool_name": "search_materials",
+      "status": "succeeded",
+      "data": {
+        "search_result_id": "search-1",
+        "materials": [
+          {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          },
+          {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          }
+        ]
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "cumulative_tool_cost": "1.00",
+      "simulated_now": "2030-01-01T10:02:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:8",
+      "sequence": 8,
+      "timestamp": "2026-10-28T12:54:41.246120+00:00",
+      "round": 2,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "budget": "10.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "1.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          }
+        },
+        "searched": true,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "remaining_seconds": 1680.0,
+        "minimum_remaining_seconds": 420,
+        "minimum_remaining_tool_cost": "3.00",
+        "minimum_total_cost": "5.00",
+        "remaining_decisions": 10,
+        "remaining_tool_calls": 11
+      }
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:9",
+      "sequence": 9,
+      "timestamp": "2026-10-28T12:54:41.247405+00:00",
+      "round": 2,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:10",
+      "sequence": 10,
+      "timestamp": "2026-10-28T12:54:43.037337+00:00",
+      "round": 2,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 227,
+        "prompt_tokens": 3378,
+        "total_tokens": 3605,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 2176,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 2176,
+        "prompt_cache_miss_tokens": 1202
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:11",
+      "sequence": 11,
+      "timestamp": "2026-10-28T12:54:43.041980+00:00",
+      "round": 2,
+      "kind": "model_decision",
+      "content": "素材已经返回。接下来我会按用户要求，用高级素材 `premium-spring` 生成 premium 规格的初稿。",
+      "tool_calls": [
+        {
+          "id": "call_00_8c1AVbRb6hjovsRjquhr3079",
+          "type": "function",
+          "function": {
+            "name": "generate_script",
+            "arguments": "{\"decision_note\": \"已检索到可用素材 premium-spring，按要求先生成一条 premium 规格高级素材初稿。\", \"audience\": \"关注春季新品与品质生活的年轻消费者\", \"channel\": \"短视频平台\", \"items\": [{\"asset_ids\": [\"premium-spring\"], \"production_tier\": \"premium\", \"requirements\": \"春季新品推广短视频，突出棚拍光影与产品特写多机位镜头；不得描述未经提供的产品功效或优惠信息，素材为合成测试数据。\"}], \"remaining_steps\": [\"estimate_cost\", \"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:12",
+      "sequence": 12,
+      "timestamp": "2026-10-28T12:54:43.046417+00:00",
+      "round": 2,
+      "kind": "tool_started",
+      "call_id": "call_00_8c1AVbRb6hjovsRjquhr3079",
+      "tool_name": "generate_script",
+      "arguments": {
+        "decision_note": "已检索到可用素材 premium-spring，按要求先生成一条 premium 规格高级素材初稿。",
+        "audience": "关注春季新品与品质生活的年轻消费者",
+        "channel": "短视频平台",
+        "items": [
+          {
+            "asset_ids": [
+              "premium-spring"
+            ],
+            "production_tier": "premium",
+            "requirements": "春季新品推广短视频，突出棚拍光影与产品特写多机位镜头；不得描述未经提供的产品功效或优惠信息，素材为合成测试数据。"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_gdw2kdyNtXULmhauIb907399"
+      ],
+      "fee": "2.00",
+      "duration_seconds": 300
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:13",
+      "sequence": 13,
+      "timestamp": "2026-10-28T12:54:43.050570+00:00",
+      "round": 2,
+      "kind": "model_request",
+      "role": "script",
+      "prompt_version": "script-v1",
+      "prompt_hash": "7927c45a5e503b763106a45fb37d02275c4c4d2a5a80b90a9e72329c45cab908",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:14",
+      "sequence": 14,
+      "timestamp": "2026-10-28T12:54:44.789481+00:00",
+      "round": 2,
+      "kind": "model_response",
+      "role": "script",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 165,
+        "prompt_tokens": 631,
+        "total_tokens": 796,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 631
+      },
+      "finish_reason": "stop"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:15",
+      "sequence": 15,
+      "timestamp": "2026-10-28T12:54:44.793043+00:00",
+      "round": 2,
+      "kind": "tool_result",
+      "call_id": "call_00_8c1AVbRb6hjovsRjquhr3079",
+      "tool_name": "generate_script",
+      "status": "succeeded",
+      "data": {
+        "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+        "audience": "关注春季新品与品质生活的年轻消费者",
+        "channel": "短视频平台",
+        "items": [
+          {
+            "title": "春季新品光影特写",
+            "asset_ids": [
+              "premium-spring"
+            ],
+            "production_tier": "premium",
+            "hook": "棚拍光影亮起的瞬间，春季新品缓缓进入画面。",
+            "body": "多机位镜头围绕产品外观与细节展开，以柔和光线和特写节奏呈现春季新品的设计质感；素材为合成测试数据，仅作视觉展示，不涉及产品功效与优惠信息。",
+            "cta": "关注账号，第一时间看到春季新品的更多镜头。",
+            "shots": [
+              "顶部柔光灯下产品正面特写，缓慢推近",
+              "侧面45度机位展示轮廓与材质细节",
+              "俯拍道具与产品同框的静态构图",
+              "多机位切换的旋转展示镜头",
+              "光影渐暗收尾，品牌标识居中"
+            ]
+          }
+        ],
+        "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+        "plan_id": "campaign",
+        "version": 1,
+        "plan_ref": "campaign-v1",
+        "source_call_id": "call_00_8c1AVbRb6hjovsRjquhr3079"
+      },
+      "error": null,
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "cumulative_tool_cost": "3.00",
+      "simulated_now": "2030-01-01T10:07:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:16",
+      "sequence": 16,
+      "timestamp": "2026-10-28T12:54:44.795125+00:00",
+      "round": 3,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "budget": "10.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "3.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          }
+        },
+        "searched": true,
+        "current_plan": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "audience": "关注春季新品与品质生活的年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "春季新品光影特写",
+              "asset_ids": [
+                "premium-spring"
+              ],
+              "production_tier": "premium",
+              "hook": "棚拍光影亮起的瞬间，春季新品缓缓进入画面。",
+              "body": "多机位镜头围绕产品外观与细节展开，以柔和光线和特写节奏呈现春季新品的设计质感；素材为合成测试数据，仅作视觉展示，不涉及产品功效与优惠信息。",
+              "cta": "关注账号，第一时间看到春季新品的更多镜头。",
+              "shots": [
+                "顶部柔光灯下产品正面特写，缓慢推近",
+                "侧面45度机位展示轮廓与材质细节",
+                "俯拍道具与产品同框的静态构图",
+                "多机位切换的旋转展示镜头",
+                "光影渐暗收尾，品牌标识居中"
+              ]
+            }
+          ],
+          "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "call_00_8c1AVbRb6hjovsRjquhr3079"
+        },
+        "current_estimate": null,
+        "plans_count": 1,
+        "known_plan_refs": [
+          "campaign-v1"
+        ],
+        "simulated_now": "2030-01-01T10:07:00+08:00",
+        "remaining_seconds": 1380.0,
+        "minimum_remaining_seconds": 120,
+        "minimum_remaining_tool_cost": "1.00",
+        "minimum_total_cost": "5.00",
+        "remaining_decisions": 9,
+        "remaining_tool_calls": 10
+      }
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:17",
+      "sequence": 17,
+      "timestamp": "2026-10-28T12:54:44.796632+00:00",
+      "round": 3,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:18",
+      "sequence": 18,
+      "timestamp": "2026-10-28T12:54:46.126486+00:00",
+      "round": 3,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 5112,
+        "total_tokens": 5232,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 3584,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 3584,
+        "prompt_cache_miss_tokens": 1528
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:19",
+      "sequence": 19,
+      "timestamp": "2026-10-28T12:54:46.130862+00:00",
+      "round": 3,
+      "kind": "model_decision",
+      "content": "初稿已经生成（plan_ref 为 campaign-v1）。现在我来估算费用。",
+      "tool_calls": [
+        {
+          "id": "call_00_V0DhaTs8ckuurJc8h5NM2370",
+          "type": "function",
+          "function": {
+            "name": "estimate_cost",
+            "arguments": "{\"decision_note\": \"按要求对 premium 规格初稿 campaign-v1 进行估价，判断是否超出 10.00 预算。\", \"plan_ref\": \"campaign-v1\", \"remaining_steps\": [\"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:20",
+      "sequence": 20,
+      "timestamp": "2026-10-28T12:54:46.134436+00:00",
+      "round": 3,
+      "kind": "tool_started",
+      "call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "按要求对 premium 规格初稿 campaign-v1 进行估价，判断是否超出 10.00 预算。",
+        "plan_ref": "campaign-v1",
+        "remaining_steps": [
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_8c1AVbRb6hjovsRjquhr3079"
+      ],
+      "fee": "1.00",
+      "duration_seconds": 60
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:21",
+      "sequence": 21,
+      "timestamp": "2026-10-28T12:54:46.139453+00:00",
+      "round": 3,
+      "kind": "tool_result",
+      "call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370",
+      "tool_name": "estimate_cost",
+      "status": "succeeded",
+      "data": {
+        "estimate_id": "estimate-3",
+        "plan_ref": "campaign-v1",
+        "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+        "pricing_version": "pricing-v1",
+        "breakdown": [
+          {
+            "kind": "material",
+            "id": "premium-spring",
+            "amount": "3.00"
+          },
+          {
+            "kind": "production",
+            "video": 1,
+            "amount": "5.00"
+          },
+          {
+            "kind": "publishing",
+            "amount": "0.00"
+          }
+        ],
+        "plan_cost": "8.00",
+        "tool_cost_at_estimate": "4.00",
+        "total_at_estimate": "12.00",
+        "within_budget": false,
+        "budget_gap": "2.00",
+        "source_call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370"
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "cumulative_tool_cost": "4.00",
+      "simulated_now": "2030-01-01T10:08:00+08:00",
+      "requires_replan": true
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:22",
+      "sequence": 22,
+      "timestamp": "2026-10-28T12:54:46.144525+00:00",
+      "round": 4,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "budget": "10.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "4.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          }
+        },
+        "searched": true,
+        "current_plan": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "audience": "关注春季新品与品质生活的年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "春季新品光影特写",
+              "asset_ids": [
+                "premium-spring"
+              ],
+              "production_tier": "premium",
+              "hook": "棚拍光影亮起的瞬间，春季新品缓缓进入画面。",
+              "body": "多机位镜头围绕产品外观与细节展开，以柔和光线和特写节奏呈现春季新品的设计质感；素材为合成测试数据，仅作视觉展示，不涉及产品功效与优惠信息。",
+              "cta": "关注账号，第一时间看到春季新品的更多镜头。",
+              "shots": [
+                "顶部柔光灯下产品正面特写，缓慢推近",
+                "侧面45度机位展示轮廓与材质细节",
+                "俯拍道具与产品同框的静态构图",
+                "多机位切换的旋转展示镜头",
+                "光影渐暗收尾，品牌标识居中"
+              ]
+            }
+          ],
+          "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "call_00_8c1AVbRb6hjovsRjquhr3079"
+        },
+        "current_estimate": {
+          "estimate_id": "estimate-3",
+          "plan_ref": "campaign-v1",
+          "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "premium-spring",
+              "amount": "3.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "5.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "8.00",
+          "tool_cost_at_estimate": "4.00",
+          "total_at_estimate": "12.00",
+          "within_budget": false,
+          "budget_gap": "2.00",
+          "source_call_id": "call_00_V0DhaTs8ckuurJc8h5NM2370"
+        },
+        "plans_count": 1,
+        "known_plan_refs": [
+          "campaign-v1"
+        ],
+        "simulated_now": "2030-01-01T10:08:00+08:00",
+        "remaining_seconds": 1320.0,
+        "minimum_remaining_seconds": 420,
+        "minimum_remaining_tool_cost": "3.00",
+        "minimum_total_cost": "8.00",
+        "remaining_decisions": 8,
+        "remaining_tool_calls": 9
+      }
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:23",
+      "sequence": 23,
+      "timestamp": "2026-10-28T12:54:46.148766+00:00",
+      "round": 4,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:24",
+      "sequence": 24,
+      "timestamp": "2026-10-28T12:54:47.983536+00:00",
+      "round": 4,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 277,
+        "prompt_tokens": 6817,
+        "total_tokens": 7094,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 5120,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 5120,
+        "prompt_cache_miss_tokens": 1697
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:25",
+      "sequence": 25,
+      "timestamp": "2026-10-28T12:54:47.985760+00:00",
+      "round": 4,
+      "kind": "model_decision",
+      "content": "估价结果为 12.00，超出 10.00 预算。接下来我会改用基础素材 `basic-spring`，并采用 economy 规格重写。",
+      "tool_calls": [
+        {
+          "id": "call_00_c4UnILK9rWAPiKWcJnQs1893",
+          "type": "function",
+          "function": {
+            "name": "generate_script",
+            "arguments": "{\"audience\": \"关注春季新品与品质生活的年轻消费者\", \"base_plan_ref\": \"campaign-v1\", \"channel\": \"短视频平台\", \"decision_note\": \"premium 初稿估价 12.00 超预算 2.00，按用户指示改用基础素材 basic-spring 与 economy 规格重写。\", \"items\": [{\"asset_ids\": [\"basic-spring\"], \"production_tier\": \"economy\", \"requirements\": \"春季新品推广短视频，使用自然光、桌面产品展示与日常使用镜头，节奏简洁；仅表现产品外观与使用场景，不得描述未经提供的功效或优惠信息，素材为合成测试数据。\"}], \"remaining_steps\": [\"estimate_cost\", \"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:26",
+      "sequence": 26,
+      "timestamp": "2026-10-28T12:54:47.988441+00:00",
+      "round": 4,
+      "kind": "tool_started",
+      "call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893",
+      "tool_name": "generate_script",
+      "arguments": {
+        "audience": "关注春季新品与品质生活的年轻消费者",
+        "base_plan_ref": "campaign-v1",
+        "channel": "短视频平台",
+        "decision_note": "premium 初稿估价 12.00 超预算 2.00，按用户指示改用基础素材 basic-spring 与 economy 规格重写。",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "春季新品推广短视频，使用自然光、桌面产品展示与日常使用镜头，节奏简洁；仅表现产品外观与使用场景，不得描述未经提供的功效或优惠信息，素材为合成测试数据。"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_gdw2kdyNtXULmhauIb907399"
+      ],
+      "fee": "2.00",
+      "duration_seconds": 300
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:27",
+      "sequence": 27,
+      "timestamp": "2026-10-28T12:54:47.990126+00:00",
+      "round": 4,
+      "kind": "model_request",
+      "role": "script",
+      "prompt_version": "script-v1",
+      "prompt_hash": "7927c45a5e503b763106a45fb37d02275c4c4d2a5a80b90a9e72329c45cab908",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:28",
+      "sequence": 28,
+      "timestamp": "2026-10-28T12:54:49.851051+00:00",
+      "round": 4,
+      "kind": "model_response",
+      "role": "script",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 155,
+        "prompt_tokens": 639,
+        "total_tokens": 794,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 128,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 511
+      },
+      "finish_reason": "stop"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:29",
+      "sequence": 29,
+      "timestamp": "2026-10-28T12:54:49.859544+00:00",
+      "round": 4,
+      "kind": "tool_result",
+      "call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893",
+      "tool_name": "generate_script",
+      "status": "succeeded",
+      "data": {
+        "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+        "audience": "关注春季新品与品质生活的年轻消费者",
+        "channel": "短视频平台",
+        "items": [
+          {
+            "title": "把春天带进日常",
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "hook": "春天到了，日常也换种打开方式。",
+            "body": "自然光落在桌面，产品安静地融入生活。打开、使用、随手放回，都是这个春天最自然的画面。无需复杂布置，简洁的展示和真实的使用场景，就足够让新品贴近日常。",
+            "cta": "关注我们，一起看看春季新品的日常打开方式。",
+            "shots": [
+              "自然光下的桌面全景，产品摆放在画面中央",
+              "手部入镜，轻触产品完成日常操作",
+              "产品使用中的近景，背景保持简洁",
+              "生活场景收尾，产品自然融入桌面环境"
+            ]
+          }
+        ],
+        "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+        "plan_id": "campaign",
+        "version": 2,
+        "plan_ref": "campaign-v2",
+        "source_call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893"
+      },
+      "error": null,
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "cumulative_tool_cost": "6.00",
+      "simulated_now": "2030-01-01T10:13:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:30",
+      "sequence": 30,
+      "timestamp": "2026-10-28T12:54:49.864609+00:00",
+      "round": 5,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "budget": "10.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "6.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          }
+        },
+        "searched": true,
+        "current_plan": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "audience": "关注春季新品与品质生活的年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "把春天带进日常",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "春天到了，日常也换种打开方式。",
+              "body": "自然光落在桌面，产品安静地融入生活。打开、使用、随手放回，都是这个春天最自然的画面。无需复杂布置，简洁的展示和真实的使用场景，就足够让新品贴近日常。",
+              "cta": "关注我们，一起看看春季新品的日常打开方式。",
+              "shots": [
+                "自然光下的桌面全景，产品摆放在画面中央",
+                "手部入镜，轻触产品完成日常操作",
+                "产品使用中的近景，背景保持简洁",
+                "生活场景收尾，产品自然融入桌面环境"
+              ]
+            }
+          ],
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "plan_id": "campaign",
+          "version": 2,
+          "plan_ref": "campaign-v2",
+          "source_call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893"
+        },
+        "current_estimate": null,
+        "plans_count": 2,
+        "known_plan_refs": [
+          "campaign-v1",
+          "campaign-v2"
+        ],
+        "simulated_now": "2030-01-01T10:13:00+08:00",
+        "remaining_seconds": 1020.0,
+        "minimum_remaining_seconds": 120,
+        "minimum_remaining_tool_cost": "1.00",
+        "minimum_total_cost": "8.00",
+        "remaining_decisions": 7,
+        "remaining_tool_calls": 8
+      }
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:31",
+      "sequence": 31,
+      "timestamp": "2026-10-28T12:54:49.867932+00:00",
+      "round": 5,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:32",
+      "sequence": 32,
+      "timestamp": "2026-10-28T12:54:50.990440+00:00",
+      "round": 5,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 124,
+        "prompt_tokens": 8586,
+        "total_tokens": 8710,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 7040,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 7040,
+        "prompt_cache_miss_tokens": 1546
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:33",
+      "sequence": 33,
+      "timestamp": "2026-10-28T12:54:50.994375+00:00",
+      "round": 5,
+      "kind": "model_decision",
+      "content": "重写后的方案 campaign-v2 已经生成。现在我来估算它的费用。",
+      "tool_calls": [
+        {
+          "id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054",
+          "type": "function",
+          "function": {
+            "name": "estimate_cost",
+            "arguments": "{\"decision_note\": \"对基础素材 + economy 规格的重写方案 campaign-v2 估价，确认累计费用是否在 10.00 预算内。\", \"plan_ref\": \"campaign-v2\", \"remaining_steps\": [\"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:34",
+      "sequence": 34,
+      "timestamp": "2026-10-28T12:54:50.996678+00:00",
+      "round": 5,
+      "kind": "tool_started",
+      "call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "对基础素材 + economy 规格的重写方案 campaign-v2 估价，确认累计费用是否在 10.00 预算内。",
+        "plan_ref": "campaign-v2",
+        "remaining_steps": [
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_c4UnILK9rWAPiKWcJnQs1893"
+      ],
+      "fee": "1.00",
+      "duration_seconds": 60
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:35",
+      "sequence": 35,
+      "timestamp": "2026-10-28T12:54:50.999816+00:00",
+      "round": 5,
+      "kind": "tool_result",
+      "call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054",
+      "tool_name": "estimate_cost",
+      "status": "succeeded",
+      "data": {
+        "estimate_id": "estimate-5",
+        "plan_ref": "campaign-v2",
+        "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+        "pricing_version": "pricing-v1",
+        "breakdown": [
+          {
+            "kind": "material",
+            "id": "basic-spring",
+            "amount": "0.00"
+          },
+          {
+            "kind": "production",
+            "video": 1,
+            "amount": "1.00"
+          },
+          {
+            "kind": "publishing",
+            "amount": "0.00"
+          }
+        ],
+        "plan_cost": "1.00",
+        "tool_cost_at_estimate": "7.00",
+        "total_at_estimate": "8.00",
+        "within_budget": true,
+        "budget_gap": "0.00",
+        "source_call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054"
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "cumulative_tool_cost": "7.00",
+      "simulated_now": "2030-01-01T10:14:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:36",
+      "sequence": 36,
+      "timestamp": "2026-10-28T12:54:51.001956+00:00",
+      "round": 6,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "budget": "10.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "7.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          }
+        },
+        "searched": true,
+        "current_plan": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "audience": "关注春季新品与品质生活的年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "把春天带进日常",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "春天到了，日常也换种打开方式。",
+              "body": "自然光落在桌面，产品安静地融入生活。打开、使用、随手放回，都是这个春天最自然的画面。无需复杂布置，简洁的展示和真实的使用场景，就足够让新品贴近日常。",
+              "cta": "关注我们，一起看看春季新品的日常打开方式。",
+              "shots": [
+                "自然光下的桌面全景，产品摆放在画面中央",
+                "手部入镜，轻触产品完成日常操作",
+                "产品使用中的近景，背景保持简洁",
+                "生活场景收尾，产品自然融入桌面环境"
+              ]
+            }
+          ],
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "plan_id": "campaign",
+          "version": 2,
+          "plan_ref": "campaign-v2",
+          "source_call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893"
+        },
+        "current_estimate": {
+          "estimate_id": "estimate-5",
+          "plan_ref": "campaign-v2",
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "basic-spring",
+              "amount": "0.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "1.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "1.00",
+          "tool_cost_at_estimate": "7.00",
+          "total_at_estimate": "8.00",
+          "within_budget": true,
+          "budget_gap": "0.00",
+          "source_call_id": "call_00_7xJ5EIZiWwEZj4f9qBQF2054"
+        },
+        "plans_count": 2,
+        "known_plan_refs": [
+          "campaign-v1",
+          "campaign-v2"
+        ],
+        "simulated_now": "2030-01-01T10:14:00+08:00",
+        "remaining_seconds": 960.0,
+        "minimum_remaining_seconds": 60,
+        "minimum_remaining_tool_cost": "0.00",
+        "minimum_total_cost": "8.00",
+        "remaining_decisions": 6,
+        "remaining_tool_calls": 7
+      }
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:37",
+      "sequence": 37,
+      "timestamp": "2026-10-28T12:54:51.004186+00:00",
+      "round": 6,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:38",
+      "sequence": 38,
+      "timestamp": "2026-10-28T12:54:52.038983+00:00",
+      "round": 6,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 10304,
+        "total_tokens": 10388,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 8704,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 8704,
+        "prompt_cache_miss_tokens": 1600
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:39",
+      "sequence": 39,
+      "timestamp": "2026-10-28T12:54:52.043670+00:00",
+      "round": 6,
+      "kind": "model_decision",
+      "content": "campaign-v2 的估算总额为 8.00，在预算内；现在我来保存它。",
+      "tool_calls": [
+        {
+          "id": "call_00_nsv3FqiQcF8yCrS6BiXp3963",
+          "type": "function",
+          "function": {
+            "name": "estimate_cost",
+            "arguments": "{\"decision_note\": \"占位：不使用\", \"plan_ref\": \"campaign-v2\"}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:40",
+      "sequence": 40,
+      "timestamp": "2026-10-28T12:54:52.047141+00:00",
+      "round": 6,
+      "kind": "tool_started",
+      "call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "占位：不使用",
+        "plan_ref": "campaign-v2"
+      },
+      "depends_on": [
+        "call_00_c4UnILK9rWAPiKWcJnQs1893"
+      ],
+      "fee": "1.00",
+      "duration_seconds": 60
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:41",
+      "sequence": 41,
+      "timestamp": "2026-10-28T12:54:52.051328+00:00",
+      "round": 6,
+      "kind": "tool_result",
+      "call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963",
+      "tool_name": "estimate_cost",
+      "status": "succeeded",
+      "data": {
+        "estimate_id": "estimate-6",
+        "plan_ref": "campaign-v2",
+        "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+        "pricing_version": "pricing-v1",
+        "breakdown": [
+          {
+            "kind": "material",
+            "id": "basic-spring",
+            "amount": "0.00"
+          },
+          {
+            "kind": "production",
+            "video": 1,
+            "amount": "1.00"
+          },
+          {
+            "kind": "publishing",
+            "amount": "0.00"
+          }
+        ],
+        "plan_cost": "1.00",
+        "tool_cost_at_estimate": "8.00",
+        "total_at_estimate": "9.00",
+        "within_budget": true,
+        "budget_gap": "0.00",
+        "source_call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963"
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "cumulative_tool_cost": "8.00",
+      "simulated_now": "2030-01-01T10:15:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:42",
+      "sequence": 42,
+      "timestamp": "2026-10-28T12:54:52.054958+00:00",
+      "round": 7,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "budget": "10.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "8.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+          }
+        },
+        "searched": true,
+        "current_plan": {
+          "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+          "audience": "关注春季新品与品质生活的年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "把春天带进日常",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "春天到了，日常也换种打开方式。",
+              "body": "自然光落在桌面，产品安静地融入生活。打开、使用、随手放回，都是这个春天最自然的画面。无需复杂布置，简洁的展示和真实的使用场景，就足够让新品贴近日常。",
+              "cta": "关注我们，一起看看春季新品的日常打开方式。",
+              "shots": [
+                "自然光下的桌面全景，产品摆放在画面中央",
+                "手部入镜，轻触产品完成日常操作",
+                "产品使用中的近景，背景保持简洁",
+                "生活场景收尾，产品自然融入桌面环境"
+              ]
+            }
+          ],
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "plan_id": "campaign",
+          "version": 2,
+          "plan_ref": "campaign-v2",
+          "source_call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893"
+        },
+        "current_estimate": {
+          "estimate_id": "estimate-6",
+          "plan_ref": "campaign-v2",
+          "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "basic-spring",
+              "amount": "0.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "1.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "1.00",
+          "tool_cost_at_estimate": "8.00",
+          "total_at_estimate": "9.00",
+          "within_budget": true,
+          "budget_gap": "0.00",
+          "source_call_id": "call_00_nsv3FqiQcF8yCrS6BiXp3963"
+        },
+        "plans_count": 2,
+        "known_plan_refs": [
+          "campaign-v1",
+          "campaign-v2"
+        ],
+        "simulated_now": "2030-01-01T10:15:00+08:00",
+        "remaining_seconds": 900.0,
+        "minimum_remaining_seconds": 60,
+        "minimum_remaining_tool_cost": "0.00",
+        "minimum_total_cost": "9.00",
+        "remaining_decisions": 5,
+        "remaining_tool_calls": 6
+      }
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:43",
+      "sequence": 43,
+      "timestamp": "2026-10-28T12:54:52.058116+00:00",
+      "round": 7,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:44",
+      "sequence": 44,
+      "timestamp": "2026-10-28T12:54:53.673870+00:00",
+      "round": 7,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 147,
+        "prompt_tokens": 11976,
+        "total_tokens": 12123,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 10368,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 10368,
+        "prompt_cache_miss_tokens": 1608
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:45",
+      "sequence": 45,
+      "timestamp": "2026-10-28T12:54:53.679369+00:00",
+      "round": 7,
+      "kind": "model_decision",
+      "content": "接下来我会保存经过估算的方案 campaign-v2，使用的估算结果是 estimate-6。",
+      "tool_calls": [
+        {
+          "id": "call_00_2zvBIQHMPEeLpL2RCYJv0804",
+          "type": "function",
+          "function": {
+            "name": "save_plan",
+            "arguments": "{\"decision_note\": \"campaign-v2 估价总额 9.00 在 10.00 预算内，且距截止时间充足，按最新估算 estimate-6 保存。\", \"estimate_id\": \"estimate-6\", \"plan_ref\": \"campaign-v2\", \"remaining_steps\": []}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:46",
+      "sequence": 46,
+      "timestamp": "2026-10-28T12:54:53.683471+00:00",
+      "round": 7,
+      "kind": "tool_started",
+      "call_id": "call_00_2zvBIQHMPEeLpL2RCYJv0804",
+      "tool_name": "save_plan",
+      "arguments": {
+        "decision_note": "campaign-v2 估价总额 9.00 在 10.00 预算内，且距截止时间充足，按最新估算 estimate-6 保存。",
+        "estimate_id": "estimate-6",
+        "plan_ref": "campaign-v2",
+        "remaining_steps": []
+      },
+      "depends_on": [
+        "call_00_c4UnILK9rWAPiKWcJnQs1893",
+        "call_00_nsv3FqiQcF8yCrS6BiXp3963"
+      ],
+      "fee": "0.00",
+      "duration_seconds": 60
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:47",
+      "sequence": 47,
+      "timestamp": "2026-10-28T12:54:53.688652+00:00",
+      "round": 7,
+      "kind": "tool_result",
+      "call_id": "call_00_2zvBIQHMPEeLpL2RCYJv0804",
+      "tool_name": "save_plan",
+      "status": "succeeded",
+      "data": {
+        "saved_plan_id": "saved-8db1c9ce8bf644b49859f4fda1d76a83",
+        "path": "saved/saved-8db1c9ce8bf644b49859f4fda1d76a83.json",
+        "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+        "plan_ref": "campaign-v2",
+        "estimate_id": "estimate-6",
+        "tool_cost": "8.00",
+        "plan_cost": "1.00",
+        "total_cost": "9.00",
+        "simulated_saved_at": "2030-01-01T10:16:00+08:00"
+      },
+      "error": null,
+      "fee": "0.00",
+      "duration_seconds": 60,
+      "cumulative_tool_cost": "8.00",
+      "simulated_now": "2030-01-01T10:16:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "8db1c9ce8bf644b49859f4fda1d76a83:48",
+      "sequence": 48,
+      "timestamp": "2026-10-28T12:54:53.693608+00:00",
+      "round": 7,
+      "kind": "task_finished",
+      "status": "succeeded",
+      "reason": "SAVED",
+      "summary": "方案已按约束保存"
+    }
+  ],
+  "seen_call_ids": [
+    "call_00_gdw2kdyNtXULmhauIb907399",
+    "call_00_8c1AVbRb6hjovsRjquhr3079",
+    "call_00_V0DhaTs8ckuurJc8h5NM2370",
+    "call_00_c4UnILK9rWAPiKWcJnQs1893",
+    "call_00_7xJ5EIZiWwEZj4f9qBQF2054",
+    "call_00_nsv3FqiQcF8yCrS6BiXp3963",
+    "call_00_2zvBIQHMPEeLpL2RCYJv0804"
+  ],
+  "scenario": {
+    "name": "default",
+    "fixed_start": "2030-01-01T10:00:00+08:00",
+    "empty_materials": false,
+    "failures": {}
+  },
+  "config": {
+    "deepseek_base_url": "https://api.deepseek.com",
+    "deepseek_model": "deepseek-flash",
+    "model_timeout_seconds": 60.0,
+    "max_concurrent_tasks": 3,
+    "max_concurrent_model_requests": 3,
+    "output_dir": ".runs/evidence-real-20261028T125431Z",
+    "data_dir": "/Users/nono/Documents/ai‑agent‑notes/03_Agent开发/小影科技/data"
+  },
+  "data_snapshot": {
+    "materials": [
+      {
+        "asset_id": "basic-spring",
+        "title": "春季新品基础生活场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "生活",
+          "咖啡",
+          "运动"
+        ],
+        "type": "video",
+        "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+        "facts": [
+          "素材为合成测试数据",
+          "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      },
+      {
+        "asset_id": "premium-spring",
+        "title": "春季新品高级摄影场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "咖啡",
+          "运动",
+          "高级"
+        ],
+        "type": "video",
+        "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+        "facts": [
+          "素材为合成测试数据",
+          "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      }
+    ],
+    "pricing": {
+      "version": "pricing-v1",
+      "materials": {
+        "basic-spring": "0.00",
+        "premium-spring": "3.00"
+      },
+      "production": {
+        "economy": "1.00",
+        "standard": "2.00",
+        "premium": "5.00"
+      },
+      "publishing": "0.00"
+    },
+    "tools": {
+      "version": "tools-v1",
+      "search_materials": {
+        "fee": "1.00",
+        "duration_seconds": 120
+      },
+      "generate_script": {
+        "fee": "2.00",
+        "duration_seconds": 300
+      },
+      "estimate_cost": {
+        "fee": "1.00",
+        "duration_seconds": 60
+      },
+      "save_plan": {
+        "fee": "0.00",
+        "duration_seconds": 60
+      }
+    }
+  },
+  "summary": "方案已按约束保存"
+}

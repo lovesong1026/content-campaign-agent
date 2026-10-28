@@ -1,0 +1,394 @@
+{
+  "task_id": "demo-failure",
+  "run_id": "cb5d12c286c14b7f800372f1a290622c",
+  "mode": "real",
+  "status": "succeeded",
+  "phase": "finished",
+  "reason": "SAVED",
+  "summary": "方案已按约束保存",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_errors": {},
+  "decision_rounds": 5,
+  "tool_calls": 5,
+  "costs": {
+    "tool_cost": "6.00",
+    "plan_cost": "2.00",
+    "total_cost": "8.00",
+    "remaining_budget_after_tools": "14.00",
+    "budget_gap": "0.00"
+  },
+  "gaps": {
+    "minimum_remaining_tool_cost": "0.00",
+    "tool_budget_lower_bound_gap": "0.00",
+    "minimum_time_gap_seconds": 0
+  },
+  "ledger": [
+    {
+      "call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_5K237z3UtTcWqGspgPE18150",
+      "tool_name": "generate_script",
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "outcome": "failed"
+    },
+    {
+      "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+      "tool_name": "generate_script",
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+      "tool_name": "estimate_cost",
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+      "tool_name": "save_plan",
+      "fee": "0.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    }
+  ],
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "elapsed_seconds": 840,
+  "simulated_now": "2030-01-01T10:14:00+08:00",
+  "steps": [
+    {
+      "call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "需要先检索春季新品日常生活场景素材，才能生成方案。",
+        "query": "春季新品 日常生活场景 外观展示",
+        "material_type": "video",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": [
+            {
+              "asset_id": "basic-spring",
+              "title": "春季新品基础生活场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "生活",
+                "咖啡",
+                "运动"
+              ],
+              "type": "video",
+              "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+              "facts": [
+                "素材为合成测试数据",
+                "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+            },
+            {
+              "asset_id": "premium-spring",
+              "title": "春季新品高级摄影场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "咖啡",
+                "运动",
+                "高级"
+              ],
+              "type": "video",
+              "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+              "facts": [
+                "素材为合成测试数据",
+                "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+            }
+          ]
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_5K237z3UtTcWqGspgPE18150",
+      "tool_name": "generate_script",
+      "arguments": {
+        "decision_note": "两个素材均可用；为节约费用，选用免费 basic-spring 素材、economy 规格，生成 2 条日常生活场景短视频。",
+        "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+        "channel": "短视频平台（抖音/快手）",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以清晨咖啡与居家日常场景展示新品外观，自然光镜头，仅描述外观与使用场景，不涉及功效、价格或优惠信息"
+          },
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以户外运动与出行日常场景展示新品外观，仅描述外观细节与场景，不涉及功效、价格或优惠信息"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_exYWwXHTlxDE1YjrhJfa6917"
+      ],
+      "status": "failed",
+      "observation": {
+        "call_id": "call_00_5K237z3UtTcWqGspgPE18150",
+        "tool_name": "generate_script",
+        "status": "failed",
+        "data": null,
+        "error": {
+          "code": "INJECTED_TOOL_FAILURE",
+          "message": "场景注入的一次性工具失败",
+          "retryable": true
+        },
+        "fee": "2.00",
+        "duration_seconds": 300,
+        "cumulative_tool_cost": "3.00",
+        "simulated_now": "2030-01-01T10:07:00+08:00",
+        "requires_replan": true
+      }
+    },
+    {
+      "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+      "tool_name": "generate_script",
+      "arguments": {
+        "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+        "channel": "短视频平台（抖音/快手）",
+        "decision_note": "上次生成失败且错误可重试，本次用相同免费素材与 economy 规格重试生成 2 条短视频方案。",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以清晨咖啡与居家日常场景展示新品外观，自然光镜头，仅描述外观与使用场景，不涉及功效、价格或优惠信息"
+          },
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以户外运动与出行日常场景展示新品外观，仅描述外观细节与场景，不涉及功效、价格或优惠信息"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_exYWwXHTlxDE1YjrhJfa6917"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+        "tool_name": "generate_script",
+        "status": "succeeded",
+        "data": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+          "channel": "短视频平台（抖音/快手）",
+          "items": [
+            {
+              "title": "清晨咖啡时刻，春季新品外观随拍",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "清晨的第一杯咖啡，桌面上多了一件新东西。",
+              "body": "自然光落在桌面上，春季新品静静放在咖啡杯旁边。镜头从侧面慢慢推近，带出新品的外观轮廓和简洁线条，没有复杂布光，就是居家日常的样子。拿起来、放下、再摆回桌面，日常使用场景里看清新品的外观细节。",
+              "cta": "关注我们，看更多春季新品在日常里的样子。",
+              "shots": [
+                "自然光下桌面全景：咖啡杯与新品同框",
+                "侧面缓慢推近，展示新品外观轮廓",
+                "手部拿起新品的日常动作特写",
+                "放回桌面后俯拍外观整体"
+              ]
+            },
+            {
+              "title": "户外出行日常，春季新品外观细节",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "出门运动前，顺手带上春季新品。",
+              "body": "户外自然光下，春季新品出现在出行日常里。镜头跟着走动的手部动作，记录新品在户外光线下的外观表现，表面质感和边角细节都能看清。休息时放在一旁，再拍一组静态外观镜头，全程只展示外观与使用场景。",
+              "cta": "点赞收藏，春季新品外观细节一次看全。",
+              "shots": [
+                "户外自然光下出发前的准备镜头",
+                "跟拍手部携带新品走动",
+                "休息时静态摆放的外观特写",
+                "户外光线下表面质感细节镜头"
+              ]
+            }
+          ],
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296"
+        },
+        "error": null,
+        "fee": "2.00",
+        "duration_seconds": 300,
+        "cumulative_tool_cost": "5.00",
+        "simulated_now": "2030-01-01T10:12:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "方案 campaign-v1 已生成，需估算内容费用以确认是否在 20 元预算内。",
+        "plan_ref": "campaign-v1",
+        "remaining_steps": [
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_DM737tgK8b1Hv8RzwBjD9296"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+        "tool_name": "estimate_cost",
+        "status": "succeeded",
+        "data": {
+          "estimate_id": "estimate-4",
+          "plan_ref": "campaign-v1",
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "basic-spring",
+              "amount": "0.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "1.00"
+            },
+            {
+              "kind": "production",
+              "video": 2,
+              "amount": "1.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "2.00",
+          "tool_cost_at_estimate": "6.00",
+          "total_at_estimate": "8.00",
+          "within_budget": true,
+          "budget_gap": "0.00",
+          "source_call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "6.00",
+        "simulated_now": "2030-01-01T10:13:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+      "tool_name": "save_plan",
+      "arguments": {
+        "decision_note": "估算 estimate-4 显示总费用 8.00 元在预算内，且距截止时间充足，保存 campaign-v1 交付。",
+        "estimate_id": "estimate-4",
+        "plan_ref": "campaign-v1",
+        "remaining_steps": []
+      },
+      "depends_on": [
+        "call_00_DM737tgK8b1Hv8RzwBjD9296",
+        "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+        "tool_name": "save_plan",
+        "status": "succeeded",
+        "data": {
+          "saved_plan_id": "saved-cb5d12c286c14b7f800372f1a290622c",
+          "path": "saved/saved-cb5d12c286c14b7f800372f1a290622c.json",
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "plan_ref": "campaign-v1",
+          "estimate_id": "estimate-4",
+          "tool_cost": "6.00",
+          "plan_cost": "2.00",
+          "total_cost": "8.00",
+          "simulated_saved_at": "2030-01-01T10:14:00+08:00"
+        },
+        "error": null,
+        "fee": "0.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "6.00",
+        "simulated_now": "2030-01-01T10:14:00+08:00",
+        "requires_replan": false
+      }
+    }
+  ],
+  "pending_plan": [],
+  "saved": {
+    "saved_plan_id": "saved-cb5d12c286c14b7f800372f1a290622c",
+    "path": "saved/saved-cb5d12c286c14b7f800372f1a290622c.json",
+    "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+    "plan_ref": "campaign-v1",
+    "estimate_id": "estimate-4",
+    "tool_cost": "6.00",
+    "plan_cost": "2.00",
+    "total_cost": "8.00",
+    "simulated_saved_at": "2030-01-01T10:14:00+08:00"
+  },
+  "task_directory": ".",
+  "trace_path": "trace.jsonl"
+}

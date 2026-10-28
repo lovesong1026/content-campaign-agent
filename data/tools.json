@@ -1,0 +1,7 @@
+{
+  "version": "tools-v1",
+  "search_materials": {"fee": "1.00", "duration_seconds": 120},
+  "generate_script": {"fee": "2.00", "duration_seconds": 300},
+  "estimate_cost": {"fee": "1.00", "duration_seconds": 60},
+  "save_plan": {"fee": "0.00", "duration_seconds": 60}
+}

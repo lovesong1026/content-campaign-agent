@@ -1,0 +1,27 @@
+{
+  "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+  "audience": "年轻消费者",
+  "channel": "短视频平台",
+  "items": [
+    {
+      "title": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+      "asset_ids": [
+        "basic-spring"
+      ],
+      "production_tier": "economy",
+      "hook": "用一个日常场景开启春日新体验。",
+      "body": "以自然光展示新品外观，切换使用场景与产品细节。",
+      "cta": "查看新品介绍，了解适合自己的使用方式。",
+      "shots": [
+        "场景全景",
+        "产品外观特写",
+        "使用镜头"
+      ]
+    }
+  ],
+  "content_hash": "5658f8fa0a10515e55fc8e8f6d4cc1c9e8eec14bc8eacc2c50c10580c56857dc",
+  "plan_id": "campaign",
+  "version": 1,
+  "plan_ref": "campaign-v1",
+  "source_call_id": "mock-54564669022042a08a01140484d81f5e"
+}

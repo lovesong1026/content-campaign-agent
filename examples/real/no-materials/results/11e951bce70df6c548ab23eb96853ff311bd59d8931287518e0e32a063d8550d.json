@@ -1,0 +1,15 @@
+{
+  "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+  "tool_name": "search_materials",
+  "status": "succeeded",
+  "data": {
+    "search_result_id": "search-1",
+    "materials": []
+  },
+  "error": null,
+  "fee": "1.00",
+  "duration_seconds": 120,
+  "cumulative_tool_cost": "1.00",
+  "simulated_now": "2030-01-01T10:02:00+08:00",
+  "requires_replan": true
+}

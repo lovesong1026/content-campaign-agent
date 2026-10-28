@@ -1,0 +1,6 @@
+{
+  "name": "default",
+  "fixed_start": "2030-01-01T10:00:00+08:00",
+  "empty_materials": false,
+  "failures": {}
+}

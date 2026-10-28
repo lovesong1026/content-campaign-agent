@@ -1,0 +1,60 @@
+{
+  "call_id": "call_00_gdw2kdyNtXULmhauIb907399",
+  "tool_name": "search_materials",
+  "status": "succeeded",
+  "data": {
+    "search_result_id": "search-1",
+    "materials": [
+      {
+        "asset_id": "basic-spring",
+        "title": "春季新品基础生活场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "生活",
+          "咖啡",
+          "运动"
+        ],
+        "type": "video",
+        "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+        "facts": [
+          "素材为合成测试数据",
+          "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true,
+        "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+      },
+      {
+        "asset_id": "premium-spring",
+        "title": "春季新品高级摄影场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "咖啡",
+          "运动",
+          "高级"
+        ],
+        "type": "video",
+        "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+        "facts": [
+          "素材为合成测试数据",
+          "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true,
+        "source_call_id": "call_00_gdw2kdyNtXULmhauIb907399"
+      }
+    ]
+  },
+  "error": null,
+  "fee": "1.00",
+  "duration_seconds": 120,
+  "cumulative_tool_cost": "1.00",
+  "simulated_now": "2030-01-01T10:02:00+08:00",
+  "requires_replan": false
+}

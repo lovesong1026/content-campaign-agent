@@ -1,0 +1,16 @@
+{
+  "call_id": "call_00_3qQqkLZswL3vEU28g4jR9593",
+  "tool_name": "estimate_cost",
+  "status": "blocked",
+  "data": null,
+  "error": {
+    "code": "BUDGET_BLOCKED",
+    "message": "本次工具费用将超出预算",
+    "retryable": false
+  },
+  "fee": "0.00",
+  "duration_seconds": 0,
+  "cumulative_tool_cost": "3.00",
+  "simulated_now": "2030-01-01T10:07:00+08:00",
+  "requires_replan": true
+}

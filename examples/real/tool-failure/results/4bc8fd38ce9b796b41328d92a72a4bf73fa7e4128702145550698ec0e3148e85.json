@@ -1,0 +1,22 @@
+{
+  "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+  "tool_name": "save_plan",
+  "status": "succeeded",
+  "data": {
+    "saved_plan_id": "saved-cb5d12c286c14b7f800372f1a290622c",
+    "path": "saved/saved-cb5d12c286c14b7f800372f1a290622c.json",
+    "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+    "plan_ref": "campaign-v1",
+    "estimate_id": "estimate-4",
+    "tool_cost": "6.00",
+    "plan_cost": "2.00",
+    "total_cost": "8.00",
+    "simulated_saved_at": "2030-01-01T10:14:00+08:00"
+  },
+  "error": null,
+  "fee": "0.00",
+  "duration_seconds": 60,
+  "cumulative_tool_cost": "6.00",
+  "simulated_now": "2030-01-01T10:14:00+08:00",
+  "requires_replan": false
+}

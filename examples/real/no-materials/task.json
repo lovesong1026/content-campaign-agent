@@ -1,0 +1,672 @@
+{
+  "task_id": "demo-no-materials",
+  "run_id": "b16262831c344c22b30917903c12721d",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_fingerprint": "158734bd0e545c4e9593c705908b5588d340a517f69a0621582e317a1f15c223",
+  "input_errors": {},
+  "mode": "real",
+  "status": "incomplete",
+  "phase": "finished",
+  "reason": "MATERIALS_INSUFFICIENT",
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "simulated_now": "2030-01-01T10:04:00+08:00",
+  "elapsed_seconds": 240,
+  "decision_rounds": 3,
+  "tool_calls": 2,
+  "tool_cost": "2.00",
+  "tool_ordinals": {
+    "search_materials": 2
+  },
+  "retrieved_materials": {},
+  "searched": true,
+  "plans": {},
+  "estimates": {},
+  "current_plan_ref": null,
+  "current_estimate_id": null,
+  "saved": null,
+  "steps": [
+    {
+      "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "需先获取可用素材才能生成方案，检索春季新品日常生活场景素材。",
+        "query": "春季新品 日常生活场景 外观展示",
+        "material_type": "all",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": []
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": true
+      }
+    },
+    {
+      "call_id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "首轮检索为空，换更宽泛的“春季 生活 外观”关键词再检索一次，避免重复已有查询。",
+        "material_type": "all",
+        "query": "春季 生活场景 产品外观",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-2",
+          "materials": []
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "2.00",
+        "simulated_now": "2030-01-01T10:04:00+08:00",
+        "requires_replan": true
+      }
+    }
+  ],
+  "pending_plan": [
+    {
+      "tool_name": "generate_script",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "estimate_cost",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "save_plan",
+      "status": "skipped"
+    }
+  ],
+  "ledger": [
+    {
+      "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:1",
+      "sequence": 1,
+      "timestamp": "2026-10-28T12:55:21.192222+00:00",
+      "round": 0,
+      "kind": "task_created",
+      "mode": "real",
+      "input": {
+        "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+        "budget": "20.00",
+        "deadline": "2030-01-01T10:30:00+08:00"
+      },
+      "input_errors": {}
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:2",
+      "sequence": 2,
+      "timestamp": "2026-10-28T12:55:21.193473+00:00",
+      "round": 1,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "0.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {},
+        "searched": false,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:00:00+08:00",
+        "remaining_seconds": 1800.0,
+        "minimum_remaining_seconds": 540,
+        "minimum_remaining_tool_cost": "4.00",
+        "minimum_total_cost": "5.00",
+        "remaining_decisions": 11,
+        "remaining_tool_calls": 12
+      }
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:3",
+      "sequence": 3,
+      "timestamp": "2026-10-28T12:55:21.194803+00:00",
+      "round": 1,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:4",
+      "sequence": 4,
+      "timestamp": "2026-10-28T12:55:22.425722+00:00",
+      "round": 1,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 132,
+        "prompt_tokens": 2106,
+        "total_tokens": 2238,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 1920,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 1920,
+        "prompt_cache_miss_tokens": 186
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:5",
+      "sequence": 5,
+      "timestamp": "2026-10-28T12:55:22.428518+00:00",
+      "round": 1,
+      "kind": "model_decision",
+      "content": "我先检索可用的春季新品素材。",
+      "tool_calls": [
+        {
+          "id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+          "type": "function",
+          "function": {
+            "name": "search_materials",
+            "arguments": "{\"decision_note\": \"需先获取可用素材才能生成方案，检索春季新品日常生活场景素材。\", \"query\": \"春季新品 日常生活场景 外观展示\", \"material_type\": \"all\", \"remaining_steps\": [\"generate_script\", \"estimate_cost\", \"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:6",
+      "sequence": 6,
+      "timestamp": "2026-10-28T12:55:22.430768+00:00",
+      "round": 1,
+      "kind": "tool_started",
+      "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "需先获取可用素材才能生成方案，检索春季新品日常生活场景素材。",
+        "query": "春季新品 日常生活场景 外观展示",
+        "material_type": "all",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "fee": "1.00",
+      "duration_seconds": 120
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:7",
+      "sequence": 7,
+      "timestamp": "2026-10-28T12:55:22.433025+00:00",
+      "round": 1,
+      "kind": "tool_result",
+      "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+      "tool_name": "search_materials",
+      "status": "succeeded",
+      "data": {
+        "search_result_id": "search-1",
+        "materials": []
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "cumulative_tool_cost": "1.00",
+      "simulated_now": "2030-01-01T10:02:00+08:00",
+      "requires_replan": true
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:8",
+      "sequence": 8,
+      "timestamp": "2026-10-28T12:55:22.434406+00:00",
+      "round": 2,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "1.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {},
+        "searched": true,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "remaining_seconds": 1680.0,
+        "minimum_remaining_seconds": 540,
+        "minimum_remaining_tool_cost": "4.00",
+        "minimum_total_cost": "6.00",
+        "remaining_decisions": 10,
+        "remaining_tool_calls": 11
+      }
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:9",
+      "sequence": 9,
+      "timestamp": "2026-10-28T12:55:22.436072+00:00",
+      "round": 2,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:10",
+      "sequence": 10,
+      "timestamp": "2026-10-28T12:55:23.845092+00:00",
+      "round": 2,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 154,
+        "prompt_tokens": 2741,
+        "total_tokens": 2895,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 2176,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 2176,
+        "prompt_cache_miss_tokens": 565
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:11",
+      "sequence": 11,
+      "timestamp": "2026-10-28T12:55:23.848481+00:00",
+      "round": 2,
+      "kind": "model_decision",
+      "content": "首次检索未返回素材，我换一组更宽泛的春季场景关键词再试一次。",
+      "tool_calls": [
+        {
+          "id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+          "type": "function",
+          "function": {
+            "name": "search_materials",
+            "arguments": "{\"decision_note\": \"首轮检索为空，换更宽泛的“春季 生活 外观”关键词再检索一次，避免重复已有查询。\", \"material_type\": \"all\", \"query\": \"春季 生活场景 产品外观\", \"remaining_steps\": [\"generate_script\", \"estimate_cost\", \"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:12",
+      "sequence": 12,
+      "timestamp": "2026-10-28T12:55:23.851093+00:00",
+      "round": 2,
+      "kind": "tool_started",
+      "call_id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "首轮检索为空，换更宽泛的“春季 生活 外观”关键词再检索一次，避免重复已有查询。",
+        "material_type": "all",
+        "query": "春季 生活场景 产品外观",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "fee": "1.00",
+      "duration_seconds": 120
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:13",
+      "sequence": 13,
+      "timestamp": "2026-10-28T12:55:23.854353+00:00",
+      "round": 2,
+      "kind": "tool_result",
+      "call_id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+      "tool_name": "search_materials",
+      "status": "succeeded",
+      "data": {
+        "search_result_id": "search-2",
+        "materials": []
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "cumulative_tool_cost": "2.00",
+      "simulated_now": "2030-01-01T10:04:00+08:00",
+      "requires_replan": true
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:14",
+      "sequence": 14,
+      "timestamp": "2026-10-28T12:55:23.857032+00:00",
+      "round": 3,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "2.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {},
+        "searched": true,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:04:00+08:00",
+        "remaining_seconds": 1560.0,
+        "minimum_remaining_seconds": 540,
+        "minimum_remaining_tool_cost": "4.00",
+        "minimum_total_cost": "7.00",
+        "remaining_decisions": 9,
+        "remaining_tool_calls": 10
+      }
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:15",
+      "sequence": 15,
+      "timestamp": "2026-10-28T12:55:23.859962+00:00",
+      "round": 3,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:16",
+      "sequence": 16,
+      "timestamp": "2026-10-28T12:55:25.098115+00:00",
+      "round": 3,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 3396,
+        "total_tokens": 3469,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 2816,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 2816,
+        "prompt_cache_miss_tokens": 580
+      },
+      "finish_reason": "stop"
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:17",
+      "sequence": 17,
+      "timestamp": "2026-10-28T12:55:25.113435+00:00",
+      "round": 3,
+      "kind": "model_decision",
+      "content": "{\"reason_code\":\"NO_MATERIALS_FOUND\",\"summary\":\"两次检索（“春季新品 日常生活场景 外观展示”“春季 生活场景 产品外观”）均返回空素材列表，无可用 asset_id，无法按规则生成1—3条视频方案；为避免编造素材即停止，已花费工具费2.00。\"}",
+      "tool_calls": []
+    },
+    {
+      "event_id": "b16262831c344c22b30917903c12721d:18",
+      "sequence": 18,
+      "timestamp": "2026-10-28T12:55:25.116683+00:00",
+      "round": 3,
+      "kind": "task_finished",
+      "status": "incomplete",
+      "reason": "MATERIALS_INSUFFICIENT",
+      "summary": "两次检索（“春季新品 日常生活场景 外观展示”“春季 生活场景 产品外观”）均返回空素材列表，无可用 asset_id，无法按规则生成1—3条视频方案；为避免编造素材即停止，已花费工具费2.00。"
+    }
+  ],
+  "seen_call_ids": [
+    "call_00_SRxF01C74KnsbMIcR8rK3817",
+    "call_00_b2FghGi93Zj3hTmXKgo10679"
+  ],
+  "scenario": {
+    "name": "default",
+    "fixed_start": "2030-01-01T10:00:00+08:00",
+    "empty_materials": true,
+    "failures": {}
+  },
+  "config": {
+    "deepseek_base_url": "https://api.deepseek.com",
+    "deepseek_model": "deepseek-flash",
+    "model_timeout_seconds": 60.0,
+    "max_concurrent_tasks": 3,
+    "max_concurrent_model_requests": 3,
+    "output_dir": ".runs/evidence-real-20261028T125431Z",
+    "data_dir": "/Users/nono/Documents/ai‑agent‑notes/03_Agent开发/小影科技/data"
+  },
+  "data_snapshot": {
+    "materials": [
+      {
+        "asset_id": "basic-spring",
+        "title": "春季新品基础生活场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "生活",
+          "咖啡",
+          "运动"
+        ],
+        "type": "video",
+        "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+        "facts": [
+          "素材为合成测试数据",
+          "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      },
+      {
+        "asset_id": "premium-spring",
+        "title": "春季新品高级摄影场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "咖啡",
+          "运动",
+          "高级"
+        ],
+        "type": "video",
+        "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+        "facts": [
+          "素材为合成测试数据",
+          "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      }
+    ],
+    "pricing": {
+      "version": "pricing-v1",
+      "materials": {
+        "basic-spring": "0.00",
+        "premium-spring": "3.00"
+      },
+      "production": {
+        "economy": "1.00",
+        "standard": "2.00",
+        "premium": "5.00"
+      },
+      "publishing": "0.00"
+    },
+    "tools": {
+      "version": "tools-v1",
+      "search_materials": {
+        "fee": "1.00",
+        "duration_seconds": 120
+      },
+      "generate_script": {
+        "fee": "2.00",
+        "duration_seconds": 300
+      },
+      "estimate_cost": {
+        "fee": "1.00",
+        "duration_seconds": 60
+      },
+      "save_plan": {
+        "fee": "0.00",
+        "duration_seconds": 60
+      }
+    }
+  },
+  "summary": "两次检索（“春季新品 日常生活场景 外观展示”“春季 生活场景 产品外观”）均返回空素材列表，无可用 asset_id，无法按规则生成1—3条视频方案；为避免编造素材即停止，已花费工具费2.00。"
+}

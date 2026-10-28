@@ -1,0 +1,225 @@
+{
+  "task_id": "demo-time-infeasible",
+  "run_id": "32fa1d7e287544bca055fe4ad82f717a",
+  "mode": "real",
+  "status": "incomplete",
+  "phase": "finished",
+  "reason": "DEADLINE_INFEASIBLE",
+  "summary": "时间已到10:07，截止10:08。估价需60秒、保存需60秒，合计已超剩余60秒，无法按时交付。停止并说明。\n\n{\"reason_code\":\"DEADLINE_INSUFFICIENT_TIME\",\"summary\":\"当前模拟时间10:07，距截止10:08仅剩60秒，而estimate_cost加save_plan至少需120秒，无法在截止前完成估算与保存；方案campaign-v1（2条economy，使用basic-spring）已生成但未估算、未保存。\"}",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": "2030-01-01T10:08:00+08:00"
+  },
+  "input_errors": {},
+  "decision_rounds": 3,
+  "tool_calls": 2,
+  "costs": {
+    "tool_cost": "3.00",
+    "plan_cost": null,
+    "total_cost": null,
+    "remaining_budget_after_tools": "17.00",
+    "budget_gap": null
+  },
+  "gaps": {
+    "minimum_remaining_tool_cost": "1.00",
+    "tool_budget_lower_bound_gap": "0.00",
+    "minimum_time_gap_seconds": 60.0
+  },
+  "ledger": [
+    {
+      "call_id": "call_00_DdPrngDozcjSxudS4Ns83288",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_jkGga1fd9d1saxSGaPid1061",
+      "tool_name": "generate_script",
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "outcome": "succeeded"
+    }
+  ],
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "elapsed_seconds": 420,
+  "simulated_now": "2030-01-01T10:07:00+08:00",
+  "steps": [
+    {
+      "call_id": "call_00_DdPrngDozcjSxudS4Ns83288",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "主题为春季新品推广，先检索春季相关可用视频素材，为后续低成本方案做准备。",
+        "query": "春季 新品 日常生活 场景 外观",
+        "material_type": "video",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_DdPrngDozcjSxudS4Ns83288",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": [
+            {
+              "asset_id": "basic-spring",
+              "title": "春季新品基础生活场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "生活",
+                "咖啡",
+                "运动"
+              ],
+              "type": "video",
+              "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+              "facts": [
+                "素材为合成测试数据",
+                "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "call_00_DdPrngDozcjSxudS4Ns83288"
+            },
+            {
+              "asset_id": "premium-spring",
+              "title": "春季新品高级摄影场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "咖啡",
+                "运动",
+                "高级"
+              ],
+              "type": "video",
+              "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+              "facts": [
+                "素材为合成测试数据",
+                "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "call_00_DdPrngDozcjSxudS4Ns83288"
+            }
+          ]
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_jkGga1fd9d1saxSGaPid1061",
+      "tool_name": "generate_script",
+      "arguments": {
+        "decision_note": "仅使用零成本基础素材 basic-spring，以 economy 规格生成两条短视频，兼顾节约与题材覆盖。",
+        "audience": "关注春季日常好物的年轻消费者",
+        "channel": "短视频平台",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "自然光居家场景展示新品外观，文案仅描述外观与使用场景，不涉及功效或优惠"
+          },
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "咖啡与运动日常场景展示新品外观，简洁脚本，不涉及功效或优惠"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_DdPrngDozcjSxudS4Ns83288"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_jkGga1fd9d1saxSGaPid1061",
+        "tool_name": "generate_script",
+        "status": "succeeded",
+        "data": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "audience": "关注春季日常好物的年轻消费者",
+          "channel": "短视频平台",
+          "items": [
+            {
+              "title": "春日居家自然光，新品外观随手拍",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "春天光线正好，看看新品摆在家里的样子。",
+              "body": "白天自然光落在桌面，把新品放在常用的水杯和书本旁边，外观线条和配色在光下更清晰。镜头只展示摆放和日常拿取场景，适合喜欢轻松居家氛围的年轻消费者。",
+              "cta": "评论区说说你家里的春季角落。",
+              "shots": [
+                "窗边桌面全景，自然光铺满画面",
+                "手部拿起新品，展示外观和配色",
+                "新品与书本水杯同框，回到生活场景"
+              ]
+            },
+            {
+              "title": "咖啡与运动之间，新品外观的一天",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "一杯咖啡的时间，也顺手看看新品。",
+              "body": "早上咖啡桌边，新品放在杯子旁；随后切到运动前的日常整理，简单展示外观在不同生活场景中的样子。全片只描述外观与使用场景，不做功效和优惠说明。",
+              "cta": "关注我，下期继续看春季日常好物。",
+              "shots": [
+                "咖啡杯旁新品特写，保持自然光",
+                "运动包旁放置新品，展示外观比例",
+                "出门前拿起新品的简短动作"
+              ]
+            }
+          ],
+          "content_hash": "c840d3e4498e3e5a1fde1e7f2b6db8878a94c8dfc7382c8ea5a62f89df4e0633",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "call_00_jkGga1fd9d1saxSGaPid1061"
+        },
+        "error": null,
+        "fee": "2.00",
+        "duration_seconds": 300,
+        "cumulative_tool_cost": "3.00",
+        "simulated_now": "2030-01-01T10:07:00+08:00",
+        "requires_replan": false
+      }
+    }
+  ],
+  "pending_plan": [
+    {
+      "tool_name": "estimate_cost",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "save_plan",
+      "status": "skipped"
+    }
+  ],
+  "saved": null,
+  "task_directory": ".",
+  "trace_path": "trace.jsonl"
+}

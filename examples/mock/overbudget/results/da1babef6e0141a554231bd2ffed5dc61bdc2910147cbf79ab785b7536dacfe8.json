@@ -1,0 +1,22 @@
+{
+  "call_id": "mock-d869d7d4adef453e8b0496074ae38ece",
+  "tool_name": "save_plan",
+  "status": "succeeded",
+  "data": {
+    "saved_plan_id": "saved-16fc0045625e477d97395e401a083f0b",
+    "path": "saved/saved-16fc0045625e477d97395e401a083f0b.json",
+    "content_hash": "38af644e94c6057fb463179f1f93207c6ce572395045a74986e44c06c81a0681",
+    "plan_ref": "campaign-v2",
+    "estimate_id": "estimate-5",
+    "tool_cost": "7.00",
+    "plan_cost": "1.00",
+    "total_cost": "8.00",
+    "simulated_saved_at": "2030-01-01T10:15:00+08:00"
+  },
+  "error": null,
+  "fee": "0.00",
+  "duration_seconds": 60,
+  "cumulative_tool_cost": "7.00",
+  "simulated_now": "2030-01-01T10:15:00+08:00",
+  "requires_replan": false
+}

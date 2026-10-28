@@ -1,0 +1,40 @@
+{
+  "call_id": "call_00_8c1AVbRb6hjovsRjquhr3079",
+  "tool_name": "generate_script",
+  "status": "succeeded",
+  "data": {
+    "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+    "audience": "关注春季新品与品质生活的年轻消费者",
+    "channel": "短视频平台",
+    "items": [
+      {
+        "title": "春季新品光影特写",
+        "asset_ids": [
+          "premium-spring"
+        ],
+        "production_tier": "premium",
+        "hook": "棚拍光影亮起的瞬间，春季新品缓缓进入画面。",
+        "body": "多机位镜头围绕产品外观与细节展开，以柔和光线和特写节奏呈现春季新品的设计质感；素材为合成测试数据，仅作视觉展示，不涉及产品功效与优惠信息。",
+        "cta": "关注账号，第一时间看到春季新品的更多镜头。",
+        "shots": [
+          "顶部柔光灯下产品正面特写，缓慢推近",
+          "侧面45度机位展示轮廓与材质细节",
+          "俯拍道具与产品同框的静态构图",
+          "多机位切换的旋转展示镜头",
+          "光影渐暗收尾，品牌标识居中"
+        ]
+      }
+    ],
+    "content_hash": "567d8d39b2bb4be0e2749ae00eca3ae262e751535b0959f3dff7fd3be48474f8",
+    "plan_id": "campaign",
+    "version": 1,
+    "plan_ref": "campaign-v1",
+    "source_call_id": "call_00_8c1AVbRb6hjovsRjquhr3079"
+  },
+  "error": null,
+  "fee": "2.00",
+  "duration_seconds": 300,
+  "cumulative_tool_cost": "3.00",
+  "simulated_now": "2030-01-01T10:07:00+08:00",
+  "requires_replan": false
+}

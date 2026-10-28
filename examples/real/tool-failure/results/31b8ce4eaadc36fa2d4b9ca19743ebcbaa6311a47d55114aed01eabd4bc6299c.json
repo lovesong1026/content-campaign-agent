@@ -1,0 +1,44 @@
+{
+  "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+  "tool_name": "estimate_cost",
+  "status": "succeeded",
+  "data": {
+    "estimate_id": "estimate-4",
+    "plan_ref": "campaign-v1",
+    "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+    "pricing_version": "pricing-v1",
+    "breakdown": [
+      {
+        "kind": "material",
+        "id": "basic-spring",
+        "amount": "0.00"
+      },
+      {
+        "kind": "production",
+        "video": 1,
+        "amount": "1.00"
+      },
+      {
+        "kind": "production",
+        "video": 2,
+        "amount": "1.00"
+      },
+      {
+        "kind": "publishing",
+        "amount": "0.00"
+      }
+    ],
+    "plan_cost": "2.00",
+    "tool_cost_at_estimate": "6.00",
+    "total_at_estimate": "8.00",
+    "within_budget": true,
+    "budget_gap": "0.00",
+    "source_call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+  },
+  "error": null,
+  "fee": "1.00",
+  "duration_seconds": 60,
+  "cumulative_tool_cost": "6.00",
+  "simulated_now": "2030-01-01T10:13:00+08:00",
+  "requires_replan": false
+}

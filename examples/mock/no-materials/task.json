@@ -1,0 +1,392 @@
+{
+  "task_id": "demo-no-materials",
+  "run_id": "95cc61eacc4b45a0b34afb15e44d2360",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_fingerprint": "158734bd0e545c4e9593c705908b5588d340a517f69a0621582e317a1f15c223",
+  "input_errors": {},
+  "mode": "mock",
+  "status": "incomplete",
+  "phase": "finished",
+  "reason": "MATERIALS_INSUFFICIENT",
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "simulated_now": "2030-01-01T10:02:00+08:00",
+  "elapsed_seconds": 120,
+  "decision_rounds": 2,
+  "tool_calls": 1,
+  "tool_cost": "1.00",
+  "tool_ordinals": {
+    "search_materials": 1
+  },
+  "retrieved_materials": {},
+  "searched": true,
+  "plans": {},
+  "estimates": {},
+  "current_plan_ref": null,
+  "current_estimate_id": null,
+  "saved": null,
+  "steps": [
+    {
+      "call_id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+      "tool_name": "search_materials",
+      "arguments": {
+        "query": "春季新品",
+        "decision_note": "检索可用素材"
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": []
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": true
+      }
+    }
+  ],
+  "pending_plan": [],
+  "ledger": [
+    {
+      "call_id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:1",
+      "sequence": 1,
+      "timestamp": "2026-10-28T12:58:07.720736+00:00",
+      "round": 0,
+      "kind": "task_created",
+      "mode": "mock",
+      "input": {
+        "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+        "budget": "20.00",
+        "deadline": "2030-01-01T10:30:00+08:00"
+      },
+      "input_errors": {}
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:2",
+      "sequence": 2,
+      "timestamp": "2026-10-28T12:58:07.721584+00:00",
+      "round": 1,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "0.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {},
+        "searched": false,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:00:00+08:00",
+        "remaining_seconds": 1800.0,
+        "minimum_remaining_seconds": 540,
+        "minimum_remaining_tool_cost": "4.00",
+        "minimum_total_cost": "5.00",
+        "remaining_decisions": 11,
+        "remaining_tool_calls": 12
+      }
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:3",
+      "sequence": 3,
+      "timestamp": "2026-10-28T12:58:07.722425+00:00",
+      "round": 1,
+      "kind": "mock_decision",
+      "policy": "normal",
+      "model": "offline-deterministic-v1"
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:4",
+      "sequence": 4,
+      "timestamp": "2026-10-28T12:58:07.724414+00:00",
+      "round": 1,
+      "kind": "model_decision",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+          "type": "function",
+          "function": {
+            "name": "search_materials",
+            "arguments": "{\"query\": \"春季新品\", \"decision_note\": \"检索可用素材\"}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:5",
+      "sequence": 5,
+      "timestamp": "2026-10-28T12:58:07.725417+00:00",
+      "round": 1,
+      "kind": "tool_started",
+      "call_id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+      "tool_name": "search_materials",
+      "arguments": {
+        "query": "春季新品",
+        "decision_note": "检索可用素材"
+      },
+      "depends_on": [],
+      "fee": "1.00",
+      "duration_seconds": 120
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:6",
+      "sequence": 6,
+      "timestamp": "2026-10-28T12:58:07.726729+00:00",
+      "round": 1,
+      "kind": "tool_result",
+      "call_id": "mock-4952bb1e903b41038b6c7fc7c699a4bf",
+      "tool_name": "search_materials",
+      "status": "succeeded",
+      "data": {
+        "search_result_id": "search-1",
+        "materials": []
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "cumulative_tool_cost": "1.00",
+      "simulated_now": "2030-01-01T10:02:00+08:00",
+      "requires_replan": true
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:7",
+      "sequence": 7,
+      "timestamp": "2026-10-28T12:58:07.727834+00:00",
+      "round": 2,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "1.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {},
+        "searched": true,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "remaining_seconds": 1680.0,
+        "minimum_remaining_seconds": 540,
+        "minimum_remaining_tool_cost": "4.00",
+        "minimum_total_cost": "6.00",
+        "remaining_decisions": 10,
+        "remaining_tool_calls": 11
+      }
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:8",
+      "sequence": 8,
+      "timestamp": "2026-10-28T12:58:07.728764+00:00",
+      "round": 2,
+      "kind": "mock_decision",
+      "policy": "normal",
+      "model": "offline-deterministic-v1"
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:9",
+      "sequence": 9,
+      "timestamp": "2026-10-28T12:58:07.730455+00:00",
+      "round": 2,
+      "kind": "model_decision",
+      "content": "{\"reason_code\": \"MATERIALS_INSUFFICIENT\", \"summary\": \"无可用素材\"}",
+      "tool_calls": []
+    },
+    {
+      "event_id": "95cc61eacc4b45a0b34afb15e44d2360:10",
+      "sequence": 10,
+      "timestamp": "2026-10-28T12:58:07.731504+00:00",
+      "round": 2,
+      "kind": "task_finished",
+      "status": "incomplete",
+      "reason": "MATERIALS_INSUFFICIENT",
+      "summary": "无可用素材"
+    }
+  ],
+  "seen_call_ids": [
+    "mock-4952bb1e903b41038b6c7fc7c699a4bf"
+  ],
+  "scenario": {
+    "name": "default",
+    "fixed_start": "2030-01-01T10:00:00+08:00",
+    "empty_materials": true,
+    "failures": {}
+  },
+  "config": {
+    "deepseek_base_url": "https://api.deepseek.com",
+    "deepseek_model": "deepseek-flash",
+    "model_timeout_seconds": 60.0,
+    "max_concurrent_tasks": 3,
+    "max_concurrent_model_requests": 3,
+    "output_dir": ".runs/evidence-mock-20261028T125807Z",
+    "data_dir": "/Users/nono/Documents/ai‑agent‑notes/03_Agent开发/小影科技/data"
+  },
+  "data_snapshot": {
+    "materials": [
+      {
+        "asset_id": "basic-spring",
+        "title": "春季新品基础生活场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "生活",
+          "咖啡",
+          "运动"
+        ],
+        "type": "video",
+        "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+        "facts": [
+          "素材为合成测试数据",
+          "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      },
+      {
+        "asset_id": "premium-spring",
+        "title": "春季新品高级摄影场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "咖啡",
+          "运动",
+          "高级"
+        ],
+        "type": "video",
+        "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+        "facts": [
+          "素材为合成测试数据",
+          "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      }
+    ],
+    "pricing": {
+      "version": "pricing-v1",
+      "materials": {
+        "basic-spring": "0.00",
+        "premium-spring": "3.00"
+      },
+      "production": {
+        "economy": "1.00",
+        "standard": "2.00",
+        "premium": "5.00"
+      },
+      "publishing": "0.00"
+    },
+    "tools": {
+      "version": "tools-v1",
+      "search_materials": {
+        "fee": "1.00",
+        "duration_seconds": 120
+      },
+      "generate_script": {
+        "fee": "2.00",
+        "duration_seconds": 300
+      },
+      "estimate_cost": {
+        "fee": "1.00",
+        "duration_seconds": 60
+      },
+      "save_plan": {
+        "fee": "0.00",
+        "duration_seconds": 60
+      }
+    }
+  },
+  "summary": "无可用素材"
+}

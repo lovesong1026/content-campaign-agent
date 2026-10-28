@@ -1,0 +1,55 @@
+{
+  "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+  "tool_name": "generate_script",
+  "status": "succeeded",
+  "data": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+    "channel": "短视频平台（抖音/快手）",
+    "items": [
+      {
+        "title": "清晨咖啡时刻，春季新品外观随拍",
+        "asset_ids": [
+          "basic-spring"
+        ],
+        "production_tier": "economy",
+        "hook": "清晨的第一杯咖啡，桌面上多了一件新东西。",
+        "body": "自然光落在桌面上，春季新品静静放在咖啡杯旁边。镜头从侧面慢慢推近，带出新品的外观轮廓和简洁线条，没有复杂布光，就是居家日常的样子。拿起来、放下、再摆回桌面，日常使用场景里看清新品的外观细节。",
+        "cta": "关注我们，看更多春季新品在日常里的样子。",
+        "shots": [
+          "自然光下桌面全景：咖啡杯与新品同框",
+          "侧面缓慢推近，展示新品外观轮廓",
+          "手部拿起新品的日常动作特写",
+          "放回桌面后俯拍外观整体"
+        ]
+      },
+      {
+        "title": "户外出行日常，春季新品外观细节",
+        "asset_ids": [
+          "basic-spring"
+        ],
+        "production_tier": "economy",
+        "hook": "出门运动前，顺手带上春季新品。",
+        "body": "户外自然光下，春季新品出现在出行日常里。镜头跟着走动的手部动作，记录新品在户外光线下的外观表现，表面质感和边角细节都能看清。休息时放在一旁，再拍一组静态外观镜头，全程只展示外观与使用场景。",
+        "cta": "点赞收藏，春季新品外观细节一次看全。",
+        "shots": [
+          "户外自然光下出发前的准备镜头",
+          "跟拍手部携带新品走动",
+          "休息时静态摆放的外观特写",
+          "户外光线下表面质感细节镜头"
+        ]
+      }
+    ],
+    "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+    "plan_id": "campaign",
+    "version": 1,
+    "plan_ref": "campaign-v1",
+    "source_call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296"
+  },
+  "error": null,
+  "fee": "2.00",
+  "duration_seconds": 300,
+  "cumulative_tool_cost": "5.00",
+  "simulated_now": "2030-01-01T10:12:00+08:00",
+  "requires_replan": false
+}

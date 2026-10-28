@@ -1,0 +1,1977 @@
+{
+  "task_id": "demo-failure",
+  "run_id": "cb5d12c286c14b7f800372f1a290622c",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_fingerprint": "158734bd0e545c4e9593c705908b5588d340a517f69a0621582e317a1f15c223",
+  "input_errors": {},
+  "mode": "real",
+  "status": "succeeded",
+  "phase": "finished",
+  "reason": "SAVED",
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "simulated_now": "2030-01-01T10:14:00+08:00",
+  "elapsed_seconds": 840,
+  "decision_rounds": 5,
+  "tool_calls": 5,
+  "tool_cost": "6.00",
+  "tool_ordinals": {
+    "search_materials": 1,
+    "generate_script": 2,
+    "estimate_cost": 1,
+    "save_plan": 1
+  },
+  "retrieved_materials": {
+    "basic-spring": {
+      "asset_id": "basic-spring",
+      "title": "春季新品基础生活场景",
+      "tags": [
+        "春季",
+        "新品",
+        "推广",
+        "通用",
+        "生活",
+        "咖啡",
+        "运动"
+      ],
+      "type": "video",
+      "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+      "facts": [
+        "素材为合成测试数据",
+        "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+      ],
+      "license": "synthetic-demo-only",
+      "available": true,
+      "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+    },
+    "premium-spring": {
+      "asset_id": "premium-spring",
+      "title": "春季新品高级摄影场景",
+      "tags": [
+        "春季",
+        "新品",
+        "推广",
+        "通用",
+        "咖啡",
+        "运动",
+        "高级"
+      ],
+      "type": "video",
+      "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+      "facts": [
+        "素材为合成测试数据",
+        "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+      ],
+      "license": "synthetic-demo-only",
+      "available": true,
+      "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+    }
+  },
+  "searched": true,
+  "plans": {
+    "campaign-v1": {
+      "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+      "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+      "channel": "短视频平台（抖音/快手）",
+      "items": [
+        {
+          "title": "清晨咖啡时刻，春季新品外观随拍",
+          "asset_ids": [
+            "basic-spring"
+          ],
+          "production_tier": "economy",
+          "hook": "清晨的第一杯咖啡，桌面上多了一件新东西。",
+          "body": "自然光落在桌面上，春季新品静静放在咖啡杯旁边。镜头从侧面慢慢推近，带出新品的外观轮廓和简洁线条，没有复杂布光，就是居家日常的样子。拿起来、放下、再摆回桌面，日常使用场景里看清新品的外观细节。",
+          "cta": "关注我们，看更多春季新品在日常里的样子。",
+          "shots": [
+            "自然光下桌面全景：咖啡杯与新品同框",
+            "侧面缓慢推近，展示新品外观轮廓",
+            "手部拿起新品的日常动作特写",
+            "放回桌面后俯拍外观整体"
+          ]
+        },
+        {
+          "title": "户外出行日常，春季新品外观细节",
+          "asset_ids": [
+            "basic-spring"
+          ],
+          "production_tier": "economy",
+          "hook": "出门运动前，顺手带上春季新品。",
+          "body": "户外自然光下，春季新品出现在出行日常里。镜头跟着走动的手部动作，记录新品在户外光线下的外观表现，表面质感和边角细节都能看清。休息时放在一旁，再拍一组静态外观镜头，全程只展示外观与使用场景。",
+          "cta": "点赞收藏，春季新品外观细节一次看全。",
+          "shots": [
+            "户外自然光下出发前的准备镜头",
+            "跟拍手部携带新品走动",
+            "休息时静态摆放的外观特写",
+            "户外光线下表面质感细节镜头"
+          ]
+        }
+      ],
+      "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+      "plan_id": "campaign",
+      "version": 1,
+      "plan_ref": "campaign-v1",
+      "source_call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296"
+    }
+  },
+  "estimates": {
+    "estimate-4": {
+      "estimate_id": "estimate-4",
+      "plan_ref": "campaign-v1",
+      "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+      "pricing_version": "pricing-v1",
+      "breakdown": [
+        {
+          "kind": "material",
+          "id": "basic-spring",
+          "amount": "0.00"
+        },
+        {
+          "kind": "production",
+          "video": 1,
+          "amount": "1.00"
+        },
+        {
+          "kind": "production",
+          "video": 2,
+          "amount": "1.00"
+        },
+        {
+          "kind": "publishing",
+          "amount": "0.00"
+        }
+      ],
+      "plan_cost": "2.00",
+      "tool_cost_at_estimate": "6.00",
+      "total_at_estimate": "8.00",
+      "within_budget": true,
+      "budget_gap": "0.00",
+      "source_call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+    }
+  },
+  "current_plan_ref": "campaign-v1",
+  "current_estimate_id": "estimate-4",
+  "saved": {
+    "saved_plan_id": "saved-cb5d12c286c14b7f800372f1a290622c",
+    "path": "saved/saved-cb5d12c286c14b7f800372f1a290622c.json",
+    "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+    "plan_ref": "campaign-v1",
+    "estimate_id": "estimate-4",
+    "tool_cost": "6.00",
+    "plan_cost": "2.00",
+    "total_cost": "8.00",
+    "simulated_saved_at": "2030-01-01T10:14:00+08:00"
+  },
+  "steps": [
+    {
+      "call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "需要先检索春季新品日常生活场景素材，才能生成方案。",
+        "query": "春季新品 日常生活场景 外观展示",
+        "material_type": "video",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": [
+            {
+              "asset_id": "basic-spring",
+              "title": "春季新品基础生活场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "生活",
+                "咖啡",
+                "运动"
+              ],
+              "type": "video",
+              "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+              "facts": [
+                "素材为合成测试数据",
+                "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+            },
+            {
+              "asset_id": "premium-spring",
+              "title": "春季新品高级摄影场景",
+              "tags": [
+                "春季",
+                "新品",
+                "推广",
+                "通用",
+                "咖啡",
+                "运动",
+                "高级"
+              ],
+              "type": "video",
+              "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+              "facts": [
+                "素材为合成测试数据",
+                "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+              ],
+              "license": "synthetic-demo-only",
+              "available": true,
+              "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+            }
+          ]
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_5K237z3UtTcWqGspgPE18150",
+      "tool_name": "generate_script",
+      "arguments": {
+        "decision_note": "两个素材均可用；为节约费用，选用免费 basic-spring 素材、economy 规格，生成 2 条日常生活场景短视频。",
+        "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+        "channel": "短视频平台（抖音/快手）",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以清晨咖啡与居家日常场景展示新品外观，自然光镜头，仅描述外观与使用场景，不涉及功效、价格或优惠信息"
+          },
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以户外运动与出行日常场景展示新品外观，仅描述外观细节与场景，不涉及功效、价格或优惠信息"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_exYWwXHTlxDE1YjrhJfa6917"
+      ],
+      "status": "failed",
+      "observation": {
+        "call_id": "call_00_5K237z3UtTcWqGspgPE18150",
+        "tool_name": "generate_script",
+        "status": "failed",
+        "data": null,
+        "error": {
+          "code": "INJECTED_TOOL_FAILURE",
+          "message": "场景注入的一次性工具失败",
+          "retryable": true
+        },
+        "fee": "2.00",
+        "duration_seconds": 300,
+        "cumulative_tool_cost": "3.00",
+        "simulated_now": "2030-01-01T10:07:00+08:00",
+        "requires_replan": true
+      }
+    },
+    {
+      "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+      "tool_name": "generate_script",
+      "arguments": {
+        "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+        "channel": "短视频平台（抖音/快手）",
+        "decision_note": "上次生成失败且错误可重试，本次用相同免费素材与 economy 规格重试生成 2 条短视频方案。",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以清晨咖啡与居家日常场景展示新品外观，自然光镜头，仅描述外观与使用场景，不涉及功效、价格或优惠信息"
+          },
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以户外运动与出行日常场景展示新品外观，仅描述外观细节与场景，不涉及功效、价格或优惠信息"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_exYWwXHTlxDE1YjrhJfa6917"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+        "tool_name": "generate_script",
+        "status": "succeeded",
+        "data": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+          "channel": "短视频平台（抖音/快手）",
+          "items": [
+            {
+              "title": "清晨咖啡时刻，春季新品外观随拍",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "清晨的第一杯咖啡，桌面上多了一件新东西。",
+              "body": "自然光落在桌面上，春季新品静静放在咖啡杯旁边。镜头从侧面慢慢推近，带出新品的外观轮廓和简洁线条，没有复杂布光，就是居家日常的样子。拿起来、放下、再摆回桌面，日常使用场景里看清新品的外观细节。",
+              "cta": "关注我们，看更多春季新品在日常里的样子。",
+              "shots": [
+                "自然光下桌面全景：咖啡杯与新品同框",
+                "侧面缓慢推近，展示新品外观轮廓",
+                "手部拿起新品的日常动作特写",
+                "放回桌面后俯拍外观整体"
+              ]
+            },
+            {
+              "title": "户外出行日常，春季新品外观细节",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "出门运动前，顺手带上春季新品。",
+              "body": "户外自然光下，春季新品出现在出行日常里。镜头跟着走动的手部动作，记录新品在户外光线下的外观表现，表面质感和边角细节都能看清。休息时放在一旁，再拍一组静态外观镜头，全程只展示外观与使用场景。",
+              "cta": "点赞收藏，春季新品外观细节一次看全。",
+              "shots": [
+                "户外自然光下出发前的准备镜头",
+                "跟拍手部携带新品走动",
+                "休息时静态摆放的外观特写",
+                "户外光线下表面质感细节镜头"
+              ]
+            }
+          ],
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296"
+        },
+        "error": null,
+        "fee": "2.00",
+        "duration_seconds": 300,
+        "cumulative_tool_cost": "5.00",
+        "simulated_now": "2030-01-01T10:12:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "方案 campaign-v1 已生成，需估算内容费用以确认是否在 20 元预算内。",
+        "plan_ref": "campaign-v1",
+        "remaining_steps": [
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_DM737tgK8b1Hv8RzwBjD9296"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+        "tool_name": "estimate_cost",
+        "status": "succeeded",
+        "data": {
+          "estimate_id": "estimate-4",
+          "plan_ref": "campaign-v1",
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "basic-spring",
+              "amount": "0.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "1.00"
+            },
+            {
+              "kind": "production",
+              "video": 2,
+              "amount": "1.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "2.00",
+          "tool_cost_at_estimate": "6.00",
+          "total_at_estimate": "8.00",
+          "within_budget": true,
+          "budget_gap": "0.00",
+          "source_call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "6.00",
+        "simulated_now": "2030-01-01T10:13:00+08:00",
+        "requires_replan": false
+      }
+    },
+    {
+      "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+      "tool_name": "save_plan",
+      "arguments": {
+        "decision_note": "估算 estimate-4 显示总费用 8.00 元在预算内，且距截止时间充足，保存 campaign-v1 交付。",
+        "estimate_id": "estimate-4",
+        "plan_ref": "campaign-v1",
+        "remaining_steps": []
+      },
+      "depends_on": [
+        "call_00_DM737tgK8b1Hv8RzwBjD9296",
+        "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+      ],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+        "tool_name": "save_plan",
+        "status": "succeeded",
+        "data": {
+          "saved_plan_id": "saved-cb5d12c286c14b7f800372f1a290622c",
+          "path": "saved/saved-cb5d12c286c14b7f800372f1a290622c.json",
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "plan_ref": "campaign-v1",
+          "estimate_id": "estimate-4",
+          "tool_cost": "6.00",
+          "plan_cost": "2.00",
+          "total_cost": "8.00",
+          "simulated_saved_at": "2030-01-01T10:14:00+08:00"
+        },
+        "error": null,
+        "fee": "0.00",
+        "duration_seconds": 60,
+        "cumulative_tool_cost": "6.00",
+        "simulated_now": "2030-01-01T10:14:00+08:00",
+        "requires_replan": false
+      }
+    }
+  ],
+  "pending_plan": [],
+  "ledger": [
+    {
+      "call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_5K237z3UtTcWqGspgPE18150",
+      "tool_name": "generate_script",
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "outcome": "failed"
+    },
+    {
+      "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+      "tool_name": "generate_script",
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+      "tool_name": "estimate_cost",
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+      "tool_name": "save_plan",
+      "fee": "0.00",
+      "duration_seconds": 60,
+      "outcome": "succeeded"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:1",
+      "sequence": 1,
+      "timestamp": "2026-10-28T12:54:53.709004+00:00",
+      "round": 0,
+      "kind": "task_created",
+      "mode": "real",
+      "input": {
+        "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+        "budget": "20.00",
+        "deadline": "2030-01-01T10:30:00+08:00"
+      },
+      "input_errors": {}
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:2",
+      "sequence": 2,
+      "timestamp": "2026-10-28T12:54:53.710627+00:00",
+      "round": 1,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "0.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          }
+        },
+        "searched": false,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:00:00+08:00",
+        "remaining_seconds": 1800.0,
+        "minimum_remaining_seconds": 540,
+        "minimum_remaining_tool_cost": "4.00",
+        "minimum_total_cost": "5.00",
+        "remaining_decisions": 11,
+        "remaining_tool_calls": 12
+      }
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:3",
+      "sequence": 3,
+      "timestamp": "2026-10-28T12:54:53.711596+00:00",
+      "round": 1,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:4",
+      "sequence": 4,
+      "timestamp": "2026-10-28T12:54:54.762700+00:00",
+      "round": 1,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 129,
+        "prompt_tokens": 2106,
+        "total_tokens": 2235,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 1920,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 1920,
+        "prompt_cache_miss_tokens": 186
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:5",
+      "sequence": 5,
+      "timestamp": "2026-10-28T12:54:54.765709+00:00",
+      "round": 1,
+      "kind": "model_decision",
+      "content": "我先检索春季新品相关的可用素材。",
+      "tool_calls": [
+        {
+          "id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+          "type": "function",
+          "function": {
+            "name": "search_materials",
+            "arguments": "{\"decision_note\": \"需要先检索春季新品日常生活场景素材，才能生成方案。\", \"query\": \"春季新品 日常生活场景 外观展示\", \"material_type\": \"video\", \"remaining_steps\": [\"generate_script\", \"estimate_cost\", \"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:6",
+      "sequence": 6,
+      "timestamp": "2026-10-28T12:54:54.768730+00:00",
+      "round": 1,
+      "kind": "tool_started",
+      "call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "需要先检索春季新品日常生活场景素材，才能生成方案。",
+        "query": "春季新品 日常生活场景 外观展示",
+        "material_type": "video",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "fee": "1.00",
+      "duration_seconds": 120
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:7",
+      "sequence": 7,
+      "timestamp": "2026-10-28T12:54:54.772834+00:00",
+      "round": 1,
+      "kind": "tool_result",
+      "call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917",
+      "tool_name": "search_materials",
+      "status": "succeeded",
+      "data": {
+        "search_result_id": "search-1",
+        "materials": [
+          {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          },
+          {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          }
+        ]
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "cumulative_tool_cost": "1.00",
+      "simulated_now": "2030-01-01T10:02:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:8",
+      "sequence": 8,
+      "timestamp": "2026-10-28T12:54:54.775791+00:00",
+      "round": 2,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "1.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          }
+        },
+        "searched": true,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "remaining_seconds": 1680.0,
+        "minimum_remaining_seconds": 420,
+        "minimum_remaining_tool_cost": "3.00",
+        "minimum_total_cost": "5.00",
+        "remaining_decisions": 10,
+        "remaining_tool_calls": 11
+      }
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:9",
+      "sequence": 9,
+      "timestamp": "2026-10-28T12:54:54.778358+00:00",
+      "round": 2,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:10",
+      "sequence": 10,
+      "timestamp": "2026-10-28T12:54:56.758066+00:00",
+      "round": 2,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 286,
+        "prompt_tokens": 3316,
+        "total_tokens": 3602,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 2176,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 2176,
+        "prompt_cache_miss_tokens": 1140
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:11",
+      "sequence": 11,
+      "timestamp": "2026-10-28T12:54:56.761859+00:00",
+      "round": 2,
+      "kind": "model_decision",
+      "content": "两个素材均可用，我选用免费的基础素材，按节约导向做 2 条 economy 规格视频。",
+      "tool_calls": [
+        {
+          "id": "call_00_5K237z3UtTcWqGspgPE18150",
+          "type": "function",
+          "function": {
+            "name": "generate_script",
+            "arguments": "{\"decision_note\": \"两个素材均可用；为节约费用，选用免费 basic-spring 素材、economy 规格，生成 2 条日常生活场景短视频。\", \"audience\": \"关注春季新品与日常通勤生活方式的年轻消费者\", \"channel\": \"短视频平台（抖音/快手）\", \"items\": [{\"asset_ids\": [\"basic-spring\"], \"production_tier\": \"economy\", \"requirements\": \"以清晨咖啡与居家日常场景展示新品外观，自然光镜头，仅描述外观与使用场景，不涉及功效、价格或优惠信息\"}, {\"asset_ids\": [\"basic-spring\"], \"production_tier\": \"economy\", \"requirements\": \"以户外运动与出行日常场景展示新品外观，仅描述外观细节与场景，不涉及功效、价格或优惠信息\"}], \"remaining_steps\": [\"estimate_cost\", \"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:12",
+      "sequence": 12,
+      "timestamp": "2026-10-28T12:54:56.765339+00:00",
+      "round": 2,
+      "kind": "tool_started",
+      "call_id": "call_00_5K237z3UtTcWqGspgPE18150",
+      "tool_name": "generate_script",
+      "arguments": {
+        "decision_note": "两个素材均可用；为节约费用，选用免费 basic-spring 素材、economy 规格，生成 2 条日常生活场景短视频。",
+        "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+        "channel": "短视频平台（抖音/快手）",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以清晨咖啡与居家日常场景展示新品外观，自然光镜头，仅描述外观与使用场景，不涉及功效、价格或优惠信息"
+          },
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以户外运动与出行日常场景展示新品外观，仅描述外观细节与场景，不涉及功效、价格或优惠信息"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_exYWwXHTlxDE1YjrhJfa6917"
+      ],
+      "fee": "2.00",
+      "duration_seconds": 300
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:13",
+      "sequence": 13,
+      "timestamp": "2026-10-28T12:54:56.770000+00:00",
+      "round": 2,
+      "kind": "tool_result",
+      "call_id": "call_00_5K237z3UtTcWqGspgPE18150",
+      "tool_name": "generate_script",
+      "status": "failed",
+      "data": null,
+      "error": {
+        "code": "INJECTED_TOOL_FAILURE",
+        "message": "场景注入的一次性工具失败",
+        "retryable": true
+      },
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "cumulative_tool_cost": "3.00",
+      "simulated_now": "2030-01-01T10:07:00+08:00",
+      "requires_replan": true
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:14",
+      "sequence": 14,
+      "timestamp": "2026-10-28T12:54:56.772930+00:00",
+      "round": 3,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "3.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          }
+        },
+        "searched": true,
+        "current_plan": null,
+        "current_estimate": null,
+        "plans_count": 0,
+        "known_plan_refs": [],
+        "simulated_now": "2030-01-01T10:07:00+08:00",
+        "remaining_seconds": 1380.0,
+        "minimum_remaining_seconds": 420,
+        "minimum_remaining_tool_cost": "3.00",
+        "minimum_total_cost": "7.00",
+        "remaining_decisions": 9,
+        "remaining_tool_calls": 10
+      }
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:15",
+      "sequence": 15,
+      "timestamp": "2026-10-28T12:54:56.775337+00:00",
+      "round": 3,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:16",
+      "sequence": 16,
+      "timestamp": "2026-10-28T12:54:58.673940+00:00",
+      "round": 3,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 287,
+        "prompt_tokens": 4412,
+        "total_tokens": 4699,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 3584,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 3584,
+        "prompt_cache_miss_tokens": 828
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:17",
+      "sequence": 17,
+      "timestamp": "2026-10-28T12:54:58.678212+00:00",
+      "round": 3,
+      "kind": "model_decision",
+      "content": "脚本生成失败，但可以重试；重试不会增加额外成本（已计 2 元）。我现在再生成一次。",
+      "tool_calls": [
+        {
+          "id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+          "type": "function",
+          "function": {
+            "name": "generate_script",
+            "arguments": "{\"audience\": \"关注春季新品与日常通勤生活方式的年轻消费者\", \"channel\": \"短视频平台（抖音/快手）\", \"decision_note\": \"上次生成失败且错误可重试，本次用相同免费素材与 economy 规格重试生成 2 条短视频方案。\", \"items\": [{\"asset_ids\": [\"basic-spring\"], \"production_tier\": \"economy\", \"requirements\": \"以清晨咖啡与居家日常场景展示新品外观，自然光镜头，仅描述外观与使用场景，不涉及功效、价格或优惠信息\"}, {\"asset_ids\": [\"basic-spring\"], \"production_tier\": \"economy\", \"requirements\": \"以户外运动与出行日常场景展示新品外观，仅描述外观细节与场景，不涉及功效、价格或优惠信息\"}], \"remaining_steps\": [\"estimate_cost\", \"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:18",
+      "sequence": 18,
+      "timestamp": "2026-10-28T12:54:58.680078+00:00",
+      "round": 3,
+      "kind": "tool_started",
+      "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+      "tool_name": "generate_script",
+      "arguments": {
+        "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+        "channel": "短视频平台（抖音/快手）",
+        "decision_note": "上次生成失败且错误可重试，本次用相同免费素材与 economy 规格重试生成 2 条短视频方案。",
+        "items": [
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以清晨咖啡与居家日常场景展示新品外观，自然光镜头，仅描述外观与使用场景，不涉及功效、价格或优惠信息"
+          },
+          {
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "requirements": "以户外运动与出行日常场景展示新品外观，仅描述外观细节与场景，不涉及功效、价格或优惠信息"
+          }
+        ],
+        "remaining_steps": [
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_exYWwXHTlxDE1YjrhJfa6917"
+      ],
+      "fee": "2.00",
+      "duration_seconds": 300
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:19",
+      "sequence": 19,
+      "timestamp": "2026-10-28T12:54:58.683461+00:00",
+      "round": 3,
+      "kind": "model_request",
+      "role": "script",
+      "prompt_version": "script-v1",
+      "prompt_hash": "7927c45a5e503b763106a45fb37d02275c4c4d2a5a80b90a9e72329c45cab908",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:20",
+      "sequence": 20,
+      "timestamp": "2026-10-28T12:55:01.767750+00:00",
+      "round": 3,
+      "kind": "model_response",
+      "role": "script",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 323,
+        "prompt_tokens": 653,
+        "total_tokens": 976,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 653
+      },
+      "finish_reason": "stop"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:21",
+      "sequence": 21,
+      "timestamp": "2026-10-28T12:55:01.770307+00:00",
+      "round": 3,
+      "kind": "tool_result",
+      "call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296",
+      "tool_name": "generate_script",
+      "status": "succeeded",
+      "data": {
+        "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+        "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+        "channel": "短视频平台（抖音/快手）",
+        "items": [
+          {
+            "title": "清晨咖啡时刻，春季新品外观随拍",
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "hook": "清晨的第一杯咖啡，桌面上多了一件新东西。",
+            "body": "自然光落在桌面上，春季新品静静放在咖啡杯旁边。镜头从侧面慢慢推近，带出新品的外观轮廓和简洁线条，没有复杂布光，就是居家日常的样子。拿起来、放下、再摆回桌面，日常使用场景里看清新品的外观细节。",
+            "cta": "关注我们，看更多春季新品在日常里的样子。",
+            "shots": [
+              "自然光下桌面全景：咖啡杯与新品同框",
+              "侧面缓慢推近，展示新品外观轮廓",
+              "手部拿起新品的日常动作特写",
+              "放回桌面后俯拍外观整体"
+            ]
+          },
+          {
+            "title": "户外出行日常，春季新品外观细节",
+            "asset_ids": [
+              "basic-spring"
+            ],
+            "production_tier": "economy",
+            "hook": "出门运动前，顺手带上春季新品。",
+            "body": "户外自然光下，春季新品出现在出行日常里。镜头跟着走动的手部动作，记录新品在户外光线下的外观表现，表面质感和边角细节都能看清。休息时放在一旁，再拍一组静态外观镜头，全程只展示外观与使用场景。",
+            "cta": "点赞收藏，春季新品外观细节一次看全。",
+            "shots": [
+              "户外自然光下出发前的准备镜头",
+              "跟拍手部携带新品走动",
+              "休息时静态摆放的外观特写",
+              "户外光线下表面质感细节镜头"
+            ]
+          }
+        ],
+        "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+        "plan_id": "campaign",
+        "version": 1,
+        "plan_ref": "campaign-v1",
+        "source_call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296"
+      },
+      "error": null,
+      "fee": "2.00",
+      "duration_seconds": 300,
+      "cumulative_tool_cost": "5.00",
+      "simulated_now": "2030-01-01T10:12:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:22",
+      "sequence": 22,
+      "timestamp": "2026-10-28T12:55:01.771823+00:00",
+      "round": 4,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "5.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          }
+        },
+        "searched": true,
+        "current_plan": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+          "channel": "短视频平台（抖音/快手）",
+          "items": [
+            {
+              "title": "清晨咖啡时刻，春季新品外观随拍",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "清晨的第一杯咖啡，桌面上多了一件新东西。",
+              "body": "自然光落在桌面上，春季新品静静放在咖啡杯旁边。镜头从侧面慢慢推近，带出新品的外观轮廓和简洁线条，没有复杂布光，就是居家日常的样子。拿起来、放下、再摆回桌面，日常使用场景里看清新品的外观细节。",
+              "cta": "关注我们，看更多春季新品在日常里的样子。",
+              "shots": [
+                "自然光下桌面全景：咖啡杯与新品同框",
+                "侧面缓慢推近，展示新品外观轮廓",
+                "手部拿起新品的日常动作特写",
+                "放回桌面后俯拍外观整体"
+              ]
+            },
+            {
+              "title": "户外出行日常，春季新品外观细节",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "出门运动前，顺手带上春季新品。",
+              "body": "户外自然光下，春季新品出现在出行日常里。镜头跟着走动的手部动作，记录新品在户外光线下的外观表现，表面质感和边角细节都能看清。休息时放在一旁，再拍一组静态外观镜头，全程只展示外观与使用场景。",
+              "cta": "点赞收藏，春季新品外观细节一次看全。",
+              "shots": [
+                "户外自然光下出发前的准备镜头",
+                "跟拍手部携带新品走动",
+                "休息时静态摆放的外观特写",
+                "户外光线下表面质感细节镜头"
+              ]
+            }
+          ],
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296"
+        },
+        "current_estimate": null,
+        "plans_count": 1,
+        "known_plan_refs": [
+          "campaign-v1"
+        ],
+        "simulated_now": "2030-01-01T10:12:00+08:00",
+        "remaining_seconds": 1080.0,
+        "minimum_remaining_seconds": 120,
+        "minimum_remaining_tool_cost": "1.00",
+        "minimum_total_cost": "7.00",
+        "remaining_decisions": 8,
+        "remaining_tool_calls": 9
+      }
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:23",
+      "sequence": 23,
+      "timestamp": "2026-10-28T12:55:01.773401+00:00",
+      "round": 4,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:24",
+      "sequence": 24,
+      "timestamp": "2026-10-28T12:55:02.852334+00:00",
+      "round": 4,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 115,
+        "prompt_tokens": 6478,
+        "total_tokens": 6593,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 4608,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 4608,
+        "prompt_cache_miss_tokens": 1870
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:25",
+      "sequence": 25,
+      "timestamp": "2026-10-28T12:55:02.858628+00:00",
+      "round": 4,
+      "kind": "model_decision",
+      "content": "方案已生成（campaign-v1）。现在进行费用估算。",
+      "tool_calls": [
+        {
+          "id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+          "type": "function",
+          "function": {
+            "name": "estimate_cost",
+            "arguments": "{\"decision_note\": \"方案 campaign-v1 已生成，需估算内容费用以确认是否在 20 元预算内。\", \"plan_ref\": \"campaign-v1\", \"remaining_steps\": [\"save_plan\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:26",
+      "sequence": 26,
+      "timestamp": "2026-10-28T12:55:02.862918+00:00",
+      "round": 4,
+      "kind": "tool_started",
+      "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+      "tool_name": "estimate_cost",
+      "arguments": {
+        "decision_note": "方案 campaign-v1 已生成，需估算内容费用以确认是否在 20 元预算内。",
+        "plan_ref": "campaign-v1",
+        "remaining_steps": [
+          "save_plan"
+        ]
+      },
+      "depends_on": [
+        "call_00_DM737tgK8b1Hv8RzwBjD9296"
+      ],
+      "fee": "1.00",
+      "duration_seconds": 60
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:27",
+      "sequence": 27,
+      "timestamp": "2026-10-28T12:55:02.869245+00:00",
+      "round": 4,
+      "kind": "tool_result",
+      "call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+      "tool_name": "estimate_cost",
+      "status": "succeeded",
+      "data": {
+        "estimate_id": "estimate-4",
+        "plan_ref": "campaign-v1",
+        "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+        "pricing_version": "pricing-v1",
+        "breakdown": [
+          {
+            "kind": "material",
+            "id": "basic-spring",
+            "amount": "0.00"
+          },
+          {
+            "kind": "production",
+            "video": 1,
+            "amount": "1.00"
+          },
+          {
+            "kind": "production",
+            "video": 2,
+            "amount": "1.00"
+          },
+          {
+            "kind": "publishing",
+            "amount": "0.00"
+          }
+        ],
+        "plan_cost": "2.00",
+        "tool_cost_at_estimate": "6.00",
+        "total_at_estimate": "8.00",
+        "within_budget": true,
+        "budget_gap": "0.00",
+        "source_call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+      },
+      "error": null,
+      "fee": "1.00",
+      "duration_seconds": 60,
+      "cumulative_tool_cost": "6.00",
+      "simulated_now": "2030-01-01T10:13:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:28",
+      "sequence": 28,
+      "timestamp": "2026-10-28T12:55:02.874046+00:00",
+      "round": 5,
+      "kind": "decision_context",
+      "context": {
+        "input": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "budget": "20.00",
+          "deadline": "2030-01-01T10:30:00+08:00"
+        },
+        "tool_cost": "6.00",
+        "pricing": {
+          "version": "pricing-v1",
+          "materials": {
+            "basic-spring": "0.00",
+            "premium-spring": "3.00"
+          },
+          "production": {
+            "economy": "1.00",
+            "standard": "2.00",
+            "premium": "5.00"
+          },
+          "publishing": "0.00"
+        },
+        "tool_rules": {
+          "version": "tools-v1",
+          "search_materials": {
+            "fee": "1.00",
+            "duration_seconds": 120
+          },
+          "generate_script": {
+            "fee": "2.00",
+            "duration_seconds": 300
+          },
+          "estimate_cost": {
+            "fee": "1.00",
+            "duration_seconds": 60
+          },
+          "save_plan": {
+            "fee": "0.00",
+            "duration_seconds": 60
+          }
+        },
+        "retrieved_materials": {
+          "basic-spring": {
+            "asset_id": "basic-spring",
+            "title": "春季新品基础生活场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "生活",
+              "咖啡",
+              "运动"
+            ],
+            "type": "video",
+            "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+            "facts": [
+              "素材为合成测试数据",
+              "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          },
+          "premium-spring": {
+            "asset_id": "premium-spring",
+            "title": "春季新品高级摄影场景",
+            "tags": [
+              "春季",
+              "新品",
+              "推广",
+              "通用",
+              "咖啡",
+              "运动",
+              "高级"
+            ],
+            "type": "video",
+            "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+            "facts": [
+              "素材为合成测试数据",
+              "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+            ],
+            "license": "synthetic-demo-only",
+            "available": true,
+            "source_call_id": "call_00_exYWwXHTlxDE1YjrhJfa6917"
+          }
+        },
+        "searched": true,
+        "current_plan": {
+          "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+          "audience": "关注春季新品与日常通勤生活方式的年轻消费者",
+          "channel": "短视频平台（抖音/快手）",
+          "items": [
+            {
+              "title": "清晨咖啡时刻，春季新品外观随拍",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "清晨的第一杯咖啡，桌面上多了一件新东西。",
+              "body": "自然光落在桌面上，春季新品静静放在咖啡杯旁边。镜头从侧面慢慢推近，带出新品的外观轮廓和简洁线条，没有复杂布光，就是居家日常的样子。拿起来、放下、再摆回桌面，日常使用场景里看清新品的外观细节。",
+              "cta": "关注我们，看更多春季新品在日常里的样子。",
+              "shots": [
+                "自然光下桌面全景：咖啡杯与新品同框",
+                "侧面缓慢推近，展示新品外观轮廓",
+                "手部拿起新品的日常动作特写",
+                "放回桌面后俯拍外观整体"
+              ]
+            },
+            {
+              "title": "户外出行日常，春季新品外观细节",
+              "asset_ids": [
+                "basic-spring"
+              ],
+              "production_tier": "economy",
+              "hook": "出门运动前，顺手带上春季新品。",
+              "body": "户外自然光下，春季新品出现在出行日常里。镜头跟着走动的手部动作，记录新品在户外光线下的外观表现，表面质感和边角细节都能看清。休息时放在一旁，再拍一组静态外观镜头，全程只展示外观与使用场景。",
+              "cta": "点赞收藏，春季新品外观细节一次看全。",
+              "shots": [
+                "户外自然光下出发前的准备镜头",
+                "跟拍手部携带新品走动",
+                "休息时静态摆放的外观特写",
+                "户外光线下表面质感细节镜头"
+              ]
+            }
+          ],
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "plan_id": "campaign",
+          "version": 1,
+          "plan_ref": "campaign-v1",
+          "source_call_id": "call_00_DM737tgK8b1Hv8RzwBjD9296"
+        },
+        "current_estimate": {
+          "estimate_id": "estimate-4",
+          "plan_ref": "campaign-v1",
+          "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+          "pricing_version": "pricing-v1",
+          "breakdown": [
+            {
+              "kind": "material",
+              "id": "basic-spring",
+              "amount": "0.00"
+            },
+            {
+              "kind": "production",
+              "video": 1,
+              "amount": "1.00"
+            },
+            {
+              "kind": "production",
+              "video": 2,
+              "amount": "1.00"
+            },
+            {
+              "kind": "publishing",
+              "amount": "0.00"
+            }
+          ],
+          "plan_cost": "2.00",
+          "tool_cost_at_estimate": "6.00",
+          "total_at_estimate": "8.00",
+          "within_budget": true,
+          "budget_gap": "0.00",
+          "source_call_id": "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+        },
+        "plans_count": 1,
+        "known_plan_refs": [
+          "campaign-v1"
+        ],
+        "simulated_now": "2030-01-01T10:13:00+08:00",
+        "remaining_seconds": 1020.0,
+        "minimum_remaining_seconds": 60,
+        "minimum_remaining_tool_cost": "0.00",
+        "minimum_total_cost": "7.00",
+        "remaining_decisions": 7,
+        "remaining_tool_calls": 8
+      }
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:29",
+      "sequence": 29,
+      "timestamp": "2026-10-28T12:55:02.878878+00:00",
+      "round": 5,
+      "kind": "model_request",
+      "role": "planner",
+      "prompt_version": "planner-v1",
+      "prompt_hash": "2a80e56f0cab86e1326635130513ded8e83b94d9d1c91e4c192e00860039c03b",
+      "model": "deepseek-flash",
+      "sdk_version": "3.40.0"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:30",
+      "sequence": 30,
+      "timestamp": "2026-10-28T12:55:04.233558+00:00",
+      "round": 5,
+      "kind": "model_response",
+      "role": "planner",
+      "model": "deepseek-flash",
+      "request_id": null,
+      "usage": {
+        "completion_tokens": 149,
+        "prompt_tokens": 8344,
+        "total_tokens": 8493,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 6528,
+          "image_tokens": null,
+          "text_tokens": null
+        },
+        "prompt_cache_hit_tokens": 6528,
+        "prompt_cache_miss_tokens": 1816
+      },
+      "finish_reason": "tool_calls"
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:31",
+      "sequence": 31,
+      "timestamp": "2026-10-28T12:55:04.237379+00:00",
+      "round": 5,
+      "kind": "model_decision",
+      "content": "估算总费用 8.00 元，在 20 元预算内，时间充裕，立即保存。",
+      "tool_calls": [
+        {
+          "id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+          "type": "function",
+          "function": {
+            "name": "save_plan",
+            "arguments": "{\"decision_note\": \"估算 estimate-4 显示总费用 8.00 元在预算内，且距截止时间充足，保存 campaign-v1 交付。\", \"estimate_id\": \"estimate-4\", \"plan_ref\": \"campaign-v1\", \"remaining_steps\": []}"
+          }
+        }
+      ]
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:32",
+      "sequence": 32,
+      "timestamp": "2026-10-28T12:55:04.240335+00:00",
+      "round": 5,
+      "kind": "tool_started",
+      "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+      "tool_name": "save_plan",
+      "arguments": {
+        "decision_note": "估算 estimate-4 显示总费用 8.00 元在预算内，且距截止时间充足，保存 campaign-v1 交付。",
+        "estimate_id": "estimate-4",
+        "plan_ref": "campaign-v1",
+        "remaining_steps": []
+      },
+      "depends_on": [
+        "call_00_DM737tgK8b1Hv8RzwBjD9296",
+        "call_00_nrWbpiWvSuE0XNV99Ebc0247"
+      ],
+      "fee": "0.00",
+      "duration_seconds": 60
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:33",
+      "sequence": 33,
+      "timestamp": "2026-10-28T12:55:04.243882+00:00",
+      "round": 5,
+      "kind": "tool_result",
+      "call_id": "call_00_uf1Tid75ov7NDBrPn3pO3289",
+      "tool_name": "save_plan",
+      "status": "succeeded",
+      "data": {
+        "saved_plan_id": "saved-cb5d12c286c14b7f800372f1a290622c",
+        "path": "saved/saved-cb5d12c286c14b7f800372f1a290622c.json",
+        "content_hash": "6e4de859d93bfff3e0ccf008da52ea4c0cd9d3e55ccad01e3a9038f230cfae66",
+        "plan_ref": "campaign-v1",
+        "estimate_id": "estimate-4",
+        "tool_cost": "6.00",
+        "plan_cost": "2.00",
+        "total_cost": "8.00",
+        "simulated_saved_at": "2030-01-01T10:14:00+08:00"
+      },
+      "error": null,
+      "fee": "0.00",
+      "duration_seconds": 60,
+      "cumulative_tool_cost": "6.00",
+      "simulated_now": "2030-01-01T10:14:00+08:00",
+      "requires_replan": false
+    },
+    {
+      "event_id": "cb5d12c286c14b7f800372f1a290622c:34",
+      "sequence": 34,
+      "timestamp": "2026-10-28T12:55:04.245898+00:00",
+      "round": 5,
+      "kind": "task_finished",
+      "status": "succeeded",
+      "reason": "SAVED",
+      "summary": "方案已按约束保存"
+    }
+  ],
+  "seen_call_ids": [
+    "call_00_exYWwXHTlxDE1YjrhJfa6917",
+    "call_00_5K237z3UtTcWqGspgPE18150",
+    "call_00_DM737tgK8b1Hv8RzwBjD9296",
+    "call_00_nrWbpiWvSuE0XNV99Ebc0247",
+    "call_00_uf1Tid75ov7NDBrPn3pO3289"
+  ],
+  "scenario": {
+    "name": "default",
+    "fixed_start": "2030-01-01T10:00:00+08:00",
+    "empty_materials": false,
+    "failures": {
+      "generate_script": [
+        1
+      ]
+    }
+  },
+  "config": {
+    "deepseek_base_url": "https://api.deepseek.com",
+    "deepseek_model": "deepseek-flash",
+    "model_timeout_seconds": 60.0,
+    "max_concurrent_tasks": 3,
+    "max_concurrent_model_requests": 3,
+    "output_dir": ".runs/evidence-real-20261028T125431Z",
+    "data_dir": "/Users/nono/Documents/ai‑agent‑notes/03_Agent开发/小影科技/data"
+  },
+  "data_snapshot": {
+    "materials": [
+      {
+        "asset_id": "basic-spring",
+        "title": "春季新品基础生活场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "生活",
+          "咖啡",
+          "运动"
+        ],
+        "type": "video",
+        "description": "合成素材描述：自然光、桌面产品展示与日常使用镜头，可剪辑为简短视频。",
+        "facts": [
+          "素材为合成测试数据",
+          "可表现产品外观及使用场景，不提供真实产品功效或优惠信息"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      },
+      {
+        "asset_id": "premium-spring",
+        "title": "春季新品高级摄影场景",
+        "tags": [
+          "春季",
+          "新品",
+          "推广",
+          "通用",
+          "咖啡",
+          "运动",
+          "高级"
+        ],
+        "type": "video",
+        "description": "合成素材描述：棚拍、产品特写和多机位展示镜头，适合高级制作规格。",
+        "facts": [
+          "素材为合成测试数据",
+          "可以描述光影及镜头表现，不代表产品具有未经提供的功效"
+        ],
+        "license": "synthetic-demo-only",
+        "available": true
+      }
+    ],
+    "pricing": {
+      "version": "pricing-v1",
+      "materials": {
+        "basic-spring": "0.00",
+        "premium-spring": "3.00"
+      },
+      "production": {
+        "economy": "1.00",
+        "standard": "2.00",
+        "premium": "5.00"
+      },
+      "publishing": "0.00"
+    },
+    "tools": {
+      "version": "tools-v1",
+      "search_materials": {
+        "fee": "1.00",
+        "duration_seconds": 120
+      },
+      "generate_script": {
+        "fee": "2.00",
+        "duration_seconds": 300
+      },
+      "estimate_cost": {
+        "fee": "1.00",
+        "duration_seconds": 60
+      },
+      "save_plan": {
+        "fee": "0.00",
+        "duration_seconds": 60
+      }
+    }
+  },
+  "summary": "方案已按约束保存"
+}

@@ -1,0 +1,150 @@
+{
+  "mode": "mock",
+  "session": "20261028T125807Z",
+  "cases": [
+    {
+      "case": "normal",
+      "passed": true,
+      "status": "succeeded",
+      "reason": "SAVED",
+      "costs": {
+        "tool_cost": "4.00",
+        "plan_cost": "1.00",
+        "total_cost": "5.00",
+        "remaining_budget_after_tools": "16.00",
+        "budget_gap": "0.00"
+      },
+      "decision_rounds": 4,
+      "tool_calls": 4,
+      "evidence": "normal"
+    },
+    {
+      "case": "overbudget",
+      "passed": true,
+      "status": "succeeded",
+      "reason": "SAVED",
+      "costs": {
+        "tool_cost": "7.00",
+        "plan_cost": "1.00",
+        "total_cost": "8.00",
+        "remaining_budget_after_tools": "3.00",
+        "budget_gap": "0.00"
+      },
+      "decision_rounds": 6,
+      "tool_calls": 6,
+      "evidence": "overbudget"
+    },
+    {
+      "case": "tool-failure",
+      "passed": true,
+      "status": "succeeded",
+      "reason": "SAVED",
+      "costs": {
+        "tool_cost": "6.00",
+        "plan_cost": "1.00",
+        "total_cost": "7.00",
+        "remaining_budget_after_tools": "14.00",
+        "budget_gap": "0.00"
+      },
+      "decision_rounds": 5,
+      "tool_calls": 5,
+      "evidence": "tool-failure"
+    },
+    {
+      "case": "missing-budget",
+      "passed": true,
+      "status": "needs_input",
+      "reason": "INPUT_REQUIRED",
+      "costs": {
+        "tool_cost": "0.00",
+        "plan_cost": null,
+        "total_cost": null,
+        "remaining_budget_after_tools": null,
+        "budget_gap": null
+      },
+      "decision_rounds": 0,
+      "tool_calls": 0,
+      "evidence": "missing-budget"
+    },
+    {
+      "case": "missing-deadline",
+      "passed": true,
+      "status": "needs_input",
+      "reason": "INPUT_REQUIRED",
+      "costs": {
+        "tool_cost": "0.00",
+        "plan_cost": null,
+        "total_cost": null,
+        "remaining_budget_after_tools": "20.00",
+        "budget_gap": null
+      },
+      "decision_rounds": 0,
+      "tool_calls": 0,
+      "evidence": "missing-deadline"
+    },
+    {
+      "case": "budget-infeasible",
+      "passed": true,
+      "status": "incomplete",
+      "reason": "BUDGET_INFEASIBLE",
+      "costs": {
+        "tool_cost": "0.00",
+        "plan_cost": null,
+        "total_cost": null,
+        "remaining_budget_after_tools": "3.00",
+        "budget_gap": null
+      },
+      "decision_rounds": 1,
+      "tool_calls": 0,
+      "evidence": "budget-infeasible"
+    },
+    {
+      "case": "time-infeasible",
+      "passed": true,
+      "status": "incomplete",
+      "reason": "DEADLINE_INFEASIBLE",
+      "costs": {
+        "tool_cost": "0.00",
+        "plan_cost": null,
+        "total_cost": null,
+        "remaining_budget_after_tools": "20.00",
+        "budget_gap": null
+      },
+      "decision_rounds": 1,
+      "tool_calls": 0,
+      "evidence": "time-infeasible"
+    },
+    {
+      "case": "no-materials",
+      "passed": true,
+      "status": "incomplete",
+      "reason": "MATERIALS_INSUFFICIENT",
+      "costs": {
+        "tool_cost": "1.00",
+        "plan_cost": null,
+        "total_cost": null,
+        "remaining_budget_after_tools": "19.00",
+        "budget_gap": null
+      },
+      "decision_rounds": 2,
+      "tool_calls": 1,
+      "evidence": "no-materials"
+    },
+    {
+      "case": "repeat",
+      "passed": true,
+      "status": "succeeded",
+      "reason": "SAVED",
+      "costs": {
+        "tool_cost": "4.00",
+        "plan_cost": "1.00",
+        "total_cost": "5.00",
+        "remaining_budget_after_tools": "16.00",
+        "budget_gap": "0.00"
+      },
+      "decision_rounds": 4,
+      "tool_calls": 4,
+      "evidence": "repeat"
+    }
+  ]
+}

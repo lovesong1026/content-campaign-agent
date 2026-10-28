@@ -1,0 +1,90 @@
+{
+  "saved_plan_id": "saved-5cc868852f234ff29a786996e7831f40",
+  "path": "saved/saved-5cc868852f234ff29a786996e7831f40.json",
+  "content_hash": "b4b7404a76197d8037645f4424bfc84a2837e7d18b209e4ea9cf284e30cc0b8d",
+  "plan_ref": "campaign-v1",
+  "estimate_id": "estimate-3",
+  "tool_cost": "4.00",
+  "plan_cost": "2.00",
+  "total_cost": "6.00",
+  "simulated_saved_at": "2030-01-01T10:09:00+08:00",
+  "plan": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "audience": "关注春季新品与日常生活的年轻消费者",
+    "channel": "短视频平台",
+    "items": [
+      {
+        "title": "春日自然光下的新品初见",
+        "asset_ids": [
+          "basic-spring"
+        ],
+        "production_tier": "economy",
+        "hook": "推窗见春光，桌面上多了一件春季新品。",
+        "body": "用自然光记录早晨的日常：拉开窗帘，把新品轻轻放到桌面，镜头顺着光线展示外观轮廓和颜色。随后是简单的桌面使用画面，让新品自然融入看书、整理桌面的生活片刻，感受春季氛围。",
+        "cta": "关注春季新品，在评论区说说你的春日桌面。",
+        "shots": [
+          "自然光窗边开场，桌面空景",
+          "手将新品放到桌面，光线扫过外观",
+          "俯拍新品与桌面日常物品同框",
+          "侧面镜头展示外观轮廓",
+          "回到生活视角的桌面使用画面"
+        ]
+      },
+      {
+        "title": "咖啡与运动之间的春季新品",
+        "asset_ids": [
+          "basic-spring"
+        ],
+        "production_tier": "economy",
+        "hook": "一杯咖啡，一次运动，春季新品跟着日常走。",
+        "body": "先用咖啡场景串联：桌边放下杯子，新品出现在画面中，镜头带到外观细节。切到运动前的准备片段，新品在日常使用镜头里自然出现，节奏简洁，呈现春季生活片段与新品外观。",
+        "cta": "收藏这条春日日常，持续关注春季新品。",
+        "shots": [
+          "咖啡杯与新品同框的桌面镜头",
+          "新品外观细节的近景",
+          "切换运动准备场景，新品入画",
+          "日常使用镜头自然带过新品",
+          "收尾回到春季日常画面"
+        ]
+      }
+    ],
+    "content_hash": "b4b7404a76197d8037645f4424bfc84a2837e7d18b209e4ea9cf284e30cc0b8d",
+    "plan_id": "campaign",
+    "version": 1,
+    "plan_ref": "campaign-v1",
+    "source_call_id": "call_00_pZOLxIgo1dN33AIE4o817499"
+  },
+  "estimate": {
+    "estimate_id": "estimate-3",
+    "plan_ref": "campaign-v1",
+    "content_hash": "b4b7404a76197d8037645f4424bfc84a2837e7d18b209e4ea9cf284e30cc0b8d",
+    "pricing_version": "pricing-v1",
+    "breakdown": [
+      {
+        "kind": "material",
+        "id": "basic-spring",
+        "amount": "0.00"
+      },
+      {
+        "kind": "production",
+        "video": 1,
+        "amount": "1.00"
+      },
+      {
+        "kind": "production",
+        "video": 2,
+        "amount": "1.00"
+      },
+      {
+        "kind": "publishing",
+        "amount": "0.00"
+      }
+    ],
+    "plan_cost": "2.00",
+    "tool_cost_at_estimate": "4.00",
+    "total_at_estimate": "6.00",
+    "within_budget": true,
+    "budget_gap": "0.00",
+    "source_call_id": "call_00_kHTC9rV15p5eHlZpxYQz6178"
+  }
+}

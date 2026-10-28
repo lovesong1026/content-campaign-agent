@@ -1,0 +1,55 @@
+{
+  "task_id": "demo-budget-infeasible",
+  "run_id": "a9a2605e6ff545b0a3eae86e45915637",
+  "mode": "mock",
+  "status": "incomplete",
+  "phase": "finished",
+  "reason": "BUDGET_INFEASIBLE",
+  "summary": "预算不足",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "3.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_errors": {},
+  "decision_rounds": 1,
+  "tool_calls": 0,
+  "costs": {
+    "tool_cost": "0.00",
+    "plan_cost": null,
+    "total_cost": null,
+    "remaining_budget_after_tools": "3.00",
+    "budget_gap": null
+  },
+  "gaps": {
+    "minimum_remaining_tool_cost": "4.00",
+    "tool_budget_lower_bound_gap": "1.00",
+    "minimum_time_gap_seconds": 0
+  },
+  "ledger": [],
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "elapsed_seconds": 0,
+  "simulated_now": "2030-01-01T10:00:00+08:00",
+  "steps": [],
+  "pending_plan": [
+    {
+      "tool_name": "search_materials",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "generate_script",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "estimate_cost",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "save_plan",
+      "status": "skipped"
+    }
+  ],
+  "saved": null,
+  "task_directory": ".",
+  "trace_path": "trace.jsonl"
+}

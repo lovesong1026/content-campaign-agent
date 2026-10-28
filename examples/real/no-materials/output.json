@@ -1,0 +1,129 @@
+{
+  "task_id": "demo-no-materials",
+  "run_id": "b16262831c344c22b30917903c12721d",
+  "mode": "real",
+  "status": "incomplete",
+  "phase": "finished",
+  "reason": "MATERIALS_INSUFFICIENT",
+  "summary": "两次检索（“春季新品 日常生活场景 外观展示”“春季 生活场景 产品外观”）均返回空素材列表，无可用 asset_id，无法按规则生成1—3条视频方案；为避免编造素材即停止，已花费工具费2.00。",
+  "input": {
+    "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+    "budget": "20.00",
+    "deadline": "2030-01-01T10:30:00+08:00"
+  },
+  "input_errors": {},
+  "decision_rounds": 3,
+  "tool_calls": 2,
+  "costs": {
+    "tool_cost": "2.00",
+    "plan_cost": null,
+    "total_cost": null,
+    "remaining_budget_after_tools": "18.00",
+    "budget_gap": null
+  },
+  "gaps": {
+    "minimum_remaining_tool_cost": "4.00",
+    "tool_budget_lower_bound_gap": "0.00",
+    "minimum_time_gap_seconds": 0
+  },
+  "ledger": [
+    {
+      "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    },
+    {
+      "call_id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+      "tool_name": "search_materials",
+      "fee": "1.00",
+      "duration_seconds": 120,
+      "outcome": "succeeded"
+    }
+  ],
+  "started_at": "2030-01-01T10:00:00+08:00",
+  "elapsed_seconds": 240,
+  "simulated_now": "2030-01-01T10:04:00+08:00",
+  "steps": [
+    {
+      "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "需先获取可用素材才能生成方案，检索春季新品日常生活场景素材。",
+        "query": "春季新品 日常生活场景 外观展示",
+        "material_type": "all",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_SRxF01C74KnsbMIcR8rK3817",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-1",
+          "materials": []
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "1.00",
+        "simulated_now": "2030-01-01T10:02:00+08:00",
+        "requires_replan": true
+      }
+    },
+    {
+      "call_id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+      "tool_name": "search_materials",
+      "arguments": {
+        "decision_note": "首轮检索为空，换更宽泛的“春季 生活 外观”关键词再检索一次，避免重复已有查询。",
+        "material_type": "all",
+        "query": "春季 生活场景 产品外观",
+        "remaining_steps": [
+          "generate_script",
+          "estimate_cost",
+          "save_plan"
+        ]
+      },
+      "depends_on": [],
+      "status": "succeeded",
+      "observation": {
+        "call_id": "call_00_b2FghGi93Zj3hTmXKgo10679",
+        "tool_name": "search_materials",
+        "status": "succeeded",
+        "data": {
+          "search_result_id": "search-2",
+          "materials": []
+        },
+        "error": null,
+        "fee": "1.00",
+        "duration_seconds": 120,
+        "cumulative_tool_cost": "2.00",
+        "simulated_now": "2030-01-01T10:04:00+08:00",
+        "requires_replan": true
+      }
+    }
+  ],
+  "pending_plan": [
+    {
+      "tool_name": "generate_script",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "estimate_cost",
+      "status": "skipped"
+    },
+    {
+      "tool_name": "save_plan",
+      "status": "skipped"
+    }
+  ],
+  "saved": null,
+  "task_directory": ".",
+  "trace_path": "trace.jsonl"
+}

@@ -1,0 +1,16 @@
+{
+  "call_id": "mock-d4e8a8bc7e3147b9ab3daab19f5a6ab7",
+  "tool_name": "generate_script",
+  "status": "failed",
+  "data": null,
+  "error": {
+    "code": "INJECTED_TOOL_FAILURE",
+    "message": "场景注入的一次性工具失败",
+    "retryable": true
+  },
+  "fee": "2.00",
+  "duration_seconds": 300,
+  "cumulative_tool_cost": "3.00",
+  "simulated_now": "2030-01-01T10:07:00+08:00",
+  "requires_replan": true
+}

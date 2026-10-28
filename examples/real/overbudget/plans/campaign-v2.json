@@ -1,0 +1,28 @@
+{
+  "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+  "audience": "关注春季新品与品质生活的年轻消费者",
+  "channel": "短视频平台",
+  "items": [
+    {
+      "title": "把春天带进日常",
+      "asset_ids": [
+        "basic-spring"
+      ],
+      "production_tier": "economy",
+      "hook": "春天到了，日常也换种打开方式。",
+      "body": "自然光落在桌面，产品安静地融入生活。打开、使用、随手放回，都是这个春天最自然的画面。无需复杂布置，简洁的展示和真实的使用场景，就足够让新品贴近日常。",
+      "cta": "关注我们，一起看看春季新品的日常打开方式。",
+      "shots": [
+        "自然光下的桌面全景，产品摆放在画面中央",
+        "手部入镜，轻触产品完成日常操作",
+        "产品使用中的近景，背景保持简洁",
+        "生活场景收尾，产品自然融入桌面环境"
+      ]
+    }
+  ],
+  "content_hash": "98fa67d265d4bdd0dd89d63c3f72f5166be81cc784fd09855d26f5eff2e2d6d5",
+  "plan_id": "campaign",
+  "version": 2,
+  "plan_ref": "campaign-v2",
+  "source_call_id": "call_00_c4UnILK9rWAPiKWcJnQs1893"
+}
