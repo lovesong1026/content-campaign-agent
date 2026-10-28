@@ -129,7 +129,16 @@ async def run(mode, destination):
                     len(state["events"]),
                 )
             else:
-                passed = result["status"] == "incomplete" and result["saved"] is None
+                expected_reason = {
+                    "budget-infeasible": "BUDGET_INFEASIBLE",
+                    "time-infeasible": "DEADLINE_INFEASIBLE",
+                    "no-materials": "MATERIALS_INSUFFICIENT",
+                }[name]
+                passed = (
+                    result["status"] == "incomplete"
+                    and result["saved"] is None
+                    and result["reason"] == expected_reason
+                )
             row = {
                 "case": name,
                 "passed": bool(passed),
