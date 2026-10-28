@@ -20,6 +20,15 @@ class Settings(BaseSettings):
     max_concurrent_model_requests: int = Field(default=3, ge=1, le=32)
     output_dir: Path = Path(".runs")
     data_dir: Path = Field(default_factory=default_data_dir)
+    langfuse_enabled: bool = True
+    langfuse_public_key: SecretStr = SecretStr("")
+    langfuse_secret_key: SecretStr = SecretStr("")
+    langfuse_base_url: str = "https://cloud.langfuse.com"
+    langfuse_environment: str = "development"
+    langfuse_project_id: str = ""
 
     def public_snapshot(self):
-        return self.model_dump(mode="json", exclude={"deepseek_api_key"})
+        return self.model_dump(
+            mode="json",
+            exclude={"deepseek_api_key", "langfuse_public_key", "langfuse_secret_key"},
+        )

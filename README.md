@@ -2,7 +2,7 @@
 
 基于 DeepSeek Flash 的异步单 Agent，根据主题、预算和方案交付截止时间检索素材、生成短视频脚本、估算成本并保存方案。模型观察真实工具结果并调整动作，程序维护费用、时间、状态及执行上限。
 
-已实现 CLI、四工具、真实模型与离线 Mock、持久化、幂等、批量限流并发及 Trace。当前验证：37 项测试通过，真实模型 9 组场景和 Mock 9 组场景通过各自检查。证据及限制见 [评估报告](docs/03-evaluation.md)。
+已实现 CLI、四工具、真实模型与离线 Mock、持久化、幂等、批量限流并发、本地 Trace 及可选 Langfuse 追踪。当前验证：84 项测试通过；原有真实模型 9 组、Mock 9 组及新增离线模拟 33 组场景通过各自检查。Langfuse 的 Mock 与真实 DeepSeek Trace 均已发送并读回核查，证据及限制见 [评估报告](docs/03-evaluation.md)。
 
 ## 安装
 
@@ -26,7 +26,9 @@ DEEPSEEK_BASE_URL=https://api.deepseek.com
 DEEPSEEK_MODEL=deepseek-flash
 ```
 
-`.env` 已由 Git 忽略。Mock 无需密钥且不访问网络。精确依赖见 `uv.lock`；本次使用 Python 3.12.13、OpenAI SDK 3.40.0、Pydantic 2.14.1。
+`.env` 已由 Git 忽略。Mock 无需 DeepSeek 密钥；关闭 Langfuse 时不访问网络。精确依赖见 `uv.lock`；本次使用 Python 3.12.13、OpenAI SDK 3.40.0、Pydantic 2.14.1。
+
+可选的 Langfuse 5.0.4 接入已完成：填写 `.env` 中的 `LANGFUSE_PUBLIC_KEY`、`LANGFUSE_SECRET_KEY`、`LANGFUSE_BASE_URL` 后，普通 CLI 执行会上传追踪。Mock 启用遥测后也会上报工具链；需要完全离线时设置 `LANGFUSE_ENABLED=false`。配置和云端自检见 [Langfuse 指南](docs/06-langfuse.md)。
 
 ## 运行
 
@@ -85,12 +87,16 @@ uv build
 ```bash
 uv run python scripts/run_examples.py --mode mock
 uv run python scripts/run_examples.py --mode real
+uv run python scripts/run_synthetic.py
 ```
 
 - [真实运行汇总](examples/real/report.json)：9 组场景，覆盖五类必验场景及额外边界。
 - [超预算 Trace](examples/real/overbudget/trace.jsonl)：估算 12 → 调整后估算 8 → 额外估算后最终 9，全部如实计费。
 - [工具失败 Trace](examples/real/tool-failure/trace.jsonl)：模型观察故障后选择重试并保存。
 - [Mock 汇总](examples/mock/report.json)：只证明受控工程流程，不能证明真实模型决策能力。
+- [扩展模拟数据集](examples/synthetic/README.md)：33 组边界、输入校验、故障和重规划用例，附预期结果及离线复跑命令。
+- [Langfuse 云端核查](examples/langfuse/report.json)：Mock 5 个节点、真实 DeepSeek 10 个节点，包含完整 generation 计数、父子关系及 Token 验证。
+- [Langfuse 接入后的全量测试](examples/langfuse-test-results.xml)：84 项通过；原有 JUnit 文件保留首版记录。
 - [测试结果](examples/test-results.xml)：依赖、费用、版本、保存、时间、上限、幂等及并发隔离。
 
 ## 评审入口
@@ -103,6 +109,7 @@ uv run python scripts/run_examples.py --mode real
 | [评估](docs/03-evaluation.md) | 实际结果、证据及限制 |
 | [AI 使用](docs/04-ai-usage.md) | AI 辅助范围、已知个人贡献及验证 |
 | [复盘](docs/05-retrospective.md) | 实际发现、投入与后续工作 |
+| [Langfuse](docs/06-langfuse.md) | 配置、Trace 结构、脱敏及云端核查 |
 
 本次平台为 macOS；Linux 尚未独立实测，Windows 的文件锁实现不支持。不提供失败步骤续跑和跨进程共享写入。真实模型输出具有变动性，单次通过不代表未来所有输入都能成功。
 

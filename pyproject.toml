@@ -3,7 +3,12 @@ name = "content-campaign-agent"
 version = "0.1.0"
 description = "Budget-aware asynchronous content planning agent with DeepSeek"
 requires-python = ">=3.12"
-dependencies = ["openai>=1.80", "pydantic>=2.10,<3", "pydantic-settings>=2.8,<3"]
+dependencies = [
+    "langfuse>=5.0.4,<6",
+    "openai>=1.80",
+    "pydantic>=2.10,<3",
+    "pydantic-settings>=2.8,<3",
+]
 
 [project.scripts]
 campaign-agent = "content_campaign_agent.cli:main"

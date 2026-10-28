@@ -10,18 +10,20 @@ from .executor import Executor
 from .prompts import PLANNER_PROMPT
 from .schemas import ModelError, Scenario, dumps, fingerprint, money, parse_time, validate_input
 from .storage import Storage
+from .telemetry import Telemetry, task_output
 from .tools import BusinessTools
 from .trace import event
 
 
 class Agent:
-    def __init__(self, settings, model, scenario=None):
+    def __init__(self, settings, model, scenario=None, telemetry=None):
         self.settings = settings
         self.model = model
         self.scenario = scenario or Scenario()
         self.storage = Storage(settings.output_dir)
         self.tools = BusinessTools(settings.data_dir, model, self.storage)
-        self.executor = Executor(self.tools, self.storage)
+        self.telemetry = telemetry or getattr(model, "telemetry", None) or Telemetry(settings)
+        self.executor = Executor(self.tools, self.storage, self.telemetry)
         self.semaphore = asyncio.Semaphore(settings.max_concurrent_tasks)
         self.locks = {}
         self.states = {}
@@ -132,6 +134,7 @@ class Agent:
             "saved": state["saved"],
             "task_directory": str(self.storage.directory(state["task_id"])),
             "trace_path": str(self.storage.directory(state["task_id"]) / "trace.jsonl"),
+            "telemetry": state.get("telemetry", {"status": "not_recorded"}),
             **extra,
         }
 
@@ -204,7 +207,22 @@ class Agent:
             self.states[task_id] = state
             event(state, "task_created", mode=state["mode"], input=normalized, input_errors=errors)
             await self.storage.save(state)
-        if errors:
+        state["telemetry"] = self.telemetry.reference(state["run_id"])
+        with self.telemetry.task(state) as observation:
+            try:
+                result = await self._execute_new_task(state)
+            except BaseException:
+                observation.update(output=task_output(self.result(state), state))
+                raise
+            observation.update(
+                output=task_output(result, state),
+                level="DEFAULT" if result["status"] == "succeeded" else "WARNING",
+                status_message=result["reason"],
+            )
+            return result
+
+    async def _execute_new_task(self, state):
+        if state["input_errors"]:
             for step in state["pending_plan"]:
                 step["status"] = "skipped"
             await self.storage.save(state)

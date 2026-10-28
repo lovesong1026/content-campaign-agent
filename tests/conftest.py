@@ -6,6 +6,12 @@ from content_campaign_agent.model import OfflineMockClient
 from content_campaign_agent.schemas import Scenario
 
 
+@pytest.fixture(autouse=True)
+def disable_live_telemetry(monkeypatch):
+    # Unit tests must never upload fixtures using a developer's shell credentials.
+    monkeypatch.setenv("LANGFUSE_ENABLED", "false")
+
+
 @pytest.fixture
 def make_agent(tmp_path):
     def make(model=None, scenario=None, **settings):

@@ -1,0 +1,89 @@
+{
+  "verified_at": "2026-10-28T13:37:13.456134+00:00",
+  "sdk_version": "5.0.4",
+  "verification": "Sent and read back via Langfuse CLI observations API; checked against official tracing best practices. UI not independently reviewed.",
+  "cases": [
+    {
+      "mode": "mock",
+      "trace_id": "fbdff5ba6c44473695705c6dcc2eead1",
+      "checks": {
+        "one_root": true,
+        "same_trace": true,
+        "root_input": true,
+        "root_output": true,
+        "four_tool_types": true,
+        "all_tool_observations": true,
+        "all_planner_generations": true,
+        "all_script_generations": true,
+        "tool_parents": true,
+        "planner_parents": true,
+        "script_parents": true,
+        "generations": true,
+        "model_and_usage": true,
+        "task_succeeded": true
+      },
+      "passed": true,
+      "trace_url": "https://jp.cloud.langfuse.com/project/cmtgrjba70008ad0fq7rajgmg/traces/fbdff5ba6c44473695705c6dcc2eead1",
+      "observation_count": 5,
+      "generation_count": 0,
+      "models": [],
+      "usage_totals": {
+        "input": 0,
+        "output": 0,
+        "total": 0
+      },
+      "simulated_costs": {
+        "tool_cost": "4.00",
+        "plan_cost": "1.00",
+        "total_cost": "5.00",
+        "remaining_budget_after_tools": "16.00",
+        "budget_gap": "0.00"
+      },
+      "simulated_elapsed_seconds": 540,
+      "decision_rounds": 4,
+      "tool_calls": 4
+    },
+    {
+      "mode": "real",
+      "trace_id": "2f7ae3d6369b4753b8779bfaab555f90",
+      "checks": {
+        "one_root": true,
+        "same_trace": true,
+        "root_input": true,
+        "root_output": true,
+        "four_tool_types": true,
+        "all_tool_observations": true,
+        "all_planner_generations": true,
+        "all_script_generations": true,
+        "tool_parents": true,
+        "planner_parents": true,
+        "script_parents": true,
+        "generations": true,
+        "model_and_usage": true,
+        "task_succeeded": true
+      },
+      "passed": true,
+      "trace_url": "https://jp.cloud.langfuse.com/project/cmtgrjba70008ad0fq7rajgmg/traces/2f7ae3d6369b4753b8779bfaab555f90",
+      "observation_count": 10,
+      "generation_count": 5,
+      "models": [
+        "deepseek-flash"
+      ],
+      "usage_totals": {
+        "input": 17547,
+        "output": 744,
+        "total": 18291
+      },
+      "simulated_costs": {
+        "tool_cost": "4.00",
+        "plan_cost": "1.00",
+        "total_cost": "5.00",
+        "remaining_budget_after_tools": "16.00",
+        "budget_gap": "0.00"
+      },
+      "simulated_elapsed_seconds": 540,
+      "decision_rounds": 4,
+      "tool_calls": 4
+    }
+  ]
+}

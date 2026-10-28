@@ -1,0 +1,1097 @@
+{
+  "version": 1,
+  "mode": "mock",
+  "cases": [
+    {
+      "id": "missing-all",
+      "input": {
+        "task_id": "synthetic-missing-all"
+      },
+      "expectedOutput": {
+        "status": "needs_input",
+        "reason": "INPUT_REQUIRED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null,
+        "input_error_fields": [
+          "theme",
+          "budget",
+          "deadline"
+        ]
+      },
+      "metadata": {
+        "category": "input-validation",
+        "description": "主题、预算、截止时间同时缺失",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "missing-all",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "blank-theme",
+      "input": {
+        "theme": " \t\n",
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-blank-theme"
+      },
+      "expectedOutput": {
+        "status": "needs_input",
+        "reason": "INPUT_REQUIRED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null,
+        "input_error_fields": [
+          "theme"
+        ]
+      },
+      "metadata": {
+        "category": "input-validation",
+        "description": "主题只有空白字符",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "blank-theme",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "negative-budget",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "-0.01",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-negative-budget"
+      },
+      "expectedOutput": {
+        "status": "needs_input",
+        "reason": "INPUT_REQUIRED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null,
+        "input_error_fields": [
+          "budget"
+        ]
+      },
+      "metadata": {
+        "category": "input-validation",
+        "description": "负预算",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "negative-budget",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "three-decimals",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "5.001",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-three-decimals"
+      },
+      "expectedOutput": {
+        "status": "needs_input",
+        "reason": "INPUT_REQUIRED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null,
+        "input_error_fields": [
+          "budget"
+        ]
+      },
+      "metadata": {
+        "category": "input-validation",
+        "description": "预算超过两位小数",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "three-decimals",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "boolean-budget",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": true,
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-boolean-budget"
+      },
+      "expectedOutput": {
+        "status": "needs_input",
+        "reason": "INPUT_REQUIRED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null,
+        "input_error_fields": [
+          "budget"
+        ]
+      },
+      "metadata": {
+        "category": "input-validation",
+        "description": "布尔值不能作为预算",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "boolean-budget",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "nan-budget",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "NaN",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-nan-budget"
+      },
+      "expectedOutput": {
+        "status": "needs_input",
+        "reason": "INPUT_REQUIRED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null,
+        "input_error_fields": [
+          "budget"
+        ]
+      },
+      "metadata": {
+        "category": "input-validation",
+        "description": "非有限金额字符串",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "nan-budget",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "invalid-date",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-02-30T10:30:00+08:00",
+        "task_id": "synthetic-invalid-date"
+      },
+      "expectedOutput": {
+        "status": "needs_input",
+        "reason": "INPUT_REQUIRED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null,
+        "input_error_fields": [
+          "deadline"
+        ]
+      },
+      "metadata": {
+        "category": "input-validation",
+        "description": "不存在的日期",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "invalid-date",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "missing-theme",
+      "input": {
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-missing-theme"
+      },
+      "expectedOutput": {
+        "status": "needs_input",
+        "reason": "INPUT_REQUIRED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null,
+        "input_error_fields": [
+          "theme"
+        ]
+      },
+      "metadata": {
+        "category": "input-validation",
+        "description": "仅缺主题",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "missing-theme",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "zero-budget",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "0",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-zero-budget"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "BUDGET_INFEASIBLE",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "budget-boundary",
+        "description": "不足以支付最经济完整流程",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "zero-budget",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "budget-one-cent-short",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "4.99",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-budget-one-cent-short"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "BUDGET_INFEASIBLE",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "budget-boundary",
+        "description": "不足以支付最经济完整流程",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "budget-one-cent-short",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "budget-exact",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "5.00",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-budget-exact"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 4,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 540,
+        "total_cost": "5.00"
+      },
+      "metadata": {
+        "category": "budget-boundary",
+        "description": "预算刚好覆盖总费用",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "budget-exact",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "budget-one-cent-spare",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "5.01",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-budget-one-cent-spare"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 4,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 540,
+        "total_cost": "5.00"
+      },
+      "metadata": {
+        "category": "budget-boundary",
+        "description": "总费用外剩余一分钱",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "budget-one-cent-spare",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "deadline-past",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T09:59:59+08:00",
+        "task_id": "synthetic-deadline-past"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "DEADLINE_EXCEEDED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "time-boundary",
+        "description": "截止时间下界",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "deadline-past",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "deadline-now",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:00:00+08:00",
+        "task_id": "synthetic-deadline-now"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "DEADLINE_EXCEEDED",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "time-boundary",
+        "description": "截止时间下界",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "deadline-now",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "deadline-one-second-short",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:08:59+08:00",
+        "task_id": "synthetic-deadline-one-second-short"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "DEADLINE_INFEASIBLE",
+        "tool_calls": 0,
+        "tool_cost": "0.00",
+        "elapsed_seconds": 0,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "time-boundary",
+        "description": "截止时间下界",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "deadline-one-second-short",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "deadline-exact",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "5.00",
+        "deadline": "2030-01-01T10:09:00+08:00",
+        "task_id": "synthetic-deadline-exact"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 4,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 540,
+        "total_cost": "5.00"
+      },
+      "metadata": {
+        "category": "time-boundary",
+        "description": "540秒完整流程恰好按时保存",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "deadline-exact",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "numeric-budget",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": 5,
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-numeric-budget"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 4,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 540,
+        "total_cost": "5.00"
+      },
+      "metadata": {
+        "category": "normalization",
+        "description": "JSON数值预算与字符串预算一致",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "numeric-budget",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "utc-deadline",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T02:09:00Z",
+        "task_id": "synthetic-utc-deadline"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 4,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 540,
+        "total_cost": "5.00"
+      },
+      "metadata": {
+        "category": "normalization",
+        "description": "UTC截止时间换算为北京时间",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "utc-deadline",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "naive-deadline",
+      "input": {
+        "theme": "  春季新品推广  ",
+        "budget": "20",
+        "deadline": "2030-01-01T10:09:00",
+        "task_id": "synthetic-naive-deadline"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 4,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 540,
+        "total_cost": "5.00"
+      },
+      "metadata": {
+        "category": "normalization",
+        "description": "无时区按北京时间处理",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "naive-deadline",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "retry-search-materials",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-retry-search-materials"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 5,
+        "tool_cost": "5.00",
+        "elapsed_seconds": 660,
+        "total_cost": "6.00"
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "search_materials第一次失败后成功；失败计费计时",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "retry-search-materials",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "search_materials": [
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "retry-generate-script",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-retry-generate-script"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 5,
+        "tool_cost": "6.00",
+        "elapsed_seconds": 840,
+        "total_cost": "7.00"
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "generate_script第一次失败后成功；失败计费计时",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "retry-generate-script",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "generate_script": [
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "retry-estimate-cost",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-retry-estimate-cost"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 5,
+        "tool_cost": "5.00",
+        "elapsed_seconds": 600,
+        "total_cost": "6.00"
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "estimate_cost第一次失败后成功；失败计费计时",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "retry-estimate-cost",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "estimate_cost": [
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "retry-save-plan",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-retry-save-plan"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 5,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 600,
+        "total_cost": "5.00"
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "save_plan第一次失败后成功；失败计费计时",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "retry-save-plan",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "save_plan": [
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "retry-script-twice",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-retry-script-twice"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 6,
+        "tool_cost": "8.00",
+        "elapsed_seconds": 1140,
+        "total_cost": "9.00"
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "脚本连续两次失败后成功",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "retry-script-twice",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "generate_script": [
+              1,
+              2
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "persistent-search-materials",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "100",
+        "deadline": "2030-01-01T12:00:00+08:00",
+        "task_id": "synthetic-persistent-search-materials"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "EXECUTION_LIMIT_REACHED",
+        "tool_calls": 12,
+        "tool_cost": "12.00",
+        "elapsed_seconds": 1440,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "search_materials持续失败，执行上限停止",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "persistent-search-materials",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "search_materials": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "persistent-generate-script",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "100",
+        "deadline": "2030-01-01T12:00:00+08:00",
+        "task_id": "synthetic-persistent-generate-script"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "EXECUTION_LIMIT_REACHED",
+        "tool_calls": 12,
+        "tool_cost": "23.00",
+        "elapsed_seconds": 3420,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "generate_script持续失败，执行上限停止",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "persistent-generate-script",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "generate_script": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "persistent-save-plan",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "100",
+        "deadline": "2030-01-01T12:00:00+08:00",
+        "task_id": "synthetic-persistent-save-plan"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "EXECUTION_LIMIT_REACHED",
+        "tool_calls": 12,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 1020,
+        "total_cost": "5.00"
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "save_plan持续失败，执行上限停止",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "persistent-save-plan",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "save_plan": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "four-tools-fail-once",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-four-tools-fail-once"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 8,
+        "tool_cost": "8.00",
+        "elapsed_seconds": 1080,
+        "total_cost": "9.00"
+      },
+      "metadata": {
+        "category": "tool-failure",
+        "description": "四类工具分别首次失败后恢复",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "four-tools-fail-once",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {
+            "search_materials": [
+              1
+            ],
+            "generate_script": [
+              1
+            ],
+            "estimate_cost": [
+              1
+            ],
+            "save_plan": [
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "premium-exact",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "12",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-premium-exact"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 4,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 540,
+        "total_cost": "12.00"
+      },
+      "metadata": {
+        "category": "replanning",
+        "description": "高规格方案恰好12元，无需重写",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "premium_first",
+        "scenario": {
+          "name": "premium-exact",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "replan-exact",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "8",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-replan-exact"
+      },
+      "expectedOutput": {
+        "status": "succeeded",
+        "reason": "SAVED",
+        "tool_calls": 6,
+        "tool_cost": "7.00",
+        "elapsed_seconds": 900,
+        "total_cost": "8.00"
+      },
+      "metadata": {
+        "category": "replanning",
+        "description": "超预算后降配，8元恰好可保存",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "premium_first",
+        "scenario": {
+          "name": "replan-exact",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "replan-one-cent-short",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "7.99",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-replan-one-cent-short"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "BUDGET_INFEASIBLE",
+        "tool_calls": 3,
+        "tool_cost": "4.00",
+        "elapsed_seconds": 480,
+        "total_cost": "12.00"
+      },
+      "metadata": {
+        "category": "replanning",
+        "description": "初稿超预算后，剩余预算不足以重写",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "premium_first",
+        "scenario": {
+          "name": "replan-one-cent-short",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "empty-materials",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "20",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-empty-materials"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "MATERIALS_INSUFFICIENT",
+        "tool_calls": 1,
+        "tool_cost": "1.00",
+        "elapsed_seconds": 120,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "materials",
+        "description": "检索为空时停止，不生成脚本",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "normal",
+        "scenario": {
+          "name": "empty-materials",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": true,
+          "failures": {}
+        }
+      }
+    },
+    {
+      "id": "decision-loop",
+      "input": {
+        "theme": "春季新品推广",
+        "budget": "100",
+        "deadline": "2030-01-01T10:30:00+08:00",
+        "task_id": "synthetic-decision-loop"
+      },
+      "expectedOutput": {
+        "status": "incomplete",
+        "reason": "EXECUTION_LIMIT_REACHED",
+        "tool_calls": 12,
+        "tool_cost": "12.00",
+        "elapsed_seconds": 1440,
+        "total_cost": null
+      },
+      "metadata": {
+        "category": "execution-limit",
+        "description": "循环检索在12轮/12次工具后停止",
+        "source": "AI-authored synthetic engineering fixture",
+        "human_reviewed": false,
+        "mock_policy": "loop",
+        "scenario": {
+          "name": "decision-loop",
+          "fixed_start": "2030-01-01T10:00:00+08:00",
+          "empty_materials": false,
+          "failures": {}
+        }
+      }
+    }
+  ]
+}

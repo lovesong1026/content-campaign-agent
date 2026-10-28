@@ -15,6 +15,7 @@ from .schemas import (
     dumps,
     fingerprint,
 )
+from .telemetry import Telemetry
 
 DESCRIPTIONS = {
     "search_materials": "检索本地可用合成素材。返回素材ID及事实；空列表说明素材不足。",
@@ -38,8 +39,9 @@ TOOLS = [
 class DeepSeekClient:
     mode = "real"
 
-    def __init__(self, settings):
+    def __init__(self, settings, telemetry=None):
         self.settings = settings
+        self.telemetry = telemetry or Telemetry(settings)
         self.semaphore = asyncio.Semaphore(settings.max_concurrent_model_requests)
         self.client = AsyncOpenAI(
             api_key=settings.deepseek_api_key.get_secret_value() or "not-configured",
@@ -49,53 +51,99 @@ class DeepSeekClient:
         )
 
     async def close(self):
-        await self.client.close()
+        try:
+            await self.client.close()
+        finally:
+            await self.telemetry.flush()
 
     async def request(self, role, messages, record, **kwargs):
-        version = PLANNER_VERSION if role == "planner" else SCRIPT_VERSION
         async with self.semaphore:
-            await record(
-                "model_request",
-                role=role,
-                prompt_version=version,
-                prompt_hash=fingerprint(messages[0]["content"]),
+            version = PLANNER_VERSION if role == "planner" else SCRIPT_VERSION
+            with self.telemetry.observation(
+                "decide-next-action" if role == "planner" else "write-video-scripts",
+                "generation",
                 model=self.settings.deepseek_model,
-                sdk_version=openai.__version__,
-            )
-            try:
-                async with asyncio.timeout(self.settings.model_timeout_seconds):
-                    response = await self.client.chat.completions.create(
-                        model=self.settings.deepseek_model,
-                        messages=messages,
-                        extra_body={"thinking": {"type": "disabled"}},
-                        **kwargs,
-                    )
-            except (TimeoutError, openai.APITimeoutError) as exc:
-                code = "MODEL_TIMEOUT"
-                await record("model_error", role=role, code=code)
-                raise ModelError(code, "模型请求超时，未自动重试") from exc
-            except openai.APIError as exc:
-                code = (
-                    f"MODEL_HTTP_{exc.status_code}"
-                    if hasattr(exc, "status_code")
-                    else "MODEL_NETWORK_ERROR"
+                input=messages,
+                version=version,
+                model_parameters={
+                    "max_tokens": kwargs.get("max_tokens"),
+                    "thinking": "disabled",
+                },
+                metadata={
+                    "role": role,
+                    "prompt_hash": fingerprint(messages[0]["content"]),
+                    "tools": kwargs.get("tools"),
+                    "response_format": kwargs.get("response_format"),
+                },
+            ) as observation:
+                return await self._request(role, messages, record, observation, **kwargs)
+
+    async def _request(self, role, messages, record, observation, **kwargs):
+        version = PLANNER_VERSION if role == "planner" else SCRIPT_VERSION
+        await record(
+            "model_request",
+            role=role,
+            prompt_version=version,
+            prompt_hash=fingerprint(messages[0]["content"]),
+            model=self.settings.deepseek_model,
+            sdk_version=openai.__version__,
+        )
+        try:
+            async with asyncio.timeout(self.settings.model_timeout_seconds):
+                response = await self.client.chat.completions.create(
+                    model=self.settings.deepseek_model,
+                    messages=messages,
+                    extra_body={"thinking": {"type": "disabled"}},
+                    **kwargs,
                 )
-                await record("model_error", role=role, code=code)
-                # Do not persist provider error bodies or authentication headers.
-                raise ModelError(code, "模型接口请求失败，详情仅记录状态代码") from exc
-            await record(
-                "model_response",
-                role=role,
-                model=response.model,
-                request_id=getattr(response, "_request_id", None),
-                usage=response.usage.model_dump() if response.usage else None,
-                finish_reason=response.choices[0].finish_reason if response.choices else None,
+        except (TimeoutError, openai.APITimeoutError) as exc:
+            code = "MODEL_TIMEOUT"
+            await record("model_error", role=role, code=code)
+            raise ModelError(code, "模型请求超时，未自动重试") from exc
+        except openai.APIError as exc:
+            code = (
+                f"MODEL_HTTP_{exc.status_code}"
+                if hasattr(exc, "status_code")
+                else "MODEL_NETWORK_ERROR"
             )
-            if not response.choices:
-                raise ModelError("MODEL_PROTOCOL_ERROR", "模型响应没有 choices")
-            if response.choices[0].finish_reason == "length":
-                raise ModelError("MODEL_OUTPUT_TRUNCATED", "模型输出被截断")
-            return response.choices[0].message
+            await record("model_error", role=role, code=code)
+            # Do not persist provider error bodies or authentication headers.
+            raise ModelError(code, "模型接口请求失败，详情仅记录状态代码") from exc
+        await record(
+            "model_response",
+            role=role,
+            model=response.model,
+            request_id=getattr(response, "_request_id", None),
+            usage=response.usage.model_dump() if response.usage else None,
+            finish_reason=response.choices[0].finish_reason if response.choices else None,
+        )
+        usage = response.usage.model_dump() if response.usage else {}
+        usage_details = {
+            key: value
+            for key, value in {
+                "input": usage.get("prompt_tokens"),
+                "output": usage.get("completion_tokens"),
+                "total": usage.get("total_tokens"),
+            }.items()
+            if isinstance(value, int)
+        }
+        observation.update(
+            model=response.model,
+            output=[choice.message.model_dump() for choice in response.choices]
+            if response.choices and hasattr(response.choices[0].message, "model_dump")
+            else [],
+            usage_details=usage_details,
+            metadata={
+                "provider_usage": usage,
+                "request_id": getattr(response, "_request_id", None),
+                "finish_reasons": [choice.finish_reason for choice in response.choices],
+            },
+        )
+        if not response.choices:
+            raise ModelError("MODEL_PROTOCOL_ERROR", "模型响应没有 choices")
+        if response.choices[0].finish_reason == "length":
+            raise ModelError("MODEL_OUTPUT_TRUNCATED", "模型输出被截断")
+        return response.choices[0].message
 
     async def decide(self, context, messages, record):
         message = await self.request("planner", messages, record, tools=TOOLS, max_tokens=2048)

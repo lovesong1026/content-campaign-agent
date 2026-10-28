@@ -5,13 +5,15 @@ from decimal import Decimal
 from pydantic import ValidationError
 
 from .schemas import ARGUMENTS, ModelError, ToolError, fingerprint, money, parse_time
+from .telemetry import tool_input
 from .trace import event
 
 
 class Executor:
-    def __init__(self, tools, storage):
+    def __init__(self, tools, storage, telemetry=None):
         self.tools = tools
         self.storage = storage
+        self.telemetry = telemetry
 
     async def record(self, state, kind, **data):
         event(state, kind, **data)
@@ -47,6 +49,19 @@ class Executor:
         return observation
 
     async def skipped(self, state, call, reason):
+        if self.telemetry is None:
+            return await self._skipped(state, call, reason)
+        with self.telemetry.observation(
+            call.name if call.name in ARGUMENTS else "unknown-tool",
+            "retriever" if call.name == "search_materials" else "tool",
+            input=tool_input(call.arguments),
+            metadata={"call_id": call.id, "decision_round": state["decision_rounds"]},
+        ) as observation:
+            result = await self._skipped(state, call, reason)
+            observation.update(output=result, level="WARNING", status_message=reason)
+            return result
+
+    async def _skipped(self, state, call, reason):
         return await self.observe(
             state,
             call,
@@ -55,6 +70,23 @@ class Executor:
         )
 
     async def execute(self, state, call):
+        if self.telemetry is None:
+            return await self._execute(state, call)
+        with self.telemetry.observation(
+            call.name if call.name in ARGUMENTS else "unknown-tool",
+            "retriever" if call.name == "search_materials" else "tool",
+            input=tool_input(call.arguments),
+            metadata={"call_id": call.id, "decision_round": state["decision_rounds"]},
+        ) as observation:
+            result = await self._execute(state, call)
+            observation.update(
+                output=result,
+                level="DEFAULT" if result["status"] == "succeeded" else "WARNING",
+                status_message=(result.get("error") or {}).get("code"),
+            )
+            return result
+
+    async def _execute(self, state, call):
         try:
             contract = ARGUMENTS.get(call.name)
             if contract is None:

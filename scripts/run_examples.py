@@ -75,6 +75,7 @@ async def run(mode, destination):
             with agent.storage.writer():
                 await agent.start()
                 result = await agent.run_task(raw)
+            await agent.telemetry.flush()
             state = await agent.storage.load(result["task_id"])
             case_dir = destination / name
             shutil.copytree(agent.storage.directory(result["task_id"]), case_dir)

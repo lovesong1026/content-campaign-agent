@@ -79,7 +79,11 @@ async def execute(args):
                 else await agent.run_task(inputs)
             )
     finally:
-        await model.close()
+        try:
+            await model.close()
+        finally:
+            if getattr(model, "telemetry", None) is not agent.telemetry:
+                await agent.telemetry.flush()
     if args.command == "batch":
         code = 0 if all(r["status"] == "succeeded" for r in result["results"]) else 1
     else:
