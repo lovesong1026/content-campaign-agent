@@ -50,6 +50,8 @@ plan-content-campaign                 agent，每次新任务一个 Trace
 
 任务记录业务输入、最终状态、原因、候选脚本、保存结果、模拟费用和耗时。模型 generation 记录完整消息、工具定义、响应、模型名、Prompt 版本与哈希、Token、实际延迟及安全错误代码。工具记录参数、结果、故障、被阻止或跳过的调用。Mock 不创建虚假的模型 generation。
 
+TodoList 的当前进度和修订摘要进入每轮规划输入，根节点输出保留 `todo_list` 与 `plan_revisions`；工具结果中的 `todo_id` 可关联实际尝试。三组真实运行及云端读回验证见 [TodoList 指南](07-todolist.md)。
+
 模型请求集中在 `DeepSeekClient.request`，所以使用 SDK 的显式 generation 埋点，以控制输出及异常脱敏，并复用现有安全错误处理。没有同时开启 OpenAI 自动埋点，避免同一次请求重复记录。独立任务使用 SDK 的上下文传播，脚本调用嵌套在生成工具内，规划请求与工具为同级。
 
 ## 费用、上报与数据

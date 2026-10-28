@@ -9,6 +9,7 @@ from pydantic import ValidationError
 
 from .agent import Agent
 from .config import Settings
+from .interactive import run_interactive
 from .model import DeepSeekClient, OfflineMockClient
 from .schemas import Scenario, dumps
 from .storage import Storage
@@ -20,16 +21,21 @@ def read_json(path):
 
 def parser():
     root = argparse.ArgumentParser(description="预算与截止时间约束的内容活动规划 Agent")
-    commands = root.add_subparsers(dest="command", required=True)
-    for name in ("run", "batch", "show"):
+    commands = root.add_subparsers(dest="command")
+    root.set_defaults(command="interactive", mode="real", output_dir=None, scenario=None)
+    for name in ("run", "batch", "show", "resume", "interactive"):
         command = commands.add_parser(name)
         command.add_argument("--output-dir", type=Path)
-        if name == "show":
+        if name in ("show", "resume"):
             command.add_argument("--task-id", required=True)
+            if name == "resume":
+                command.add_argument("--mode", choices=["real", "mock"], default="real")
             continue
-        command.add_argument("--input", type=Path)
         command.add_argument("--mode", choices=["real", "mock"], default="real")
         command.add_argument("--scenario", type=Path)
+        if name == "interactive":
+            continue
+        command.add_argument("--input", type=Path)
         if name == "batch":
             command.add_argument("--concurrency", type=int)
         else:
@@ -38,10 +44,24 @@ def parser():
     return root
 
 
-async def execute(args):
+def settings_for(args):
     settings = Settings()
     if args.output_dir:
         settings.output_dir = args.output_dir
+    return settings
+
+
+def create_agent(args, settings):
+    scenario_path = getattr(args, "scenario", None)
+    scenario = Scenario.model_validate(read_json(scenario_path)) if scenario_path else Scenario()
+    model = DeepSeekClient(settings) if args.mode == "real" else OfflineMockClient()
+    return Agent(settings, model, scenario)
+
+
+async def execute(args):
+    if args.command == "interactive":
+        raise ValueError("交互模式请通过 campaign-agent 的终端入口启动")
+    settings = settings_for(args)
     if args.command == "show":
         storage = Storage(settings.output_dir)
         state = await storage.load(args.task_id)
@@ -60,32 +80,29 @@ async def execute(args):
             if not 1 <= args.concurrency <= 32:
                 raise ValueError("并发数必须在 1—32 之间")
             settings.max_concurrent_tasks = args.concurrency
-    else:
+    elif args.command == "run":
         direct = {key: getattr(args, key) for key in ("theme", "budget", "deadline", "task_id")}
         if args.input and any(value is not None for value in direct.values()):
             raise ValueError("--input 与直接业务参数不能同时使用")
         inputs = read_json(args.input) if args.input else direct
         if not isinstance(inputs, dict):
             raise ValueError("run 输入必须为 JSON 对象")
-    scenario = Scenario.model_validate(read_json(args.scenario)) if args.scenario else Scenario()
-    model = DeepSeekClient(settings) if args.mode == "real" else OfflineMockClient()
-    agent = Agent(settings, model, scenario)
+    agent = create_agent(args, settings)
     try:
         with agent.storage.writer():
             await agent.start()
-            result = (
-                await agent.run_batch(inputs)
-                if args.command == "batch"
-                else await agent.run_task(inputs)
-            )
+            if args.command == "resume":
+                result = await agent.resume_task(args.task_id)
+            elif args.command == "batch":
+                result = await agent.run_batch(inputs)
+            else:
+                result = await agent.run_task(inputs)
     finally:
-        try:
-            await model.close()
-        finally:
-            if getattr(model, "telemetry", None) is not agent.telemetry:
-                await agent.telemetry.flush()
+        await agent.close()
     if args.command == "batch":
         code = 0 if all(r["status"] == "succeeded" for r in result["results"]) else 1
+    elif result.get("resume_error"):
+        code = 2
     else:
         code = (
             0 if result["status"] == "succeeded" else 2 if result["status"] == "needs_input" else 1
@@ -97,6 +114,9 @@ def main():
     args = parser().parse_args()
     logging.basicConfig(level=logging.WARNING)
     try:
+        if args.command == "interactive":
+            agent = create_agent(args, settings_for(args))
+            raise SystemExit(run_interactive(agent))
         result, code = asyncio.run(execute(args))
     except (OSError, ValueError, ValidationError, RuntimeError) as exc:
         # Validation/provider details may contain user input; keep errors bounded.

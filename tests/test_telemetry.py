@@ -122,6 +122,8 @@ async def test_sdk_hierarchy_usage_concurrent_isolation_and_reuse(observed, task
             root_output = json.loads(root.attributes["langfuse.observation.output"])
             assert root_output["simulated_costs"]["total_cost"] == "5.00"
             assert root_output["plan"]["items"]
+            assert root_output["todo_list"] == result["todo_list"]
+            assert root_output["plan_revisions"] == result["plan_revisions"]
     finally:
         await model.close()
 

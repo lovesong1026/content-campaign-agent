@@ -24,7 +24,7 @@
 | --- | --- | --- |
 | 运行环境 | Python 3.12，首版支持 macOS / Linux | 使用类型标注、异步执行和标准库 |
 | 环境管理 | uv、`pyproject.toml`、`uv.lock` | 管理依赖与可复现安装 |
-| CLI | `argparse` | 提供 `run`、`batch`、`show` 命令 |
+| CLI | `argparse` | 提供 `run`、`batch`、`show`、`resume`、`interactive` 命令；无子命令时默认交互输入 |
 | 数据契约 | Pydantic | 校验工具参数、业务对象与模型生成的脚本 |
 | 配置 | pydantic-settings | 从 `.env` 及环境变量读取配置，启动时校验 |
 | 模型客户端 | OpenAI Python SDK 的 `AsyncOpenAI` | 调用 DeepSeek Chat Completions 兼容接口 |
@@ -45,6 +45,7 @@ src/content_campaign_agent/
   __init__.py
   __main__.py          # python -m content_campaign_agent
   cli.py              # 解析命令、运行事件循环、输出结果与退出码
+  interactive.py      # 逐项输入校验、人类可读进度、连续任务与续跑选择
   config.py           # Settings，启动时加载一次
   schemas.py          # 输入、任务、方案、估算、工具返回及事件结构
   model.py            # DeepSeekClient 与独立的 OfflineMockClient
@@ -74,6 +75,7 @@ examples/             # 实际运行后归档输入、配置、输出与 Trace
 ModelClient.decide(context, messages, record) -> await Decision
 ModelClient.generate_script(request, record) -> await ScriptDraft
 Agent.run_task(raw_input) -> await RunResult
+Agent.resume_task(task_id) -> await RunResult
 Agent.run_batch(raw_inputs) -> await BatchResult
 Executor.execute(state, call) -> await ToolObservation
 Storage.load(task_id) -> await TaskState | None
@@ -120,6 +122,8 @@ Storage.save(state) -> await None
 ### 5.1 通用调用与错误结构
 
 每个工具参数包含必填 `decision_note`，仅要求与当前观察有关的一句话行动理由，不索取内部思维过程；可附带 `remaining_steps`，表示模型建议的后续工具序列。执行器将这两个字段作为计划元数据记录，再传递实际业务参数。
+
+轻量 TodoList 已接入决策循环：`remaining_steps` 省略或 null 时保留后续待办，显式空数组才清空；执行器维护稳定 ID、真实状态与修订快照。每轮上下文包含当前待办及修订摘要，旧快照不伪造回填。实现及验证见 [TodoList](07-todolist.md)。
 
 初始计划可展示检索、生成、估算、保存四个待执行目标。后续计划快照来自模型提供的行动建议和实际调用；每次执行关联独立步骤，替代版本明确标记。模型只建议计划，步骤的实际状态由程序更新；结束时未执行的计划步骤为 `skipped`。
 
@@ -298,6 +302,8 @@ while 尚未成功且 decision_rounds < 12 且 tool_calls < 12:
 
 取得目录写锁后，启动时发现遗留 `running` 记录，将其标为执行中断，不自动续跑；保留已经确认的调用与费用，对未确认的调用结果标明未知，不编造成功。
 
+显式 `resume` 在同一任务 ID 的短临界区内登记新一轮续跑，再进入原任务信号量和模型循环。原输入、`run_id`、费用与耗时、调用序号及累计上限不变，业务工具使用原快照规则；首轮模型上下文包含历史真实步骤，不重放未闭合的工具调用会话。TodoList 追加新待办与 `TASK_RESUMED` 修订，不重新打开历史失败。成功或正在执行的任务只返回已有状态；并发续跑只启动一次。
+
 ## 9. 时间、费用和存储的一致性
 
 ### 9.1 执行前后顺序
@@ -323,9 +329,9 @@ while 尚未成功且 decision_rounds < 12 且 tool_calls < 12:
 
 JSON 文件写入同目录临时文件，刷新后以 `os.replace` 原子替换；按任务串行提交，避免两个异步写入相互覆盖。`task.json` 内的账本与状态一起更新，不能分别写两个互相矛盾的权威文件。
 
-Trace 使用任务快照中的事件列表生成，允许重新导出，以 event_id 去重。少量事件可整体原子重写 JSONL，避免将追加日志误当成跨文件事务。工具结果先存储，再由任务快照引用；保存工具必须在文件完成写入后才返回成功。
+Trace 使用任务快照中的事件列表生成，允许重新导出，以 event_id 去重。少量事件可整体原子重写 JSONL，避免将追加日志误当成跨文件事务。完整工具观察先与实际步骤、账本一同写入权威任务快照，再导出 `results/` 文件，避免结果文件先落盘而快照仍把成功调用视为未知。方案文件及交付文件仍须写入成功，才能确认对应调用成功。
 
-本方案不承诺多个文件的数据库级原子事务。若交付文件已写但任务状态尚未确认就中断，重启后保留文件并报告未完成，不凭文件存在推断原任务已经成功，也不自动重跑保存。
+本方案不承诺多个文件的数据库级原子事务。若交付文件已写但任务状态尚未确认就中断，重启后保留文件并报告未完成，不凭文件存在推断原任务已经成功，也不自动重跑保存。显式续跑时先核对交付文件的完整内容与原快照，一致则确认原保存调用、追加 `save_reconciled` 事件；不一致或损坏返回 `SAVED_RESULT_CONFLICT` 且不覆盖。只有文件不存在时才允许模型发起新的保存尝试。其他未知结果的工具尝试仍保留原收费，新尝试再次收费。
 
 ## 10. CLI 与配置约定
 
@@ -336,15 +342,22 @@ uv sync --locked
 uv run python -m content_campaign_agent run --input examples/inputs/normal.json
 uv run python -m content_campaign_agent batch --input examples/inputs/batch.json --concurrency 3
 uv run python -m content_campaign_agent show --task-id demo-normal
+uv run python -m content_campaign_agent resume --task-id your-task-id
 uv run python -m content_campaign_agent run --input examples/inputs/normal.json --mode mock
 uv run pytest
 uv run ruff check .
 uv run ruff format --check .
 ```
 
-`run` 输入为一个 JSON 对象，`batch` 为对象数组；也应支持 `run --theme ... --budget ... --deadline ...` 直接传参。两种输入方式互斥，业务缺失项交给统一校验。`show` 只查询，不发起模型请求。
+`run` 输入为一个 JSON 对象，`batch` 为对象数组；也应支持 `run --theme ... --budget ... --deadline ...` 直接传参。两种输入方式互斥，业务缺失项交给统一校验。`show` 只查询，不发起模型请求。`resume --task-id ...` 读取原任务，不接收新的业务输入或场景，`--mode` 必须与原任务一致。缺输入或模式不符时退出码为 2，原状态保留。
 
-单任务成功退出码为 0，未完成为 1，输入错误或任务输入冲突为 2；批量全部成功为 0，任一任务未成功为 1，批量输入文件本身不可解析为 2。stdout 输出 JSON 结果，诊断日志输出 stderr。
+输出的 `gaps.minimum_total_cost` 与 `gaps.minimum_total_budget_gap` 展示总费用下界及最低缺口，复用模型上下文的同一计算逻辑。尚未实际估算时，`costs` 中的方案费用、总费用及精确缺口继续保持 `null`。
+
+单任务成功退出码为 0，未完成为 1，输入错误或任务输入冲突为 2；批量全部成功为 0，任一任务未成功为 1，批量输入文件本身不可解析为 2。一次性命令的 stdout 输出 JSON 结果，诊断日志输出 stderr。
+
+`interactive` 或不带子命令的启动进入交互会话；模式、目录和场景参数放在 `interactive` 后。会话在同一个 `asyncio.Runner` 中复用 Agent 及模型连接，终端输入发生在异步任务执行之外，避免输入等待阻塞取消收尾。业务输入复用统一校验，非法值只重填对应字段；截止时间可显式接受界面展示的 30 分钟默认值。会话持有原目录写锁，每个新主题创建新任务，`resume` 转入原续跑入口。
+
+执行器在权威事件持久化后调用可选进度回调，仅展示实际轮次、工具开始及结果，不伪造完成状态，也不把展示异常当成业务失败。人类可读结果包含费用、缺口、真实历史步骤和保存位置；一次性 JSON 协议不变。正常退出或 EOF 返回 0，配置缺失返回 2，Ctrl+C 取消并收尾后返回 130。所有退出路径统一调用 `Agent.close()` 关闭模型并刷新遥测。
 
 配置初始化时读取现有 `.env` 的三个字段：`DEEPSEEK_API_KEY`、`DEEPSEEK_BASE_URL`、`DEEPSEEK_MODEL`。先完成业务输入校验；缺预算或截止时间时直接返回 `needs_input`，不因尚未配置密钥而掩盖缺失项。合法任务在首次模型请求前检查真实模式的密钥是否可用。后续可在 Settings 中增加以下默认值并同步 `.env.example`：
 

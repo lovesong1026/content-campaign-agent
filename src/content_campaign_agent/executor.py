@@ -1,10 +1,21 @@
 import json
+import logging
 from datetime import timedelta
 from decimal import Decimal
 
 from pydantic import ValidationError
 
-from .schemas import ARGUMENTS, ModelError, ToolError, fingerprint, money, parse_time
+from . import todos
+from .schemas import (
+    ARGUMENTS,
+    ModelError,
+    ToolCall,
+    ToolError,
+    dumps,
+    fingerprint,
+    money,
+    parse_time,
+)
 from .telemetry import tool_input
 from .trace import event
 
@@ -14,14 +25,21 @@ class Executor:
         self.tools = tools
         self.storage = storage
         self.telemetry = telemetry
+        self.progress = None
 
     async def record(self, state, kind, **data):
-        event(state, kind, **data)
+        entry = event(state, kind, **data)
         await self.storage.save(state)
+        if self.progress is not None:
+            try:
+                self.progress(entry)
+            except Exception:
+                logging.getLogger(__name__).warning("进度展示失败，任务继续执行")
 
     async def observe(
         self, state, call, status, *, data=None, error=None, fee="0.00", duration=0, replan=False
     ):
+        todo_id = todos.observe(state, call, status, data, error, replan)
         observation = {
             "call_id": call.id,
             "tool_name": call.name,
@@ -33,6 +51,7 @@ class Executor:
             "cumulative_tool_cost": state["tool_cost"],
             "simulated_now": state["simulated_now"],
             "requires_replan": replan,
+            "todo_id": todo_id,
         }
         step = next((step for step in state["steps"] if step["call_id"] == call.id), None)
         if step is None:
@@ -43,9 +62,9 @@ class Executor:
                 "depends_on": [],
             }
             state["steps"].append(step)
-        step.update(status=status, observation=observation)
-        await self.storage.artifact(state, f"results/{fingerprint(call.id)}.json", observation)
+        step.update(status=status, observation=observation, todo_id=todo_id)
         await self.record(state, "tool_result", **observation)
+        await self.storage.artifact(state, f"results/{fingerprint(call.id)}.json", observation)
         return observation
 
     async def skipped(self, state, call, reason):
@@ -68,6 +87,41 @@ class Executor:
             "skipped",
             error={"code": reason, "message": "未执行该调用", "retryable": False},
         )
+
+    async def reconcile_save(self, state):
+        step = next(
+            (
+                row
+                for row in reversed(state["steps"])
+                if row["tool_name"] == "save_plan"
+                and (row.get("outcome_unknown") or state["saved"] is not None)
+            ),
+            None,
+        )
+        if step is None:
+            return False
+        arguments = step["arguments"]
+        if isinstance(arguments, str):
+            arguments = json.loads(arguments)
+        args = ARGUMENTS["save_plan"].model_validate(arguments)
+        result = await self.tools.recover_saved(args, state)
+        if result is None:
+            if state["saved"] is not None:
+                raise ToolError("SAVED_RESULT_CONFLICT", "已确认的保存文件缺失，需先核对存储")
+            return False
+        state.update(saved=result, status="succeeded")
+        step.pop("outcome_unknown", None)
+        for entry in state["ledger"]:
+            if entry["call_id"] == step["call_id"]:
+                entry["outcome"] = "succeeded"
+        for item in state.get("todo_list", []):
+            if item["call_id"] == step["call_id"]:
+                item.pop("outcome_unknown", None)
+                item.pop("reason", None)
+        call = ToolCall(step["call_id"], "save_plan", dumps(arguments))
+        await self.observe(state, call, "succeeded", data=result)
+        await self.record(state, "save_reconciled", call_id=call.id, saved=result)
+        return True
 
     async def execute(self, state, call):
         if self.telemetry is None:
@@ -96,7 +150,8 @@ class Executor:
             except (ValidationError, ValueError) as exc:
                 raise ToolError("INVALID_TOOL_ARGUMENTS", "工具参数不符合 JSON Schema") from exc
             self.tools.dependencies(call.name, args, state)
-            rule = self.tools.data["tools"][call.name]
+            data_rules = state.get("data_snapshot", self.tools.data)
+            rule = data_rules["tools"][call.name]
             fee, duration = rule["fee"], rule["duration_seconds"]
             if Decimal(state["tool_cost"]) + Decimal(fee) > Decimal(state["input"]["budget"]):
                 raise ToolError("BUDGET_BLOCKED", "本次工具费用将超出预算")
@@ -129,9 +184,6 @@ class Executor:
                 "status": "running",
             }
         )
-        state["pending_plan"] = [
-            {"tool_name": name, "status": "pending"} for name in args.remaining_steps
-        ]
         state["tool_calls"] += 1
         state["tool_cost"] = money(Decimal(state["tool_cost"]) + Decimal(fee))
         state["elapsed_seconds"] += duration
@@ -146,6 +198,7 @@ class Executor:
             "outcome": "running",
         }
         state["ledger"].append(entry)
+        state["steps"][-1]["todo_id"] = todos.start(state, call, args)
         await self.record(
             state,
             "tool_started",
@@ -200,7 +253,7 @@ class Executor:
         replan = call.name == "search_materials" and not data["materials"]
         if call.name == "estimate_cost":
             replan = not data["within_budget"] or completed + timedelta(
-                seconds=self.tools.data["tools"]["save_plan"]["duration_seconds"]
+                seconds=data_rules["tools"]["save_plan"]["duration_seconds"]
             ) > parse_time(state["input"]["deadline"])
         if call.name == "save_plan":
             state["saved"] = data

@@ -40,6 +40,19 @@ def check_case(case, result, state):
         offline_only=result["mode"] == "mock"
         and not any(event["kind"] == "model_request" for event in state["events"]),
         saved_iff_success=(result["saved"] is not None) == (result["status"] == "succeeded"),
+        unique_todo_ids=len({item["todo_id"] for item in result["todo_list"]})
+        == len(result["todo_list"]),
+        todos_finalized=not any(
+            item["status"] in ("pending", "running") for item in result["todo_list"]
+        ),
+        todo_results_backed_by_steps=all(
+            any(
+                step["call_id"] == item["call_id"] and step["status"] == item["status"]
+                for step in result["steps"]
+            )
+            for item in result["todo_list"]
+            if item["status"] in ("succeeded", "failed", "blocked")
+        ),
     )
     injected = case["metadata"]["scenario"]["failures"]
     ordinals = {}
