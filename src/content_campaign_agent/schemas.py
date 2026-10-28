@@ -66,7 +66,7 @@ class Contract(BaseModel):
 
 class CommonArgs(Contract):
     decision_note: str = Field(min_length=1, max_length=500)
-    remaining_steps: list[ToolName] = Field(default_factory=list, max_length=12)
+    remaining_steps: list[ToolName] | None = Field(default=None, max_length=12)
 
 
 class SearchArgs(CommonArgs):

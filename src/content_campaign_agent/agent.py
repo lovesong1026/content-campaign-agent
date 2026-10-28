@@ -6,9 +6,19 @@ from decimal import Decimal
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 
+from . import todos
 from .executor import Executor
 from .prompts import PLANNER_PROMPT
-from .schemas import ModelError, Scenario, dumps, fingerprint, money, parse_time, validate_input
+from .schemas import (
+    ModelError,
+    Scenario,
+    ToolError,
+    dumps,
+    fingerprint,
+    money,
+    parse_time,
+    validate_input,
+)
 from .storage import Storage
 from .telemetry import Telemetry, task_output
 from .tools import BusinessTools
@@ -33,10 +43,16 @@ class Agent:
     async def start(self):
         await self.storage.recover_interrupted()
 
-    def minimum_remaining(self, state):
+    async def close(self):
+        try:
+            await self.model.close()
+        finally:
+            if getattr(self.model, "telemetry", None) is not self.telemetry:
+                await self.telemetry.flush()
+
+    def remaining_tools(self, state):
         if state["status"] == "succeeded":
-            return Decimal(0), 0
-        data = state.get("data_snapshot", self.tools.data)
+            return []
         plan = state["plans"].get(state["current_plan_ref"])
         estimate = state["estimates"].get(state["current_estimate_id"])
         if estimate and Decimal(state["tool_cost"]) + Decimal(estimate["plan_cost"]) <= Decimal(
@@ -49,26 +65,37 @@ class Agent:
             names = ["generate_script", "estimate_cost", "save_plan"]
             if not state["retrieved_materials"]:
                 names.insert(0, "search_materials")
+        return names
+
+    def minimum_remaining(self, state):
+        data = state.get("data_snapshot", self.tools.data)
+        names = self.remaining_tools(state)
         fees = sum((Decimal(data["tools"][n]["fee"]) for n in names), Decimal(0))
         seconds = sum(data["tools"][n]["duration_seconds"] for n in names)
         return fees, seconds
 
+    def minimum_total_cost(self, state, minimum_fee):
+        data = state.get("data_snapshot", self.tools.data)
+        pricing = data["pricing"]
+        cheapest = min(Decimal(p) for p in pricing["production"].values())
+        cheapest += min(Decimal(p) for p in pricing["materials"].values())
+        cheapest += Decimal(pricing["publishing"])
+        return Decimal(state["tool_cost"]) + minimum_fee + cheapest
+
     def context(self, state):
         minimum_fee, minimum_seconds = self.minimum_remaining(state)
+        data = state.get("data_snapshot", self.tools.data)
         estimate = copy.deepcopy(state["estimates"].get(state["current_estimate_id"]))
         if estimate:
             estimate["within_budget"] = Decimal(state["tool_cost"]) + Decimal(
                 estimate["plan_cost"]
             ) <= Decimal(state["input"]["budget"])
         now = parse_time(state["simulated_now"])
-        cheapest = min(Decimal(p) for p in self.tools.data["pricing"]["production"].values())
-        cheapest += min(Decimal(p) for p in self.tools.data["pricing"]["materials"].values())
-        cheapest += Decimal(self.tools.data["pricing"]["publishing"])
         return {
             "input": state["input"],
             "tool_cost": state["tool_cost"],
-            "pricing": self.tools.data["pricing"],
-            "tool_rules": self.tools.data["tools"],
+            "pricing": data["pricing"],
+            "tool_rules": data["tools"],
             "retrieved_materials": state["retrieved_materials"],
             "searched": state["searched"],
             "current_plan": state["plans"].get(state["current_plan_ref"]),
@@ -79,9 +106,10 @@ class Agent:
             "remaining_seconds": (parse_time(state["input"]["deadline"]) - now).total_seconds(),
             "minimum_remaining_seconds": minimum_seconds,
             "minimum_remaining_tool_cost": money(minimum_fee),
-            "minimum_total_cost": money(Decimal(state["tool_cost"]) + minimum_fee + cheapest),
+            "minimum_total_cost": money(self.minimum_total_cost(state, minimum_fee)),
             "remaining_decisions": 12 - state["decision_rounds"],
             "remaining_tool_calls": 12 - state["tool_calls"],
+            **todos.context(state),
         }
 
     def result(self, state, **extra):
@@ -103,6 +131,11 @@ class Agent:
         gaps = {}
         if state["started_at"] and not state["input_errors"]:
             fees, seconds = self.minimum_remaining(state)
+            minimum_total = self.minimum_total_cost(state, fees)
+            gaps["minimum_total_cost"] = money(minimum_total)
+            gaps["minimum_total_budget_gap"] = money(
+                max(Decimal(0), minimum_total - Decimal(budget))
+            )
             gaps["minimum_remaining_tool_cost"] = money(fees)
             gaps["tool_budget_lower_bound_gap"] = money(
                 max(Decimal(0), Decimal(state["tool_cost"]) + fees - Decimal(budget))
@@ -123,6 +156,8 @@ class Agent:
             "input_errors": state["input_errors"],
             "decision_rounds": state["decision_rounds"],
             "tool_calls": state["tool_calls"],
+            "resume_count": state.get("resume_count", 0),
+            "resume_history": copy.deepcopy(state.get("resume_history", [])),
             "costs": costs,
             "gaps": gaps,
             "ledger": state["ledger"],
@@ -131,6 +166,9 @@ class Agent:
             "simulated_now": state["simulated_now"],
             "steps": state["steps"],
             "pending_plan": state["pending_plan"],
+            "todo_list": copy.deepcopy(state.get("todo_list", [])),
+            "plan_revisions": copy.deepcopy(state.get("plan_revisions", [])),
+            "todo_tracking": "recorded" if "todo_list" in state else "not_recorded",
             "saved": state["saved"],
             "task_directory": str(self.storage.directory(state["task_id"])),
             "trace_path": str(self.storage.directory(state["task_id"]) / "trace.jsonl"),
@@ -138,12 +176,20 @@ class Agent:
             **extra,
         }
 
+    def mark_unconfirmed(self, state):
+        for step in state["steps"]:
+            if step["status"] == "running":
+                step.update(status="failed", outcome_unknown=True)
+        for entry in state["ledger"]:
+            if entry["outcome"] == "running":
+                entry["outcome"] = "unknown"
+
     async def finish(self, state, reason, summary=None):
+        self.mark_unconfirmed(state)
         if state["status"] != "succeeded":
             state["status"] = "incomplete"
         state.update(phase="finished", reason=reason, summary=summary)
-        for step in state["pending_plan"]:
-            step["status"] = "skipped"
+        todos.close(state, reason)
         event(state, "task_finished", status=state["status"], reason=reason, summary=summary)
         await self.storage.save(state)
         return self.result(state)
@@ -193,24 +239,70 @@ class Agent:
                 "current_estimate_id": None,
                 "saved": None,
                 "steps": [],
-                "pending_plan": [
-                    {"tool_name": n, "status": "pending"}
-                    for n in ("search_materials", "generate_script", "estimate_cost", "save_plan")
-                ],
+                "pending_plan": [],
                 "ledger": [],
                 "events": [],
                 "seen_call_ids": [],
                 "scenario": self.scenario.model_dump(),
                 "config": self.settings.public_snapshot(),
-                "data_snapshot": self.tools.data,
+                "data_snapshot": copy.deepcopy(self.tools.data),
             }
             self.states[task_id] = state
             event(state, "task_created", mode=state["mode"], input=normalized, input_errors=errors)
+            todos.initialize(state)
             await self.storage.save(state)
+        return await self._execute_task(state)
+
+    async def resume_task(self, task_id):
+        lock = self.locks.setdefault(task_id, asyncio.Lock())
+        async with lock:
+            state = self.states.get(task_id) or await self.storage.load(task_id)
+            if state is None:
+                return {
+                    "task_id": task_id,
+                    "status": "needs_input",
+                    "reason": "TASK_NOT_FOUND",
+                    "resumed": False,
+                }
+            if state["status"] in ("running", "succeeded"):
+                return self.result(state, reused=True, resumed=False)
+            error = None
+            if state["input_errors"]:
+                error = "INPUT_REQUIRED"
+            elif state["mode"] != self.model.mode:
+                error = "RESUME_MODE_MISMATCH"
+            if error:
+                return self.result(state, reused=True, resumed=False, resume_error=error)
+            original = state
+            state = copy.deepcopy(state)
+            history = state.setdefault("resume_history", [])
+            history.append(
+                {
+                    "previous_reason": state["reason"],
+                    "decision_rounds": state["decision_rounds"],
+                    "tool_calls": state["tool_calls"],
+                    "simulated_now": state["simulated_now"],
+                }
+            )
+            state["resume_count"] = len(history)
+            state.update(status="running", phase="queued", reason=None, summary=None)
+            todos.resume(state, self.remaining_tools(state))
+            event(state, "task_resumed", resume_count=state["resume_count"], **history[-1])
+            try:
+                await self.storage.save(state)
+            except BaseException:
+                self.states[task_id] = original
+                raise
+            self.states[task_id] = state
+        return await self._execute_task(state, resumed=True)
+
+    async def _execute_task(self, state, resumed=False):
         state["telemetry"] = self.telemetry.reference(state["run_id"])
         with self.telemetry.task(state) as observation:
             try:
-                result = await self._execute_new_task(state)
+                result = await self._execute_scheduled(state, resumed)
+                if resumed:
+                    result["resumed"] = True
             except BaseException:
                 observation.update(output=task_output(self.result(state), state))
                 raise
@@ -221,10 +313,9 @@ class Agent:
             )
             return result
 
-    async def _execute_new_task(self, state):
+    async def _execute_scheduled(self, state, resumed=False):
         if state["input_errors"]:
-            for step in state["pending_plan"]:
-                step["status"] = "skipped"
+            todos.close(state, "INPUT_REQUIRED")
             await self.storage.save(state)
             return self.result(state)
         try:
@@ -232,35 +323,34 @@ class Agent:
                 self.active_tasks += 1
                 self.peak_active_tasks = max(self.peak_active_tasks, self.active_tasks)
                 try:
-                    return await self._run(state)
+                    if resumed and await self.executor.reconcile_save(state):
+                        return await self.finish(state, "SAVED", "已核对中断前实际保存的方案")
+                    return await self._run(state, resumed)
                 finally:
                     self.active_tasks -= 1
         except asyncio.CancelledError:
-            for step in state["steps"]:
-                if step["status"] == "running":
-                    step.update(status="failed", outcome_unknown=True)
-            for entry in state["ledger"]:
-                if entry["outcome"] == "running":
-                    entry["outcome"] = "unknown"
             await asyncio.shield(self.finish(state, "CANCELLED", "用户取消，保留已确认结果"))
             raise
         except OSError:
-            # No success claim if durable storage cannot be confirmed.
+            # 无法确认持久化时，不宣称任务成功。
+            self.mark_unconfirmed(state)
             state.update(status="incomplete", phase="finished", reason="STORAGE_ERROR")
+            todos.close(state, "STORAGE_ERROR")
             return self.result(state)
+        except ToolError as exc:
+            return await self.finish(state, exc.code, str(exc))
         except Exception as exc:
             return await self.finish(state, "INTERNAL_ERROR", f"运行异常：{type(exc).__name__}")
 
-    async def _run(self, state):
-        start = (
-            parse_time(self.scenario.fixed_start)
-            if self.scenario.fixed_start
-            else datetime.now(ZoneInfo("Asia/Shanghai"))
-        )
-        state.update(
-            phase="executing", started_at=start.isoformat(), simulated_now=start.isoformat()
-        )
-        if parse_time(state["input"]["deadline"]) <= start:
+    async def _run(self, state, resumed=False):
+        if state["started_at"] is None:
+            fixed_start = state["scenario"]["fixed_start"]
+            start = (
+                parse_time(fixed_start) if fixed_start else datetime.now(ZoneInfo("Asia/Shanghai"))
+            )
+            state.update(started_at=start.isoformat(), simulated_now=start.isoformat())
+        state["phase"] = "executing"
+        if parse_time(state["input"]["deadline"]) <= parse_time(state["simulated_now"]):
             return await self.finish(state, "DEADLINE_EXCEEDED", "截止时间已到")
         if self.model.mode == "real" and not self.settings.deepseek_api_key.get_secret_value():
             return await self.finish(state, "CONFIGURATION_ERROR", "请配置 DEEPSEEK_API_KEY")
@@ -268,6 +358,9 @@ class Agent:
         while state["decision_rounds"] < 12 and state["tool_calls"] < 12:
             state["decision_rounds"] += 1
             context = self.context(state)
+            if resumed and len(messages) == 1:
+                context["resume"] = copy.deepcopy(state["resume_history"][-1])
+                context["previous_steps"] = copy.deepcopy(state["steps"])
             messages.append(
                 {"role": "user", "content": "<context>" + dumps(context) + "</context>"}
             )

@@ -183,6 +183,15 @@ class OfflineMockClient:
         pass
 
     def call(self, name, **args):
+        args.setdefault(
+            "remaining_steps",
+            {
+                "search_materials": ["generate_script", "estimate_cost", "save_plan"],
+                "generate_script": ["estimate_cost", "save_plan"],
+                "estimate_cost": ["save_plan"],
+                "save_plan": [],
+            }[name],
+        )
         return Decision([ToolCall("mock-" + uuid4().hex, name, dumps(args))])
 
     async def decide(self, context, messages, record):

@@ -6,6 +6,7 @@ import tempfile
 from contextlib import contextmanager
 from pathlib import Path
 
+from . import todos
 from .schemas import dumps, fingerprint
 from .trace import event
 
@@ -65,6 +66,11 @@ class Storage:
         )
         return relative
 
+    async def load_artifact(self, state, relative):
+        path = self.directory(state["task_id"]) / relative
+        text = await asyncio.to_thread(path.read_text)
+        return json.loads(text)
+
     async def recover_interrupted(self):
         for path in self.root.glob("tasks/*/task.json"):
             state = await asyncio.to_thread(lambda p=path: json.loads(p.read_text()))
@@ -76,7 +82,6 @@ class Storage:
                 for entry in state["ledger"]:
                     if entry["outcome"] == "running":
                         entry["outcome"] = "unknown"
-                for step in state["pending_plan"]:
-                    step["status"] = "skipped"
+                todos.close(state, "EXECUTION_INTERRUPTED")
                 event(state, "task_finished", reason="EXECUTION_INTERRUPTED")
                 await self.save(state)

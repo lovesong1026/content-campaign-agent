@@ -1,7 +1,7 @@
 import json
 from decimal import Decimal
 
-from .schemas import ToolError, fingerprint, money
+from .schemas import ToolError, fingerprint, money, parse_time
 
 
 class BusinessTools:
@@ -43,7 +43,8 @@ class BusinessTools:
                 not estimate
                 or estimate["plan_ref"] != args.plan_ref
                 or estimate["content_hash"] != plan["content_hash"]
-                or estimate["pricing_version"] != self.data["pricing"]["version"]
+                or estimate["pricing_version"]
+                != state.get("data_snapshot", self.data)["pricing"]["version"]
             ):
                 raise ToolError("STALE_ESTIMATE", "估算不存在或与当前版本不匹配")
 
@@ -76,7 +77,7 @@ class BusinessTools:
         matches = []
         if not state["scenario"]["empty_materials"]:
             query = args.query.casefold()
-            for asset in self.data["materials"]:
+            for asset in state.get("data_snapshot", self.data)["materials"]:
                 if not asset["available"] or args.material_type not in ("all", asset["type"]):
                     continue
                 if any(tag.casefold() in query for tag in asset["tags"]) or query in asset["title"]:
@@ -125,7 +126,7 @@ class BusinessTools:
 
     def estimate(self, args, state, call_id):
         plan = state["plans"][args.plan_ref]
-        rules = self.data["pricing"]
+        rules = state.get("data_snapshot", self.data)["pricing"]
         assets = {a for item in plan["items"] for a in item["asset_ids"]}
         breakdown = [
             {"kind": "material", "id": asset, "amount": rules["materials"][asset]}
@@ -159,13 +160,12 @@ class BusinessTools:
         state["current_estimate_id"] = result["estimate_id"]
         return result
 
-    async def save(self, args, state):
+    def saved_result(self, args, state):
         estimate = state["estimates"][args.estimate_id]
         saved_id = "saved-" + state["run_id"]
-        relative = f"saved/{saved_id}.json"
-        result = {
+        return {
             "saved_plan_id": saved_id,
-            "path": relative,
+            "path": f"saved/{saved_id}.json",
             "content_hash": state["plans"][args.plan_ref]["content_hash"],
             "plan_ref": args.plan_ref,
             "estimate_id": args.estimate_id,
@@ -174,7 +174,34 @@ class BusinessTools:
             "total_cost": money(Decimal(state["tool_cost"]) + Decimal(estimate["plan_cost"])),
             "simulated_saved_at": state["simulated_now"],
         }
-        await self.storage.artifact(
-            state, relative, {**result, "plan": state["plans"][args.plan_ref], "estimate": estimate}
-        )
+
+    def saved_payload(self, args, state, result):
+        return {
+            **result,
+            "plan": state["plans"][args.plan_ref],
+            "estimate": state["estimates"][args.estimate_id],
+        }
+
+    async def save(self, args, state):
+        result = self.saved_result(args, state)
+        await self.storage.artifact(state, result["path"], self.saved_payload(args, state, result))
+        return result
+
+    async def recover_saved(self, args, state):
+        result = self.saved_result(args, state)
+        try:
+            payload = await self.storage.load_artifact(state, result["path"])
+        except FileNotFoundError:
+            return None
+        except (ValueError, UnicodeError) as exc:
+            raise ToolError(
+                "SAVED_RESULT_CONFLICT", "中断前的保存文件无法校验，未覆盖原文件"
+            ) from exc
+        self.dependencies("save_plan", args, state)
+        if (
+            payload != self.saved_payload(args, state, result)
+            or Decimal(result["total_cost"]) > Decimal(state["input"]["budget"])
+            or parse_time(result["simulated_saved_at"]) > parse_time(state["input"]["deadline"])
+        ):
+            raise ToolError("SAVED_RESULT_CONFLICT", "保存文件与任务约束或快照不一致，未覆盖原文件")
         return result

@@ -58,6 +58,22 @@ async def test_overbudget_replans_preserving_old_artifacts(make_agent, task):
     assert all(step["status"] == "succeeded" for step in result["steps"])
 
 
+@pytest.mark.parametrize(
+    "budget,gap", [("0", "5.00"), ("3", "2.00"), ("4", "1.00"), ("4.99", "0.01")]
+)
+async def test_infeasible_budget_reports_total_lower_bound_without_fake_estimate(
+    make_agent, task, budget, gap
+):
+    result = await make_agent().run_task({**task, "budget": budget})
+    assert result["status"] == "incomplete" and result["reason"] == "BUDGET_INFEASIBLE"
+    assert result["gaps"]["minimum_total_cost"] == "5.00"
+    assert result["gaps"]["minimum_total_budget_gap"] == gap
+    assert result["costs"]["plan_cost"] is None
+    assert result["costs"]["total_cost"] is None
+    assert result["costs"]["budget_gap"] is None
+    assert result["tool_calls"] == 0 and result["saved"] is None
+
+
 async def test_tool_failure_preserves_success_and_charges(make_agent, task):
     scenario = Scenario(fixed_start="2030-01-01T10:00:00+08:00", failures={"generate_script": [1]})
     result = await make_agent(scenario=scenario).run_task(task)

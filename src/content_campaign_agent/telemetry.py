@@ -200,4 +200,6 @@ def task_output(result, state):
         "decision_rounds": result["decision_rounds"],
         "tool_calls": result["tool_calls"],
         "input_errors": result["input_errors"],
+        "todo_list": result["todo_list"],
+        "plan_revisions": result["plan_revisions"],
     }

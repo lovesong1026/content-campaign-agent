@@ -1,0 +1,748 @@
+{
+  "verified_at": "2026-10-28T13:54:15.882311+00:00",
+  "cases": [
+    {
+      "case": "normal",
+      "mode": "real",
+      "prompt_version": "planner-v2",
+      "input": {
+        "task_id": "todos-normal-20261028T135349493486Z",
+        "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+        "budget": "20.00",
+        "deadline": "2030-01-01T10:30:00+08:00"
+      },
+      "status": "succeeded",
+      "reason": "SAVED",
+      "costs": {
+        "tool_cost": "4.00",
+        "plan_cost": "1.00",
+        "total_cost": "5.00",
+        "remaining_budget_after_tools": "16.00",
+        "budget_gap": "0.00"
+      },
+      "tool_calls": 4,
+      "decision_rounds": 4,
+      "todo_list": [
+        {
+          "todo_id": "todo-1",
+          "tool_name": "search_materials",
+          "status": "succeeded",
+          "call_id": "call_00_5roGOtepE3dP8JHRBJpk6471",
+          "created_round": 0,
+          "decision_note": "检索春季新品相关的日常生活场景素材，用于低成本推广视频。",
+          "result_round": 1
+        },
+        {
+          "todo_id": "todo-2",
+          "tool_name": "generate_script",
+          "status": "succeeded",
+          "call_id": "call_00_0nQQpRNxgA1bfgkpupNF6893",
+          "created_round": 0,
+          "decision_note": "用检索到的免费 basic-spring 素材生成 1 条 economy 规格短视频方案，符合节约优先目标。",
+          "result_round": 2,
+          "plan_ref": "campaign-v1"
+        },
+        {
+          "todo_id": "todo-3",
+          "tool_name": "estimate_cost",
+          "status": "succeeded",
+          "call_id": "call_00_jY2EZhRtPeoAL0N0ymnD2133",
+          "created_round": 0,
+          "decision_note": "对 campaign-v1（1 条 economy、免费素材）估算费用，确认是否在 20 元预算内。",
+          "result_round": 3,
+          "plan_ref": "campaign-v1",
+          "estimate_id": "estimate-3",
+          "within_budget": true
+        },
+        {
+          "todo_id": "todo-4",
+          "tool_name": "save_plan",
+          "status": "succeeded",
+          "call_id": "call_00_uDnKyVlrImtj90hD7xmH1842",
+          "created_round": 0,
+          "decision_note": "estimate-3 显示总费用 5.00 元且在预算内，距截止仍有充足时间，直接保存 campaign-v1。",
+          "result_round": 4,
+          "plan_ref": "campaign-v1",
+          "estimate_id": "estimate-3"
+        }
+      ],
+      "plan_revisions": [
+        {
+          "revision": 1,
+          "round": 0,
+          "reason": "INITIAL_PLAN",
+          "note": "初始计划；完成状态由实际工具结果确认",
+          "source_call_id": null,
+          "source_observation": null,
+          "items": [
+            {
+              "todo_id": "todo-1",
+              "tool_name": "search_materials",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-2",
+              "tool_name": "generate_script",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-3",
+              "tool_name": "estimate_cost",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-4",
+              "tool_name": "save_plan",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            }
+          ]
+        },
+        {
+          "revision": 2,
+          "round": 4,
+          "reason": "TASK_FINISHED",
+          "note": "SAVED",
+          "source_call_id": null,
+          "source_observation": null,
+          "items": [
+            {
+              "todo_id": "todo-1",
+              "tool_name": "search_materials",
+              "status": "succeeded",
+              "call_id": "call_00_5roGOtepE3dP8JHRBJpk6471",
+              "created_round": 0,
+              "decision_note": "检索春季新品相关的日常生活场景素材，用于低成本推广视频。",
+              "result_round": 1
+            },
+            {
+              "todo_id": "todo-2",
+              "tool_name": "generate_script",
+              "status": "succeeded",
+              "call_id": "call_00_0nQQpRNxgA1bfgkpupNF6893",
+              "created_round": 0,
+              "decision_note": "用检索到的免费 basic-spring 素材生成 1 条 economy 规格短视频方案，符合节约优先目标。",
+              "result_round": 2,
+              "plan_ref": "campaign-v1"
+            },
+            {
+              "todo_id": "todo-3",
+              "tool_name": "estimate_cost",
+              "status": "succeeded",
+              "call_id": "call_00_jY2EZhRtPeoAL0N0ymnD2133",
+              "created_round": 0,
+              "decision_note": "对 campaign-v1（1 条 economy、免费素材）估算费用，确认是否在 20 元预算内。",
+              "result_round": 3,
+              "plan_ref": "campaign-v1",
+              "estimate_id": "estimate-3",
+              "within_budget": true
+            },
+            {
+              "todo_id": "todo-4",
+              "tool_name": "save_plan",
+              "status": "succeeded",
+              "call_id": "call_00_uDnKyVlrImtj90hD7xmH1842",
+              "created_round": 0,
+              "decision_note": "estimate-3 显示总费用 5.00 元且在预算内，距截止仍有充足时间，直接保存 campaign-v1。",
+              "result_round": 4,
+              "plan_ref": "campaign-v1",
+              "estimate_id": "estimate-3"
+            }
+          ]
+        }
+      ],
+      "trace_url": "https://jp.cloud.langfuse.com/project/cmtgrjba70008ad0fq7rajgmg/traces/cf4ca2574e904add9648fd85a5f66e49",
+      "checks": {
+        "saved": true,
+        "finalized": true,
+        "stable_unique_ids": true,
+        "progress_backed_by_results": true,
+        "initial_snapshot_unchanged": true,
+        "planner_received_todos": true,
+        "langfuse_one_root": true,
+        "langfuse_same_trace": true,
+        "langfuse_root_input": true,
+        "langfuse_root_output": true,
+        "langfuse_four_tool_types": true,
+        "langfuse_all_tool_observations": true,
+        "langfuse_all_planner_generations": true,
+        "langfuse_all_script_generations": true,
+        "langfuse_tool_parents": true,
+        "langfuse_planner_parents": true,
+        "langfuse_script_parents": true,
+        "langfuse_generations": true,
+        "langfuse_model_and_usage": true,
+        "langfuse_task_succeeded": true,
+        "langfuse_root_has_todos": true,
+        "langfuse_planner_version": true
+      },
+      "passed": true
+    },
+    {
+      "case": "overbudget",
+      "mode": "real",
+      "prompt_version": "planner-v2",
+      "input": {
+        "task_id": "todos-overbudget-20261028T135349493486Z",
+        "theme": "春季新品推广。请先实际生成一条高级素材、premium制作规格的初稿并调用工具估价；若估价超预算，可以改为基础素材和economy规格，必须保留先前已发生费用。",
+        "budget": "10.00",
+        "deadline": "2030-01-01T10:30:00+08:00"
+      },
+      "status": "succeeded",
+      "reason": "SAVED",
+      "costs": {
+        "tool_cost": "7.00",
+        "plan_cost": "1.00",
+        "total_cost": "8.00",
+        "remaining_budget_after_tools": "3.00",
+        "budget_gap": "0.00"
+      },
+      "tool_calls": 6,
+      "decision_rounds": 6,
+      "todo_list": [
+        {
+          "todo_id": "todo-1",
+          "tool_name": "search_materials",
+          "status": "succeeded",
+          "call_id": "call_00_aCd1lq7YlBlZGkyBpFPa8329",
+          "created_round": 0,
+          "decision_note": "检索春季新品推广可用的视频素材，需包含高级素材与基础素材备选",
+          "result_round": 1
+        },
+        {
+          "todo_id": "todo-2",
+          "tool_name": "generate_script",
+          "status": "succeeded",
+          "call_id": "call_00_b66xhUDehGpwORtdbKM92746",
+          "created_round": 0,
+          "decision_note": "按用户要求先用 premium-spring 生成 1 条 premium 规格初稿",
+          "result_round": 2,
+          "plan_ref": "campaign-v1"
+        },
+        {
+          "todo_id": "todo-3",
+          "tool_name": "estimate_cost",
+          "status": "succeeded",
+          "call_id": "call_00_OEkyEvqmJIv8CZ8pYV454509",
+          "created_round": 0,
+          "decision_note": "对 premium 初稿 campaign-v1 估价，判断是否超出 10.00 预算",
+          "result_round": 3,
+          "plan_ref": "campaign-v1",
+          "estimate_id": "estimate-3",
+          "within_budget": false
+        },
+        {
+          "todo_id": "todo-5",
+          "tool_name": "generate_script",
+          "status": "succeeded",
+          "call_id": "call_00_ZvEv6SpjIpdrm1cS74nN4855",
+          "created_round": 4,
+          "decision_note": "premium 版超预算 2.00，按用户授权改为基础素材 basic-spring + economy 规格重写一条",
+          "result_round": 4,
+          "plan_ref": "campaign-v2"
+        },
+        {
+          "todo_id": "todo-6",
+          "tool_name": "estimate_cost",
+          "status": "succeeded",
+          "call_id": "call_00_d5itRZLBmoKdFvF1IHVj8300",
+          "created_round": 4,
+          "decision_note": "对基础素材 + economy 的 campaign-v2 估价，确认含累计工具费后是否在 10.00 内",
+          "result_round": 5,
+          "plan_ref": "campaign-v2",
+          "estimate_id": "estimate-5",
+          "within_budget": true
+        },
+        {
+          "todo_id": "todo-4",
+          "tool_name": "save_plan",
+          "status": "succeeded",
+          "call_id": "call_00_fLBM3jB3ASkfhUNXANnk4433",
+          "created_round": 0,
+          "decision_note": "campaign-v2 估价 8.00 在 10.00 预算内且时间充裕，保存为最终交付方案",
+          "result_round": 6,
+          "plan_ref": "campaign-v2",
+          "estimate_id": "estimate-5"
+        }
+      ],
+      "plan_revisions": [
+        {
+          "revision": 1,
+          "round": 0,
+          "reason": "INITIAL_PLAN",
+          "note": "初始计划；完成状态由实际工具结果确认",
+          "source_call_id": null,
+          "source_observation": null,
+          "items": [
+            {
+              "todo_id": "todo-1",
+              "tool_name": "search_materials",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-2",
+              "tool_name": "generate_script",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-3",
+              "tool_name": "estimate_cost",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-4",
+              "tool_name": "save_plan",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            }
+          ]
+        },
+        {
+          "revision": 2,
+          "round": 4,
+          "reason": "MODEL_REPLAN",
+          "note": "premium 版超预算 2.00，按用户授权改为基础素材 basic-spring + economy 规格重写一条",
+          "source_call_id": "call_00_ZvEv6SpjIpdrm1cS74nN4855",
+          "source_observation": {
+            "reason": "PLAN_OVER_BUDGET",
+            "source_call_id": "call_00_OEkyEvqmJIv8CZ8pYV454509",
+            "round": 3
+          },
+          "items": [
+            {
+              "todo_id": "todo-1",
+              "tool_name": "search_materials",
+              "status": "succeeded",
+              "call_id": "call_00_aCd1lq7YlBlZGkyBpFPa8329",
+              "created_round": 0,
+              "decision_note": "检索春季新品推广可用的视频素材，需包含高级素材与基础素材备选",
+              "result_round": 1
+            },
+            {
+              "todo_id": "todo-2",
+              "tool_name": "generate_script",
+              "status": "succeeded",
+              "call_id": "call_00_b66xhUDehGpwORtdbKM92746",
+              "created_round": 0,
+              "decision_note": "按用户要求先用 premium-spring 生成 1 条 premium 规格初稿",
+              "result_round": 2,
+              "plan_ref": "campaign-v1"
+            },
+            {
+              "todo_id": "todo-3",
+              "tool_name": "estimate_cost",
+              "status": "succeeded",
+              "call_id": "call_00_OEkyEvqmJIv8CZ8pYV454509",
+              "created_round": 0,
+              "decision_note": "对 premium 初稿 campaign-v1 估价，判断是否超出 10.00 预算",
+              "result_round": 3,
+              "plan_ref": "campaign-v1",
+              "estimate_id": "estimate-3",
+              "within_budget": false
+            },
+            {
+              "todo_id": "todo-5",
+              "tool_name": "generate_script",
+              "status": "running",
+              "call_id": "call_00_ZvEv6SpjIpdrm1cS74nN4855",
+              "created_round": 4,
+              "decision_note": "premium 版超预算 2.00，按用户授权改为基础素材 basic-spring + economy 规格重写一条"
+            },
+            {
+              "todo_id": "todo-6",
+              "tool_name": "estimate_cost",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 4
+            },
+            {
+              "todo_id": "todo-4",
+              "tool_name": "save_plan",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            }
+          ]
+        },
+        {
+          "revision": 3,
+          "round": 6,
+          "reason": "TASK_FINISHED",
+          "note": "SAVED",
+          "source_call_id": null,
+          "source_observation": null,
+          "items": [
+            {
+              "todo_id": "todo-1",
+              "tool_name": "search_materials",
+              "status": "succeeded",
+              "call_id": "call_00_aCd1lq7YlBlZGkyBpFPa8329",
+              "created_round": 0,
+              "decision_note": "检索春季新品推广可用的视频素材，需包含高级素材与基础素材备选",
+              "result_round": 1
+            },
+            {
+              "todo_id": "todo-2",
+              "tool_name": "generate_script",
+              "status": "succeeded",
+              "call_id": "call_00_b66xhUDehGpwORtdbKM92746",
+              "created_round": 0,
+              "decision_note": "按用户要求先用 premium-spring 生成 1 条 premium 规格初稿",
+              "result_round": 2,
+              "plan_ref": "campaign-v1"
+            },
+            {
+              "todo_id": "todo-3",
+              "tool_name": "estimate_cost",
+              "status": "succeeded",
+              "call_id": "call_00_OEkyEvqmJIv8CZ8pYV454509",
+              "created_round": 0,
+              "decision_note": "对 premium 初稿 campaign-v1 估价，判断是否超出 10.00 预算",
+              "result_round": 3,
+              "plan_ref": "campaign-v1",
+              "estimate_id": "estimate-3",
+              "within_budget": false
+            },
+            {
+              "todo_id": "todo-5",
+              "tool_name": "generate_script",
+              "status": "succeeded",
+              "call_id": "call_00_ZvEv6SpjIpdrm1cS74nN4855",
+              "created_round": 4,
+              "decision_note": "premium 版超预算 2.00，按用户授权改为基础素材 basic-spring + economy 规格重写一条",
+              "result_round": 4,
+              "plan_ref": "campaign-v2"
+            },
+            {
+              "todo_id": "todo-6",
+              "tool_name": "estimate_cost",
+              "status": "succeeded",
+              "call_id": "call_00_d5itRZLBmoKdFvF1IHVj8300",
+              "created_round": 4,
+              "decision_note": "对基础素材 + economy 的 campaign-v2 估价，确认含累计工具费后是否在 10.00 内",
+              "result_round": 5,
+              "plan_ref": "campaign-v2",
+              "estimate_id": "estimate-5",
+              "within_budget": true
+            },
+            {
+              "todo_id": "todo-4",
+              "tool_name": "save_plan",
+              "status": "succeeded",
+              "call_id": "call_00_fLBM3jB3ASkfhUNXANnk4433",
+              "created_round": 0,
+              "decision_note": "campaign-v2 估价 8.00 在 10.00 预算内且时间充裕，保存为最终交付方案",
+              "result_round": 6,
+              "plan_ref": "campaign-v2",
+              "estimate_id": "estimate-5"
+            }
+          ]
+        }
+      ],
+      "trace_url": "https://jp.cloud.langfuse.com/project/cmtgrjba70008ad0fq7rajgmg/traces/9ce049ecd31e46aebc9d862a41d02f13",
+      "checks": {
+        "saved": true,
+        "finalized": true,
+        "stable_unique_ids": true,
+        "progress_backed_by_results": true,
+        "initial_snapshot_unchanged": true,
+        "planner_received_todos": true,
+        "real_overbudget_observation": true,
+        "revised_from_overbudget": true,
+        "langfuse_one_root": true,
+        "langfuse_same_trace": true,
+        "langfuse_root_input": true,
+        "langfuse_root_output": true,
+        "langfuse_four_tool_types": true,
+        "langfuse_all_tool_observations": true,
+        "langfuse_all_planner_generations": true,
+        "langfuse_all_script_generations": true,
+        "langfuse_tool_parents": true,
+        "langfuse_planner_parents": true,
+        "langfuse_script_parents": true,
+        "langfuse_generations": true,
+        "langfuse_model_and_usage": true,
+        "langfuse_task_succeeded": true,
+        "langfuse_root_has_todos": true,
+        "langfuse_planner_version": true
+      },
+      "passed": true
+    },
+    {
+      "case": "tool-failure",
+      "mode": "real",
+      "prompt_version": "planner-v2",
+      "input": {
+        "task_id": "todos-tool-failure-20261028T135349493486Z",
+        "theme": "春季新品推广：用日常生活场景介绍新品外观，优先节约费用。",
+        "budget": "20.00",
+        "deadline": "2030-01-01T10:30:00+08:00"
+      },
+      "status": "succeeded",
+      "reason": "SAVED",
+      "costs": {
+        "tool_cost": "6.00",
+        "plan_cost": "2.00",
+        "total_cost": "8.00",
+        "remaining_budget_after_tools": "14.00",
+        "budget_gap": "0.00"
+      },
+      "tool_calls": 5,
+      "decision_rounds": 5,
+      "todo_list": [
+        {
+          "todo_id": "todo-1",
+          "tool_name": "search_materials",
+          "status": "succeeded",
+          "call_id": "call_00_oo5FaKzQOQBE6Wece9di2253",
+          "created_round": 0,
+          "decision_note": "为春季新品推广检索日常生活场景素材，优先免费基础素材以节约费用。",
+          "result_round": 1
+        },
+        {
+          "todo_id": "todo-2",
+          "tool_name": "generate_script",
+          "status": "failed",
+          "call_id": "call_00_aetzKHeLy4ro1MXz6Kqu6382",
+          "created_round": 0,
+          "decision_note": "仅使用可用的免费基础素材 basic-spring，生成 2 条 economy 规格视频以节约费用。",
+          "result_round": 2,
+          "error_code": "INJECTED_TOOL_FAILURE"
+        },
+        {
+          "todo_id": "todo-5",
+          "tool_name": "generate_script",
+          "status": "succeeded",
+          "call_id": "call_00_aZWa4HLShVlt0iT0sNKP6047",
+          "created_round": 3,
+          "decision_note": "上次生成因一次性注入失败且可重试，预算与时间充足，重试同一免费素材+economy 方案。",
+          "result_round": 3,
+          "plan_ref": "campaign-v1"
+        },
+        {
+          "todo_id": "todo-3",
+          "tool_name": "estimate_cost",
+          "status": "succeeded",
+          "call_id": "call_00_Hhu39xyiuYPs34TpNbAf3166",
+          "created_round": 0,
+          "decision_note": "对已生成的 campaign-v1（2 条 economy，免费基础素材）计价，确认是否在 20 元预算内。",
+          "result_round": 4,
+          "plan_ref": "campaign-v1",
+          "estimate_id": "estimate-4",
+          "within_budget": true
+        },
+        {
+          "todo_id": "todo-4",
+          "tool_name": "save_plan",
+          "status": "succeeded",
+          "call_id": "call_00_SFiMG1WDFK7dE1oibqQ52716",
+          "created_round": 0,
+          "decision_note": "estimate-4 显示方案费 2.00、累计合计 8.00 在预算内，剩余时间充足，直接保存交付。",
+          "result_round": 5,
+          "plan_ref": "campaign-v1",
+          "estimate_id": "estimate-4"
+        }
+      ],
+      "plan_revisions": [
+        {
+          "revision": 1,
+          "round": 0,
+          "reason": "INITIAL_PLAN",
+          "note": "初始计划；完成状态由实际工具结果确认",
+          "source_call_id": null,
+          "source_observation": null,
+          "items": [
+            {
+              "todo_id": "todo-1",
+              "tool_name": "search_materials",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-2",
+              "tool_name": "generate_script",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-3",
+              "tool_name": "estimate_cost",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-4",
+              "tool_name": "save_plan",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            }
+          ]
+        },
+        {
+          "revision": 2,
+          "round": 3,
+          "reason": "MODEL_REPLAN",
+          "note": "上次生成因一次性注入失败且可重试，预算与时间充足，重试同一免费素材+economy 方案。",
+          "source_call_id": "call_00_aZWa4HLShVlt0iT0sNKP6047",
+          "source_observation": {
+            "reason": "INJECTED_TOOL_FAILURE",
+            "source_call_id": "call_00_aetzKHeLy4ro1MXz6Kqu6382",
+            "round": 2
+          },
+          "items": [
+            {
+              "todo_id": "todo-1",
+              "tool_name": "search_materials",
+              "status": "succeeded",
+              "call_id": "call_00_oo5FaKzQOQBE6Wece9di2253",
+              "created_round": 0,
+              "decision_note": "为春季新品推广检索日常生活场景素材，优先免费基础素材以节约费用。",
+              "result_round": 1
+            },
+            {
+              "todo_id": "todo-2",
+              "tool_name": "generate_script",
+              "status": "failed",
+              "call_id": "call_00_aetzKHeLy4ro1MXz6Kqu6382",
+              "created_round": 0,
+              "decision_note": "仅使用可用的免费基础素材 basic-spring，生成 2 条 economy 规格视频以节约费用。",
+              "result_round": 2,
+              "error_code": "INJECTED_TOOL_FAILURE"
+            },
+            {
+              "todo_id": "todo-5",
+              "tool_name": "generate_script",
+              "status": "running",
+              "call_id": "call_00_aZWa4HLShVlt0iT0sNKP6047",
+              "created_round": 3,
+              "decision_note": "上次生成因一次性注入失败且可重试，预算与时间充足，重试同一免费素材+economy 方案。"
+            },
+            {
+              "todo_id": "todo-3",
+              "tool_name": "estimate_cost",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            },
+            {
+              "todo_id": "todo-4",
+              "tool_name": "save_plan",
+              "status": "pending",
+              "call_id": null,
+              "created_round": 0
+            }
+          ]
+        },
+        {
+          "revision": 3,
+          "round": 5,
+          "reason": "TASK_FINISHED",
+          "note": "SAVED",
+          "source_call_id": null,
+          "source_observation": null,
+          "items": [
+            {
+              "todo_id": "todo-1",
+              "tool_name": "search_materials",
+              "status": "succeeded",
+              "call_id": "call_00_oo5FaKzQOQBE6Wece9di2253",
+              "created_round": 0,
+              "decision_note": "为春季新品推广检索日常生活场景素材，优先免费基础素材以节约费用。",
+              "result_round": 1
+            },
+            {
+              "todo_id": "todo-2",
+              "tool_name": "generate_script",
+              "status": "failed",
+              "call_id": "call_00_aetzKHeLy4ro1MXz6Kqu6382",
+              "created_round": 0,
+              "decision_note": "仅使用可用的免费基础素材 basic-spring，生成 2 条 economy 规格视频以节约费用。",
+              "result_round": 2,
+              "error_code": "INJECTED_TOOL_FAILURE"
+            },
+            {
+              "todo_id": "todo-5",
+              "tool_name": "generate_script",
+              "status": "succeeded",
+              "call_id": "call_00_aZWa4HLShVlt0iT0sNKP6047",
+              "created_round": 3,
+              "decision_note": "上次生成因一次性注入失败且可重试，预算与时间充足，重试同一免费素材+economy 方案。",
+              "result_round": 3,
+              "plan_ref": "campaign-v1"
+            },
+            {
+              "todo_id": "todo-3",
+              "tool_name": "estimate_cost",
+              "status": "succeeded",
+              "call_id": "call_00_Hhu39xyiuYPs34TpNbAf3166",
+              "created_round": 0,
+              "decision_note": "对已生成的 campaign-v1（2 条 economy，免费基础素材）计价，确认是否在 20 元预算内。",
+              "result_round": 4,
+              "plan_ref": "campaign-v1",
+              "estimate_id": "estimate-4",
+              "within_budget": true
+            },
+            {
+              "todo_id": "todo-4",
+              "tool_name": "save_plan",
+              "status": "succeeded",
+              "call_id": "call_00_SFiMG1WDFK7dE1oibqQ52716",
+              "created_round": 0,
+              "decision_note": "estimate-4 显示方案费 2.00、累计合计 8.00 在预算内，剩余时间充足，直接保存交付。",
+              "result_round": 5,
+              "plan_ref": "campaign-v1",
+              "estimate_id": "estimate-4"
+            }
+          ]
+        }
+      ],
+      "trace_url": "https://jp.cloud.langfuse.com/project/cmtgrjba70008ad0fq7rajgmg/traces/a490b6df3d6144a29fceb05524218f61",
+      "checks": {
+        "saved": true,
+        "finalized": true,
+        "stable_unique_ids": true,
+        "progress_backed_by_results": true,
+        "initial_snapshot_unchanged": true,
+        "planner_received_todos": true,
+        "failure_retained": true,
+        "revised_from_failure": true,
+        "langfuse_one_root": true,
+        "langfuse_same_trace": true,
+        "langfuse_root_input": true,
+        "langfuse_root_output": true,
+        "langfuse_four_tool_types": true,
+        "langfuse_all_tool_observations": true,
+        "langfuse_all_planner_generations": true,
+        "langfuse_all_script_generations": true,
+        "langfuse_tool_parents": true,
+        "langfuse_planner_parents": true,
+        "langfuse_script_parents": true,
+        "langfuse_generations": true,
+        "langfuse_model_and_usage": true,
+        "langfuse_task_succeeded": true,
+        "langfuse_root_has_todos": true,
+        "langfuse_planner_version": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}
